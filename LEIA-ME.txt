@@ -1,0 +1,10 @@
+MESA DE ROTEIRO — versão PWA
+
+1. Publique TODOS os arquivos desta pasta em um site com HTTPS.
+2. Abra o endereço no Chrome/Edge do celular.
+3. Android: use "Instalar app" / "Adicionar à tela inicial" quando aparecer.
+4. iPhone/iPad: no Safari, toque em Compartilhar > Adicionar à Tela de Início.
+
+IMPORTANTE:
+- Não abra o index.html diretamente como arquivo no celular. PWA precisa ser servido por HTTP/HTTPS.
+- Os dados do aplicativo continuam sendo salvos no armazenamento local do navegador. Eles não sincronizam automaticamente entre computador e celular.
