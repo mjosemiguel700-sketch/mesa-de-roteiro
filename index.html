@@ -80,6 +80,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .item[aria-current="true"]{border-left-color:var(--tinta);background:var(--papel);font-weight:700}
 .item .rotulo{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .item .contagem{font-size:11px;color:var(--fraco);font-variant-numeric:tabular-nums}
+.item .apagar-obra{margin-left:4px;font-size:11px;flex:0 0 auto;}
 .item.cap{padding-left:18px;font-size:14px}
 .vazio-lateral{padding:10px 10px;font-size:13px;color:var(--fraco)}
 
@@ -563,7 +564,8 @@ function desenharLateral(){
       var n=caps.filter(function(c){return c.obraId===o.id;}).length;
       return '<button class="item" data-obra="'+o.id+'" aria-current="'+(obraAtual===o.id)+'">'+
         '<span class="rotulo">'+esc(o.titulo||"Sem título")+'</span>'+
-        '<span class="contagem">'+n+' cap.</span></button>';
+        '<span class="contagem">'+n+' cap.</span>'+
+        '<span class="bt-texto risco apagar-obra" data-acao="del-obra" data-obra-id="'+o.id+'" title="Apagar obra" aria-label="Apagar obra">apagar</span></button>';
     }).join("");
   }
   var bloco=el("blocoCapitulos"), lc=el("listaCaps");
@@ -610,6 +612,27 @@ async function criarObra(t){
   obraAtual=o.id; capAtual=null; doc=null;
   desenharLateral(); desenhar();
   criarCapitulo();
+}
+
+async function apagarObra(obraId){
+  if(!db||!obraId) return;
+  var alvo=obras.filter(function(o){return o.id===obraId;})[0];
+  if(!alvo) return;
+  var capsDaObra=caps.filter(function(c){return c.obraId===obraId;});
+  try{
+    for(var i=0;i<capsDaObra.length;i++) await colCaps().doc(capsDaObra[i].id).delete();
+    await colObras().doc(obraId).delete();
+  }catch(e){
+    aviso("Não foi possível apagar a obra. Tente novamente.");
+    return;
+  }
+  obras=obras.filter(function(o){return o.id!==obraId;});
+  caps=caps.filter(function(c){return c.obraId!==obraId;});
+  if(obraAtual===obraId){ obraAtual=null; capAtual=null; doc=null; }
+  desenharLateral();
+  desenhar();
+  alternarLateral(false);
+  aviso("Obra apagada.");
 }
 
 async function adicionarPersonagem(nome){
@@ -1018,6 +1041,13 @@ el("tituloCap").addEventListener("input",function(){
 });
 
 document.querySelector(".rolagem").addEventListener("click",function(ev){
+  var delObra=ev.target.closest('[data-acao="del-obra"]');
+  if(delObra){
+    ev.preventDefault();
+    ev.stopPropagation();
+    confirmarClique(delObra,"confirmar?",function(){ apagarObra(delObra.getAttribute("data-obra-id")); });
+    return;
+  }
   var delP=ev.target.closest('[data-acao="del-personagem"]');
   if(delP){
     confirmarClique(delP,"remover?",function(){ removerPersonagem(delP.getAttribute("data-nome")); });
