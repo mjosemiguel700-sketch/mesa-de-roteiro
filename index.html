@@ -471,6 +471,9 @@ body.ed-aberto{overflow:hidden}
 .ed-ajuda-c dl{display:grid;grid-template-columns:auto 1fr;gap:3px 14px;margin:0 0 10px}
 .ed-ajuda-c dt{font-weight:700;white-space:nowrap}
 .ed-ajuda-c dd{margin:0;color:var(--e-fr)}
+.ed-ajuda-c .ed-atalhos-detalhados{margin-top:6px;padding:8px 10px;border:1px solid var(--e-bd);border-radius:6px;background:var(--e-bg);max-height:190px;overflow:auto}
+.ed-ajuda-c .ed-atalhos-detalhados dt{white-space:nowrap}
+.ed-ajuda-c .ed-atalhos-detalhados kbd{display:inline-block;min-width:62px;padding:3px 7px;border:1px solid var(--e-bd);border-bottom-width:2px;border-radius:5px;background:var(--e-ac);color:var(--e-tx);font:600 11px/1.4 inherit;text-align:center;box-shadow:inset 0 1px rgba(255,255,255,.12)}
 
 @media (max-width:1120px){
   .ed-corpo{grid-template-columns:42px 214px minmax(0,1fr) 236px}
@@ -921,6 +924,20 @@ GRAUS_LAPIS.forEach(function(g){
   if(!FERRS.some(function(f){return f&&f[0]===id;})) FERRS.push([id,"Lápis "+g[1],""]);
 });
 LAPISSEIRAS.forEach(function(g){ FERRS.push(["lapiseira"+g[0],"Lapiseira "+g[1],""]); });
+/* Atalhos individuais para todas as pontas de caneta, graduações de lápis e lapiseiras. */
+var TECLAS_ATALHOS_DETALHADOS="1234567890qwertyuiopasdfghjklzxcvbnm".split("");
+var IDS_ATALHOS_DETALHADOS=[];
+PONTAS_CANETA.forEach(function(p){ IDS_ATALHOS_DETALHADOS.push("caneta"+p[0]); });
+GRAUS_LAPIS.forEach(function(g){ var id="lapis"+g[0]; if(IDS_ATALHOS_DETALHADOS.indexOf(id)<0) IDS_ATALHOS_DETALHADOS.push(id); });
+LAPISSEIRAS.forEach(function(g){ IDS_ATALHOS_DETALHADOS.push("lapiseira"+g[0]); });
+var MAPA_ATALHOS_DETALHADOS={};
+IDS_ATALHOS_DETALHADOS.forEach(function(id,i){ if(TECLAS_ATALHOS_DETALHADOS[i]) MAPA_ATALHOS_DETALHADOS[TECLAS_ATALHOS_DETALHADOS[i]]=id; });
+var HTML_ATALHOS_DETALHADOS=IDS_ATALHOS_DETALHADOS.map(function(id,i){
+  if(!TECLAS_ATALHOS_DETALHADOS[i]) return "";
+  var nome=PINCEIS[id]?PINCEIS[id].nome:id;
+  return "<dt><kbd>Alt + "+TECLAS_ATALHOS_DETALHADOS[i].toUpperCase()+"</kbd></dt><dd>"+esc(nome)+"</dd>";
+}).join("");
+
 var AMOSTRAS=["#000000","#ffffff","#555555","#aaaaaa","#d63a3a","#e8892b","#f2d13b","#3fa34d","#2a6fdb","#7a45c9","#e46ab0","#7a4a2b"];
 var CFG={ferr:"caneta",cor:"#000000",pressao:true,tol:24,ref:true,preencher:false,sim:"",simN:6,balTipo:"fala",ajust:{}};
 Object.keys(PINCEIS).forEach(function(k){
@@ -1288,7 +1305,7 @@ function montarDOM(){
   }).join("");
   var subs=GRUPOS.map(function(g){
     return '<div class="oculto" data-sg="'+g.id+'">'+g.ferrs.map(function(f){
-      return '<button type="button" class="ed-sub" data-ferr="'+f+'">'+prevSVG(f)+'<span>'+esc(nomeFerr(f))+'</span><kbd>'+atalhoDe(f)+'</kbd></button>';
+      return '<button type="button" class="ed-sub" data-ferr="'+f+'" title="Selecionar '+esc(nomeFerr(f))+'; veja a dica abaixo das propriedades">'+prevSVG(f)+'<span>'+esc(nomeFerr(f))+'</span><kbd>'+atalhoDe(f)+'</kbd></button>';
     }).join("")+'</div>';
   }).join("");
   var tams=TAMS_PRE.map(function(v){
@@ -1314,14 +1331,19 @@ function montarDOM(){
     menu("Visualizar",mi("zoom+","Aumentar zoom","+")+mi("zoom-","Diminuir zoom","−")+mi("ajustar","Ajustar à tela","0")+mi("preencher","Preencher toda a área")+mi("zoom100","Tamanho real (100%)"))+
     menu("Janela",janela)+
     menu("Ajuda",mi("ajuda","Atalhos e dicas"));
-  var ajuda='<div class="ed-ajuda oculto" data-r="ajuda"><div class="ed-ajuda-c"><h3>Atalhos e dicas</h3>'+
-    '<dl><dt>P · Q · K</dt><dd>Lápis HB, Lápis 6B, Esferográfica</dd><dt>B · N · M</dt><dd>Caneta G, Nanquim, Marcador</dd>'+
+  var ajuda='<div class="ed-ajuda oculto" data-r="ajuda"><div class="ed-ajuda-c"><h3>Atalhos e dicas — guia completo</h3>'+
+    '<h4>Atalhos de teclado</h4><dl><dt>P · Q · K</dt><dd>Lápis HB, Lápis 6B, Esferográfica</dd><dt>B · N · M</dt><dd>Caneta G, Nanquim, Marcador</dd>'+
     '<dt>R · A · D · S</dt><dd>Aerógrafo, Pincel macio, Pincel seco, Esfumar</dd><dt>E</dt><dd>Borracha</dd>'+
-    '<dt>L · U · O</dt><dd>Linha, Retângulo, Elipse (Shift trava ângulo/proporção)</dd><dt>G · I</dt><dd>Balde, Conta-gotas</dd>'+
-    '<dt>V · T · H</dt><dd>Selecionar, Balão, Mão (ou segure Espaço)</dd><dt>[ ]</dt><dd>Diminuir / aumentar o tamanho</dd>'+
-    '<dt>+ − 0</dt><dd>Zoom, ajustar à tela</dd><dt>Ctrl+Z / Y</dt><dd>Desfazer / refazer</dd>'+
-    '<dt>Ctrl+A C X V</dt><dd>Selecionar tudo, copiar, cortar, colar</dd><dt>Enter · Esc · Del</dt><dd>Confirmar, cancelar, apagar</dd></dl>'+
-    '<p class="ed-dica">Os grupos da caixa de ferramentas têm um triângulo no canto: clique de novo para alternar entre as ferramentas do grupo, ou escolha na paleta Sub ferramenta. Em Material [Balão], escolha o tipo e clique no desenho para criar o balão.</p>'+
+    '<dt>L · U · O</dt><dd>Linha, Retângulo, Elipse. Segure Shift para restringir ângulos ou proporções quando disponível.</dd><dt>G · I</dt><dd>Balde de tinta, Conta-gotas</dd>'+
+    '<dt>V · T · H</dt><dd>Seleção, Balão de fala, Mão</dd><dt>Espaço</dt><dd>Segure e arraste para mover a tela temporariamente</dd><dt>[ · ]</dt><dd>Diminuir / aumentar o tamanho da ferramenta</dd>'+
+    '<dt>+ · − · 0</dt><dd>Aumentar zoom, diminuir zoom, ajustar a folha à tela</dd><dt>Ctrl+Z · Ctrl+Y</dt><dd>Desfazer / refazer (Ctrl+Shift+Z também refaz)</dd>'+
+    '<dt>Ctrl+A · C · X · V</dt><dd>Selecionar tudo, copiar, cortar, colar</dd><dt>Enter · Esc · Delete</dt><dd>Confirmar transformação, cancelar seleção, apagar seleção ou balão</dd></dl>'+
+    '<h4>Atalhos individuais para cada ponta e graduação</h4><p>Use as teclas destacadas abaixo para selecionar diretamente cada ponta de caneta, graduação de lápis e lapiseira, sem precisar abrir a lista de subferramentas.</p><dl class="ed-atalhos-detalhados">'+HTML_ATALHOS_DETALHADOS+'</dl>'+
+    '<h4>Lápis e lapiseiras</h4><p><b>2H, H e F:</b> traço fino e claro, bons para construção e esboço leve. <b>HB/B/1B–3B:</b> esboço geral e linhas mais visíveis. <b>4B–6B:</b> traço escuro para sombras e desenho expressivo. <b>7B–10B:</b> muito macios e escuros; use opacidade/tamanho menores para detalhes. <b>Lapiseiras 0,3/0,5 mm:</b> detalhes finos; <b>0,7/0,9 mm:</b> esboço e contorno; <b>2,0 mm:</b> traço mais grosso.</p>'+
+    '<h4>Canetas e arte-final</h4><p><b>Caneta G:</b> varie a pressão para linhas expressivas e contornos de mangá. <b>003–009 e 01–02:</b> detalhes, cílios e hachuras finas. <b>03–05:</b> contornos comuns. <b>06–09 e 1–3:</b> linhas grossas, silhuetas e impacto. <b>BR · Brush:</b> linhas com aparência de pincel. <b>Nanquim:</b> linha uniforme e limpa. <b>Esferográfica:</b> rascunho com linha firme.</p>'+
+    '<h4>Pincéis, efeitos e borracha</h4><p><b>Marcador:</b> preenchimentos e sombras gráficas; reduza a opacidade para tons suaves. <b>Aerógrafo:</b> luz, brilho e sombra gradual; use tamanho grande e opacidade baixa. <b>Pincel macio:</b> pintura e transições suaves. <b>Pincel seco:</b> textura, cabelo, tecido e hachuras. <b>Esfumar:</b> arraste sobre cores existentes para misturá-las. <b>Borracha:</b> apague com cuidado; ajuste o tamanho para limpar detalhes ou áreas grandes.</p>'+
+    '<h4>Formas, balões e edição</h4><p><b>Linha/Retângulo/Elipse:</b> arraste para criar; Shift restringe ângulo/proporção quando aplicável. <b>Balde:</b> clique na área fechada e ajuste Tolerância se sobrar espaço ou vazar cor; “Usar todas as camadas” considera o desenho combinado. <b>Conta-gotas:</b> clique para copiar uma cor do desenho. <b>Seleção:</b> arraste para selecionar, mova dentro da seleção e use as alças para transformar. <b>Balão:</b> escolha o tipo na paleta Material [Balão] e clique na página; selecione o balão para editar. <b>Mão:</b> arraste para navegar sem desenhar.</p>'+
+    '<p class="ed-dica">Dica: selecione qualquer ferramenta para ver uma dica específica logo abaixo das propriedades. Clique no grupo da esquerda e escolha uma opção na lista “Sub ferramenta” para acessar todas as pontas e graduações. Os valores de tamanho e opacidade são ajustáveis por ferramenta.</p>'+
     '<div class="ed-acoes-cam"><button type="button" class="bt" data-ed="ajuda">Fechar</button></div></div></div>';
 
   var paletasEsq=
@@ -2696,16 +2718,32 @@ function atualizarFerr(){
   E.pTol.value=CFG.tol; E.pTolV.textContent=CFG.tol; E.pRef.checked=CFG.ref; E.pFill.checked=CFG.preencher;
   E.selAcoes.classList.toggle("oculto",n!=="selecionar");
   var dicas={
-    selecionar:"Arraste para selecionar. Depois arraste dentro para mover, ou pelas alças para aumentar/diminuir. Enter confirma, Esc cancela, Delete apaga.",
-    gota:"Clique em qualquer ponto do desenho para pegar a cor.",
-    mao:"Arraste para mover a tela. (Segurar Espaço também funciona.)",
-    esfumar:"Arraste sobre o desenho para borrar e misturar as cores.",
-    linha:"Arraste para traçar uma reta. Shift trava em ângulos de 45°.",
-    retangulo:"Arraste para desenhar. Shift faz um quadrado.",
-    elipse:"Arraste para desenhar. Shift faz um círculo.",
-    balao:"Clique no desenho para criar um balão do tipo escolhido em Material [Balão]. Clique num balão para editá-lo."
+    selecionar:"Seleção: arraste para selecionar; arraste dentro para mover e use as alças para redimensionar. Enter confirma, Esc cancela e Delete apaga.",
+    gota:"Conta-gotas: clique na cor que deseja reutilizar no desenho.",
+    mao:"Mão: arraste para mover a folha sem pintar. Também pode segurar Espaço e arrastar.",
+    esfumar:"Esfumar: arraste sobre pixels pintados para misturar cores. Não cria cor sozinho; funciona melhor sobre pintura existente.",
+    linha:"Linha: arraste de um ponto a outro. Segure Shift para restringir o ângulo.",
+    retangulo:"Retângulo: arraste para desenhar a forma. Shift restringe as proporções; marque Preencher forma para preencher o interior.",
+    elipse:"Elipse: arraste para desenhar. Shift cria um círculo; marque Preencher forma para pintar o interior.",
+    balde:"Balde: clique numa área para preencher. Ajuste Tolerância para controlar diferenças de cor e ative Usar todas as camadas para considerar a imagem combinada.",
+    balao:"Balão: escolha Fala, Pensamento, Grito, Sussurro, Fora de quadro ou Narração em Material [Balão] e clique na página; clique no balão para editá-lo."
   };
-  E.dica.textContent=dicas[n]||"";
+  var nomeDica=nomeFerr(n), dicaPincel="";
+  if(B){
+    if(n.indexOf("lapiseira")==0) dicaPincel="Lapiseira "+nomeDica.replace("Lapiseira ","")+": use para esboço controlado e detalhes técnicos; 0,3/0,5 mm são finas, 0,7/0,9 mm intermediárias e 2,0 mm mais grossa. Ajuste tamanho e opacidade ao resultado desejado.";
+    else if(n.indexOf("lapis")==0) dicaPincel= /2H|H$|F$/.test(nomeDica)?nomeDica+": traço mais claro para construção e esboço leve; aumente a pressão/opacidade para escurecer.":nomeDica+": bom para esboço e textura. Graduações B maiores tendem a ficar mais escuras e macias; use tamanho/opacidade menores para detalhes e maiores para sombras.";
+    else if(n.indexOf("caneta")===0) dicaPincel=(n==="canetaBR"?"Caneta Brush: varie a pressão e o tamanho para linhas expressivas e pontas afiladas.":nomeDica+": use para arte-final. Pontas pequenas servem para detalhes e hachuras; pontas médias para contorno geral; pontas grandes para silhuetas e linhas de impacto.")+" Ajuste a estabilização para suavizar tremores.";
+    else if(n==="caneta") dicaPincel="Caneta G: faça o contorno do mangá variando a pressão para linhas finas e grossas. Aumente a estabilização se o traço sair tremido.";
+    else if(n==="esfero") dicaPincel="Esferográfica: linha firme e uniforme, útil para rascunhos e detalhes. Use tamanho pequeno para hachuras.";
+    else if(n==="nanquim") dicaPincel="Nanquim: linha uniforme e opaca para arte-final limpa. Escolha uma ponta fina para detalhes e aumente o tamanho para contornos.";
+    else if(n==="marcador") dicaPincel="Marcador: bom para massas de sombra e preenchimentos gráficos. Diminua a opacidade para sobrepor tons sem escurecer demais.";
+    else if(n==="aerografo") dicaPincel="Aerógrafo: use tamanho grande e opacidade baixa para luzes, brilhos e sombras suaves; aplique várias passadas leves.";
+    else if(n==="pincel") dicaPincel="Pincel macio: indicado para pintar e criar transições suaves. Ajuste tamanho e opacidade e construa a cor aos poucos.";
+    else if(n==="seco") dicaPincel="Pincel seco: textura áspera para cabelo, tecido, materiais e hachuras. Use passadas curtas para destacar a textura.";
+    else if(n==="borracha") dicaPincel="Borracha: apague traços da camada atual. Use tamanho pequeno para limpar bordas e grande para áreas; confira a camada selecionada.";
+    else dicaPincel=nomeDica+": ajuste tamanho, opacidade e estabilização nas Propriedades. Faça um traço de teste e adapte os valores antes de desenhar detalhes.";
+  }
+  E.dica.textContent=dicas[n]||dicaPincel||"Escolha a ferramenta e faça um traço de teste. Ajuste as propriedades para controlar tamanho, opacidade e suavidade.";
   E.dica.classList.toggle("oculto",!E.dica.textContent);
   var ta=CFG.ajust[n];
   qa("[data-tam]").forEach(function(b){
@@ -3015,6 +3053,11 @@ function onKey(e){
   var t=e.target, tag=t&&t.tagName;
   if(tag==="TEXTAREA"||tag==="SELECT"||(tag==="INPUT"&&(t.type==="text"||t.type==="number"))) return;
   var ctrl=e.ctrlKey||e.metaKey, k=(e.key||"").toLowerCase();
+  /* Alt + tecla escolhe diretamente uma ponta/graduação específica. */
+  if(e.altKey && !ctrl){
+    var idAtalhoDetalhado=MAPA_ATALHOS_DETALHADOS[k];
+    if(idAtalhoDetalhado){ e.preventDefault(); e.stopPropagation(); trocarFerr(idAtalhoDetalhado); return; }
+  }
   if(ctrl){
     if(k==="z"){ e.preventDefault(); e.stopPropagation(); if(e.shiftKey) refazer(); else desfazer(); }
     else if(k==="y"){ e.preventDefault(); e.stopPropagation(); refazer(); }
