@@ -491,6 +491,27 @@ body.ed-aberto{overflow:hidden}
   .ed-dock{overflow:visible;border:0}
   .ed-status #coord,.ed-status .ed-dim{display:none}
 }
+
+/* ---------- novo layout: uma página por vez, painéis como quadros ---------- */
+@media (min-width:821px){.lateral{width:300px;flex:0 0 300px}}
+.tela.modo-pag{padding:14px 20px 20px}
+.folha.pag{max-width:none;margin:0}
+.folha.pag .pagina{margin:0}
+.folha.pag .cabeca-pagina{align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.quadros{--h:200px;display:flex;flex-flow:row wrap;align-content:flex-start;gap:12px;overflow-y:auto;overflow-x:hidden;margin-bottom:12px;padding:3px}
+.quadro{position:relative;height:var(--h);width:calc(var(--h)*var(--r));max-width:100%;flex:0 0 auto;margin:0}
+.quadro .palco-painel{position:absolute;inset:0;width:100%;height:100%;max-width:none;aspect-ratio:auto;box-shadow:none;outline:0}
+.quadro.sel{outline:3px solid var(--tinta);outline-offset:2px}
+.quadro-topo{position:absolute;left:0;right:0;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:4px;pointer-events:none}
+.quadro-topo>*{pointer-events:auto}
+.quadro-topo .num{border:0;cursor:pointer;font-family:var(--mincho)}
+.quadro .acoes{margin-left:0;opacity:0;transition:opacity .12s;background:var(--papel);border:1px solid var(--calha);border-radius:3px}
+.quadro:hover .acoes,.quadro:focus-within .acoes,.quadro.sel .acoes{opacity:1}
+@media (hover:none){.quadro .acoes{opacity:1}}
+.vazio-quadros{color:var(--fraco);font-size:13px;padding:12px}
+.painel.info-lat{border:0;box-shadow:none;margin:0;background:none}
+.info-lat .campos-painel{grid-template-columns:1fr}
+.bloco-info{border-top:1px solid var(--calha);margin-top:14px}
 </style>
 </head>
 <body>
@@ -514,6 +535,13 @@ body.ed-aberto{overflow:hidden}
         </div>
       </form>
       <div id="listaObras"></div>
+      <div id="blocoPaginas" class="oculto">
+        <div class="grupo-titulo" style="margin-top:14px">
+          <span>Páginas</span>
+          <button class="bt mini" id="novaPag">Nova</button>
+        </div>
+        <div id="listaPaginas"></div>
+      </div>
       <div id="blocoCapitulos" class="oculto">
         <div class="grupo-titulo" style="margin-top:14px">
           <span>Capítulos</span>
@@ -530,6 +558,10 @@ body.ed-aberto{overflow:hidden}
           <button type="submit" class="bt mini forte">+</button>
         </form>
         <div id="listaPersonagens"></div>
+      </div>
+      <div id="blocoInfo" class="oculto bloco-info">
+        <div class="grupo-titulo" style="margin-top:6px"><span id="tituloInfo">Informações do painel</span></div>
+        <div id="infoPainel"></div>
       </div>
     </div>
   </aside>
@@ -3105,7 +3137,7 @@ async function abrirCapitulo(cid){
     doc=s.data(); doc.id=cid; capAtual=cid; obraAtual=doc.obraId;
     if(!doc.paginas||!doc.paginas.length) doc.paginas=[novaPagina()];
     normalizarDocumento(doc);
-    visHist={}; visAberto={};
+    visHist={}; visAberto={}; pgAtual=0; selPainel=null;
     estado.textContent="salvo";
     desenharLateral(); desenhar(); atualizarPersonagens();
     alternarLateral(false);
@@ -3114,7 +3146,10 @@ async function abrirCapitulo(cid){
 }
 
 /* ========== desenho do roteiro ========== */
+var pgAtual=0, selPainel=null;
 function desenhar(){
+  tela.classList.remove("modo-pag");
+  el("blocoPaginas").classList.add("oculto"); el("blocoInfo").classList.add("oculto");
   el("tituloCap").disabled=!doc;
   el("btExportar").disabled=!doc;
   el("tituloCap").value=doc?(doc.titulo||""):"";
@@ -3150,34 +3185,32 @@ function desenhar(){
     return;
   }
 
-  var total=contarPaineis(doc.paginas);
-  var html='<div class="folha">';
-  doc.paginas.forEach(function(pg,ip){
-    var np=(pg.paineis||[]).length;
-    var denso=np>8;
-    html+='<section class="pagina" data-pg="'+pg.id+'">'+
-      '<div class="cabeca-pagina">'+
-        '<h2>Página '+(ip+1)+'</h2>'+
-        '<span class="info'+(denso?" aviso-densidade":"")+'">'+np+(np===1?" painel":" painéis")+
-          (denso?" — bem cheia para uma página":"")+'</span>'+
-        '<button class="bt-texto" data-acao="add-painel" data-pg="'+pg.id+'">+ painel</button>'+
-        (np>0?'<button class="bt-texto" data-acao="duplicar-pagina" data-pg="'+pg.id+'">duplicar página</button>':'')+
-        (doc.paginas.length>1?'<button class="bt-texto" data-acao="del-pagina" data-pg="'+pg.id+'">apagar página</button>':'')+
-      '</div>';
-    html+='<details class="detalhes visual-pg" data-vis-pg="'+pg.id+'"'+(visAberto[pg.id]?" open":"")+'>'+
+  if(pgAtual>=doc.paginas.length) pgAtual=doc.paginas.length-1;
+  if(pgAtual<0) pgAtual=0;
+  var ip=pgAtual, pg=doc.paginas[ip], np=(pg.paineis||[]).length;
+  var html='<div class="folha pag"><section class="pagina" data-pg="'+pg.id+'">'+
+    '<div class="cabeca-pagina">'+
+      '<h2>Painéis</h2>'+
+      '<button class="bt mini forte" data-acao="add-painel" data-pg="'+pg.id+'" aria-label="Adicionar painel" title="Adicionar painel">+</button>'+
+      '<span class="info">Página '+(ip+1)+' · '+np+(np===1?" painel":" painéis")+'</span>'+
+      (np>0?'<button class="bt-texto" data-acao="duplicar-pagina" data-pg="'+pg.id+'">duplicar página</button>':'')+
+      (doc.paginas.length>1?'<button class="bt-texto" data-acao="del-pagina" data-pg="'+pg.id+'">apagar página</button>':'')+
+    '</div>'+
+    '<div class="quadros" id="quadros">';
+  (pg.paineis||[]).forEach(function(pn,i){ html+=htmlPainel(pn,i,ip,np); });
+  if(!np) html+='<p class="vazio-quadros">Esta página ainda não tem painéis. Use o botão +.</p>';
+  html+='</div>'+
+    '<details class="detalhes visual-pg" data-vis-pg="'+pg.id+'"'+(visAberto[pg.id]?" open":"")+'>'+
       '<summary>Layout visual da página (frame de mangá para desenhar)</summary>'+
-      '<div data-vis-host></div></details>';
-    (pg.paineis||[]).forEach(function(pn,i){ html+=htmlPainel(pn,i,ip,np); });
-    html+='</section>';
-  });
-  html+='<button class="add-pagina" data-acao="add-pagina">+ Nova página</button>';
-  html+='<p style="color:var(--fraco);font-size:12.5px;margin-top:14px">'+
-        doc.paginas.length+(doc.paginas.length===1?" página":" páginas")+" · "+
-        total+(total===1?" painel":" painéis")+'</p>';
-  html+='</div>';
+      '<div data-vis-host></div></details>'+
+    '</section></div>';
   tela.innerHTML=html;
+  tela.classList.add("modo-pag");
   montarVisuais();
   carregarPrevias();
+  desenharPaginasLat();
+  mostrarInfo();
+  ajustarQuadros();
 }
 
 /* prévia grande do desenho: fica guardada no navegador; enquanto carrega, vale a miniatura pequena */
@@ -3208,30 +3241,26 @@ function opcoesSelect(opcoes, valor, vazio){
 }
 
 function htmlPainel(pn,i,ip,np){
-  var obraChars=(obraObjAtual()&&obraObjAtual().personagens)||[];
   var tm=TAMANHOS[pn.tamanho]||TAMANHOS.horizontal;
-  var h='<article class="painel'+(pn.recolhido?" recolhido":"")+'" data-pn="'+pn.id+'" data-pg-idx="'+ip+'">'+
-    '<div class="painel-topo">'+
-      '<span class="num">'+(i+1)+'</span>'+
-      '<span class="painel-rotulo">Painel '+(i+1)+'</span>'+
+  return '<article class="painel quadro'+(pn.id===selPainel?" sel":"")+'" data-pn="'+pn.id+'" data-pg-idx="'+ip+'" style="--r:'+(tm.w/tm.h)+'">'+
+    '<button type="button" class="palco-painel'+(pn.miniatura?"":" vazio")+'" data-acao="desenhar-painel" aria-label="Abrir o editor de desenho do painel '+(i+1)+'">'+
+      (pn.miniatura?'<img src="'+esc(pn.miniatura)+'" data-prev="'+pn.id+'" alt="Desenho do painel '+(i+1)+'">':'<span>Sem desenho.<br>Clique para desenhar.</span>')+
+    '</button>'+
+    '<div class="quadro-topo">'+
+      '<button type="button" class="num" data-acao="sel-painel" title="Ver as informações deste painel" aria-label="Informações do painel '+(i+1)+'">'+(i+1)+'</button>'+
       '<div class="acoes">'+
-        '<button class="bt mini" data-acao="subir" '+(i===0?"disabled":"")+' aria-label="Mover para cima">↑</button>'+
-        '<button class="bt mini" data-acao="descer" '+(i===np-1?"disabled":"")+' aria-label="Mover para baixo">↓</button>'+
+        '<button class="bt mini" data-acao="subir" '+(i===0?"disabled":"")+' aria-label="Mover para trás" title="Mover para trás">←</button>'+
+        '<button class="bt mini" data-acao="descer" '+(i===np-1?"disabled":"")+' aria-label="Mover para frente" title="Mover para frente">→</button>'+
         '<button class="bt mini" data-acao="duplicar-painel" aria-label="Duplicar este painel" title="Duplicar">⧉</button>'+
         '<button class="bt mini risco" data-acao="del-painel" aria-label="Apagar painel">✕</button>'+
       '</div>'+
-    '</div>'+
-    '<div class="corpo">'+
-      '<div class="destaque">'+
-        '<button type="button" class="palco-painel'+(pn.miniatura?"":" vazio")+'" data-acao="desenhar-painel" style="--r:'+(tm.w/tm.h)+'" aria-label="Abrir o editor de desenho do painel '+(i+1)+'">'+
-          (pn.miniatura?'<img src="'+esc(pn.miniatura)+'" data-prev="'+pn.id+'" alt="Desenho do painel '+(i+1)+'">':'<span>Painel ainda sem desenho.<br>Clique para desenhar.</span>')+
-        '</button>'+
-        '<div class="destaque-acoes">'+
-          '<button type="button" class="bt forte" data-acao="desenhar-painel">'+(pn.temDesenho?"Editar desenho":"Desenhar painel")+'</button>'+
-          '<button type="button" class="bt" data-acao="alt-info" aria-expanded="'+(pn.recolhido?"false":"true")+'">'+(pn.recolhido?"Mostrar informações":"Ocultar informações")+'</button>'+
-        '</div>'+
-      '</div>'+
-      '<div class="info-painel">'+
+    '</div></article>';
+}
+
+function htmlInfo(pn,i,ip){
+  var obraChars=(obraObjAtual()&&obraObjAtual().personagens)||[];
+  var h='<div class="painel info-lat" data-pn="'+pn.id+'" data-pg-idx="'+ip+'">'+
+    '<div class="info-painel">'+
       '<div class="frase-resumo" data-frase>'+esc(fraseResumoPainel(pn))+'</div>'+
       '<div class="campos-painel">'+
         '<div class="campo"><label>Enquadramento</label>'+
@@ -3270,7 +3299,7 @@ function htmlPainel(pn,i,ip,np){
         '<textarea class="sfx" data-campo="sfx" placeholder="DOOM, ZAAA, tum-tum…">'+esc(pn.sfx)+'</textarea></div>'+
       '<div class="campo"><label>Nota</label>'+
         '<textarea class="nota" data-campo="nota" placeholder="Anotações para o desenho: referências, luz, composição…">'+esc(pn.nota)+'</textarea></div>'+
-    '</div></div></article>';
+    '</div></div>';
   return h;
 }
 
@@ -3324,13 +3353,13 @@ function listaDuplicaveis(limite){
 /* ao trocar o tamanho, o quadro de prévia acompanha a nova proporção na hora */
 function atualizarTamanhoPainel(pn){
   var art=tela.querySelector('[data-pn="'+pn.id+'"]'), tm=TAMANHOS[pn.tamanho]||TAMANHOS.horizontal;
-  var pal=art&&art.querySelector(".palco-painel");
-  if(pal) pal.style.setProperty("--r",tm.w/tm.h);
+  if(art) art.style.setProperty("--r",tm.w/tm.h);
+  ajustarQuadros();
   if(pn.temDesenho){ soltarPrevia(pn.id); carregarPrevias(); }
 }
 function atualizarFraseResumo(loc){
   if(!loc) return;
-  var art=tela.querySelector('[data-pn="'+loc.painel.id+'"]');
+  var art=el("infoPainel").querySelector('[data-pn="'+loc.painel.id+'"]');
   if(!art) return;
   var fr=art.querySelector('[data-frase]');
   if(fr) fr.textContent=fraseResumoPainel(loc.painel);
@@ -3434,6 +3463,7 @@ function abrirEditorDesenho(pid){
   var lista=listaPlana(), k=-1;
   lista.forEach(function(x,j){ if(x.pn.id===pid) k=j; });
   if(k<0) return;
+  selPainel=pid; pgAtual=lista[k].ip;
   var x=lista[k], ant=lista[k-1], prox=lista[k+1];
   window.EditorDesenho.abrir({
     painel:x.pn,
@@ -3895,7 +3925,7 @@ document.querySelector(".rolagem").addEventListener("click",function(ev){
   }
 });
 
-tela.addEventListener("click",function(ev){
+function aoClicarTela(ev){
   var b=ev.target.closest("[data-acao]"); if(!b||!doc) return;
   var acao=b.getAttribute("data-acao");
 
@@ -3922,12 +3952,17 @@ tela.addEventListener("click",function(ev){
   }
   if(acao==="duplicar-pagina"){
     var jd=acharPagina(b.getAttribute("data-pg"));
-    if(jd>-1){ doc.paginas.splice(jd+1,0,duplicarPagina(doc.paginas[jd])); marcarSujo(); desenhar(); }
+    if(jd>-1){ doc.paginas.splice(jd+1,0,duplicarPagina(doc.paginas[jd])); pgAtual=jd+1; selPainel=null; marcarSujo(); desenhar(); }
     return;
   }
   if(acao==="desenhar-painel"){
     var artD=b.closest(".painel");
-    if(artD) abrirEditorDesenho(artD.getAttribute("data-pn"));
+    if(artD){ selPainel=artD.getAttribute("data-pn"); mostrarInfo(); abrirEditorDesenho(selPainel); }
+    return;
+  }
+  if(acao==="sel-painel"){
+    var artS=b.closest(".painel");
+    if(artS){ selPainel=artS.getAttribute("data-pn"); mostrarInfo(); }
     return;
   }
   if(acao==="alt-info"){
@@ -3979,7 +4014,7 @@ tela.addEventListener("click",function(ev){
     loc.painel.falas=loc.painel.falas||[];
     loc.painel.falas.push({quem:"",tipo:"fala",texto:""});
     marcarSujo(); desenhar();
-    var art=tela.querySelector('[data-pn="'+loc.painel.id+'"]');
+    var art=el("infoPainel").querySelector('[data-pn="'+loc.painel.id+'"]');
     var ta=art&&art.querySelectorAll('.fala textarea');
     if(ta&&ta.length) ta[ta.length-1].focus();
   }else if(acao==="del-fala"){
@@ -3989,7 +4024,8 @@ tela.addEventListener("click",function(ev){
     else loc.painel.falas.splice(indiceFala,1);
     marcarSujo(); desenhar();
   }
-});
+}
+tela.addEventListener("click",aoClicarTela);
 
 function aoEditar(ev){
   var t=ev.target; if(!doc) return;
@@ -4017,6 +4053,65 @@ function aoEditar(ev){
 }
 tela.addEventListener("input",aoEditar);
 tela.addEventListener("change",aoEditar);
+
+/* ===== lateral: páginas e informações do painel selecionado ===== */
+function desenharPaginasLat(){
+  var bl=el("blocoPaginas"), lista=el("listaPaginas");
+  if(!doc){ bl.classList.add("oculto"); lista.innerHTML=""; return; }
+  bl.classList.remove("oculto");
+  lista.innerHTML=doc.paginas.map(function(pg,k){
+    return '<button type="button" class="item" data-irpg="'+k+'"'+(k===pgAtual?' aria-current="true"':'')+'>'+
+      '<span class="rotulo">Página '+(k+1)+'</span><span class="contagem">'+(pg.paineis||[]).length+'</span></button>';
+  }).join("");
+}
+function mostrarInfo(){
+  var bloco=el("blocoInfo"), host=el("infoPainel");
+  if(!doc){ bloco.classList.add("oculto"); host.innerHTML=""; return; }
+  var pg=doc.paginas[pgAtual], lst=(pg&&pg.paineis)||[];
+  var pn=selPainel?acharPainelPorId(selPainel):null, i=lst.indexOf(pn);
+  if(i<0){ pn=lst[0]||null; i=pn?0:-1; selPainel=pn?pn.id:null; }
+  bloco.classList.remove("oculto");
+  el("tituloInfo").textContent=pn?("Painel "+(i+1)+" · Página "+(pgAtual+1)):"Informações do painel";
+  host.innerHTML=pn?htmlInfo(pn,i,pgAtual):'<p class="vazio-lateral">Adicione um painel para preencher as informações.</p>';
+  Array.prototype.forEach.call(tela.querySelectorAll(".quadro"),function(a){
+    a.classList.toggle("sel",a.getAttribute("data-pn")===selPainel);
+  });
+}
+/* os quadros se alinham para os lados, da esquerda para a direita; o tamanho se ajusta para tudo caber na tela sem rolar */
+function ajustarQuadros(){
+  var q=document.getElementById("quadros"); if(!q||!doc) return;
+  var lst=(doc.paginas[pgAtual]&&doc.paginas[pgAtual].paineis)||[];
+  var top=q.getBoundingClientRect().top-tela.getBoundingClientRect().top+tela.scrollTop;
+  var H=Math.max(180,tela.clientHeight-top-56-(parseFloat(getComputedStyle(tela).paddingBottom)||0));
+  q.style.height=H+"px";
+  if(!lst.length) return;
+  var W=q.clientWidth-8, gap=12, h, i, x, rows, t, w;
+  for(h=Math.min(320,H);h>=90;h-=6){
+    x=0; rows=1;
+    for(i=0;i<lst.length;i++){
+      t=TAMANHOS[lst[i].tamanho]||TAMANHOS.horizontal; w=Math.min(W,h*t.w/t.h);
+      if(x>0&&x+gap+w>W){ rows++; x=0; }
+      x+=(x>0?gap:0)+w;
+    }
+    if(rows*h+(rows-1)*gap<=H) break;
+  }
+  q.style.setProperty("--h",Math.max(h,84)+"px");
+}
+window.addEventListener("resize",ajustarQuadros);
+el("listaPaginas").addEventListener("click",function(ev){
+  var b=ev.target.closest("[data-irpg]"); if(!b||!doc) return;
+  pgAtual=parseInt(b.getAttribute("data-irpg"),10)||0; selPainel=null;
+  desenhar(); tela.scrollTop=0; alternarLateral(false);
+});
+el("novaPag").addEventListener("click",function(ev){
+  if(!doc) return;
+  abrirEscolhaQtd(ev.currentTarget,function(n){
+    doc.paginas.push(novaPagina(n)); pgAtual=doc.paginas.length-1; selPainel=null; marcarSujo(); desenhar();
+  });
+});
+el("infoPainel").addEventListener("click",aoClicarTela);
+el("infoPainel").addEventListener("input",aoEditar);
+el("infoPainel").addEventListener("change",aoEditar);
 
 /* datalist de personagens (junta o elenco cadastrado na obra + nomes já usados nas falas) */
 var dl=document.createElement("datalist"); dl.id="personagens"; document.body.appendChild(dl);
