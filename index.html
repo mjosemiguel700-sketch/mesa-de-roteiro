@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -89,6 +89,18 @@ button,input,select,textarea{font:inherit;color:inherit}
 .personagem-item{display:flex;align-items:center;gap:6px;padding:5px 8px;font-size:13px}
 .personagem-item .rotulo{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
+/* ---------- notas ---------- */
+.nota-item-wrap{display:flex;align-items:center;gap:2px}
+.nota-item-wrap .item{flex:1;min-width:0}
+.nota-item-wrap .bt-texto{font-size:11px;flex:0 0 auto;margin-right:2px}
+.notas-tela{max-width:860px}
+.notas-cabeca{display:flex;align-items:center;gap:12px;border-bottom:2px solid var(--tinta);padding-bottom:8px;margin-bottom:14px}
+.notas-cabeca h2{margin:0;font-family:var(--mincho);font-size:22px;flex:1}
+.nota-editor{background:var(--papel);border:1px solid var(--calha);box-shadow:3px 3px 0 var(--sombra);padding:18px}
+.nota-editor input{font-family:var(--mincho);font-weight:700;font-size:20px;margin-bottom:10px}
+.nota-editor textarea{min-height:420px;line-height:1.65;font-size:15px;resize:vertical}
+.nota-meta{margin:10px 0 0;color:var(--fraco);font-size:12px}
+
 /* ---------- botões ---------- */
 .bt{
   border:1px solid var(--calha);background:var(--papel);color:var(--tinta);
@@ -119,6 +131,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .barra .tit input:hover{border-bottom-color:var(--calha)}
 .barra .tit input:focus{outline:none;border-bottom-color:var(--tinta)}
 .estado{font-size:12px;color:var(--fraco);min-width:74px;text-align:right}
+.conta-nuvem{display:flex;align-items:center;gap:6px;min-width:0}.conta-nuvem .bt{white-space:nowrap}.estado-nuvem{font-size:11px;color:var(--fraco);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:152px}@media (max-width:700px){.estado-nuvem{display:none}.conta-nuvem .bt{font-size:11px;padding:5px 7px}}
 .tela{flex:1;overflow-y:auto;min-height:0;padding:22px 20px 96px}
 .folha{max-width:780px;margin:0 auto}
 
@@ -130,6 +143,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 }
 .cabeca-pagina h2{margin:0;font-family:var(--mincho);font-size:17px;font-weight:700}
 .cabeca-pagina .info{font-size:12px;color:var(--fraco);flex:1}
+.troca-pagina{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}.troca-pagina .bt{min-width:27px;padding:2px 6px}.troca-pagina .rotulo{font-size:12px;color:var(--fraco);font-weight:700}
 .aviso-densidade{color:var(--tinta);font-weight:700;text-decoration:underline}
 
 /* ---------- painel ---------- */
@@ -172,6 +186,10 @@ textarea.nota{min-height:36px;color:var(--anil);font-size:13.5px;font-style:ital
   border-left:3px solid var(--tinta);padding:6px 10px;margin-bottom:12px;
   background:var(--papel-2);
 }
+.opcoes-quadro{border:1px solid var(--calha);margin:12px 0;padding:8px 10px}
+.opcoes-quadro legend{padding:0 4px;font-size:12px;font-weight:700;color:var(--fraco)}
+.opcoes-quadro p{margin:0 0 7px;font-size:12px;color:var(--fraco)}
+.opcoes-quadro .chip{min-height:32px}
 
 /* ---------- chips de personagens ---------- */
 .chips{display:flex;flex-wrap:wrap;gap:6px}
@@ -226,6 +244,30 @@ details.detalhes .campo{margin-top:8px}
 .centro{max-width:560px;margin:8vh auto;text-align:left}
 .centro h2{font-family:var(--mincho);font-size:26px;margin:0 0 10px}
 .centro p{color:var(--fraco);margin:0 0 18px;max-width:52ch}
+.entrada{max-width:740px;margin:5vh auto}
+.entrada-sobrancelha{font-size:12px!important;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fraco);margin-bottom:6px!important}
+.entrada h2{font-size:clamp(27px,4vw,36px);line-height:1.18;margin-bottom:8px}
+.entrada-intro{font-size:16px;line-height:1.6;margin-bottom:22px!important}
+.entrada-criar{background:var(--papel-2);border:1px solid var(--calha);border-left:4px solid var(--tinta);padding:16px;margin-bottom:14px}
+.entrada-criar h3{font-family:var(--mincho);font-size:19px;margin:0 0 3px}
+.entrada-criar p{font-size:13px;margin-bottom:12px!important}
+.entrada-criar label{display:block;font-size:13px;font-weight:700;margin-bottom:5px}
+.entrada-form{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+.entrada-form input{flex:1 1 260px;min-height:42px;background:var(--papel)}
+.entrada-form .bt{min-height:42px;padding:7px 14px;font-weight:700}
+.entrada-acoes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.entrada-acao{display:flex;align-items:center;gap:12px;width:100%;min-height:100px;text-align:left;color:var(--tinta);background:var(--papel);border:1px solid var(--calha);border-radius:5px;padding:14px;cursor:pointer;box-shadow:2px 2px 0 var(--sombra)}
+.entrada-acao:hover{border-color:var(--tinta);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--sombra)}
+.entrada-acao:focus-visible{outline:3px solid var(--tinta);outline-offset:3px}
+.entrada-acao-principal{grid-column:1/-1;background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+.entrada-acao-principal:hover{opacity:.9}
+.entrada-icone{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border:1px solid currentColor;border-radius:50%;font-size:20px;line-height:1}
+.entrada-texto{display:flex;flex:1;min-width:0;flex-direction:column;gap:2px}
+.entrada-texto strong{font-family:var(--mincho);font-size:18px;line-height:1.2}
+.entrada-texto small{font-size:13px;line-height:1.4;color:var(--fraco)}
+.entrada-acao-principal .entrada-texto small{color:inherit;opacity:.82}
+.entrada-seta{font-size:22px;line-height:1}
+@media (max-width:560px){.entrada{margin:3vh auto}.entrada-acoes{grid-template-columns:1fr}.entrada-acao{min-height:84px}.entrada-form .bt{width:100%}}
 
 /* ---------- painel de exportação ---------- */
 dialog{
@@ -291,24 +333,6 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 }
 @media (max-width:520px){.campos-painel{grid-template-columns:1fr}}
 
-/* ---------- layout visual (quadros de mangá) ---------- */
-details.visual-pg{margin:0 0 14px;padding:0 10px;border:1px solid var(--calha);background:var(--papel-2)}
-details.visual-pg summary{padding:9px 0}
-.vis-barra{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;padding:4px 0 8px}
-.vis-barra select{background:var(--papel);border:1px solid var(--calha);border-radius:3px;padding:3px 6px;font-size:13px}
-.vis-barra input[type=color]{width:30px;height:26px;padding:0;border:1px solid var(--calha);background:none;cursor:pointer}
-.vis-barra input[type=range]{width:90px}
-.vis-pagina{position:relative;width:min(100%,460px);aspect-ratio:5/7;margin:4px auto 6px;background:#fff;box-shadow:3px 3px 0 var(--sombra)}
-.vis-cell{position:absolute}
-.vis-frame{position:absolute;inset:5px;border:2px solid #111;background:#fff;overflow:hidden}
-.vis-frame canvas{width:100%;height:100%;display:block;touch-action:none;cursor:crosshair}
-.vis-num{position:absolute;left:4px;top:2px;font-family:var(--mincho);font-weight:700;font-size:12px;color:#9a9a9a;pointer-events:none}
-.vis-gutter{position:absolute;z-index:5;touch-action:none}
-.vis-gutter.v{width:16px;margin-left:-8px;cursor:col-resize}
-.vis-gutter.h{height:16px;margin-top:-8px;cursor:row-resize}
-.vis-gutter:hover,.vis-gutter.drag{background:rgba(60,120,255,.25)}
-.vis-dica{font-size:12px;color:var(--fraco);margin:0 0 10px;text-align:center}
-
 /* ---------- tela 2: tamanho, miniatura e botão de desenho ---------- */
 .desenho-previa{display:flex;gap:10px;align-items:stretch;margin-bottom:8px;flex-wrap:wrap}
 .miniatura{width:150px;min-height:84px;padding:0;border:1px solid var(--calha);background:#fff;cursor:pointer;display:grid;place-items:center;overflow:hidden;color:#777;font-size:12px;border-radius:3px}
@@ -356,6 +380,9 @@ body.ed-aberto{overflow:hidden}
 .ed-mi:hover{background:var(--e-ac)}
 .ed-mi:disabled{opacity:.4;cursor:default}
 .ed-mi kbd{margin-left:auto;padding-left:22px;font:inherit;font-size:11px;color:var(--e-fr)}
+.ed-tom-in{position:fixed;left:-10000px;width:1px;height:1px;opacity:0;pointer-events:none}
+.ed-mi-select{cursor:default;gap:6px}
+.ed-mi-select select{margin-left:auto;max-width:145px;background:var(--e-in);color:var(--e-tx);border:1px solid var(--e-bd);border-radius:3px;padding:2px 4px;font:inherit;font-size:11.5px}
 .ed-mi .ck{position:absolute;left:9px;width:12px;font-size:11px}
 .ed-esp{flex:1}
 
@@ -366,6 +393,47 @@ body.ed-aberto{overflow:hidden}
 .ed-rot output{min-width:18px;color:var(--e-tx)}
 .ed-bt-lat{display:none!important}
 .ed-vsep{width:1px;align-self:stretch;background:var(--e-bd);margin:2px 2px}
+.ed-paginas-ed{display:none;align-items:center;gap:3px;min-width:0;max-width:360px;overflow-x:auto;padding:1px 2px;scrollbar-width:thin}
+.ed.modo-pagina .ed-paginas-ed{display:flex}
+.ed-pagina-acoes{display:none;align-items:center;gap:4px;min-width:0;padding:1px 0}
+.ed.modo-pagina .ed-pagina-acoes{display:flex}
+.ed.modo-pagina .ed-cmd{flex-wrap:wrap;gap:5px 8px}
+.ed-layout-pagina{display:inline-flex;align-items:center;gap:3px;color:var(--e-fr);font-size:11px;font-weight:700;white-space:nowrap}
+.ed-layout-pagina select{max-width:150px;min-width:0;height:25px;border:1px solid var(--e-bd);border-radius:3px;background:var(--e-in);color:var(--e-tx);font-size:11px}
+.ed-add-painel-ed,.ed-pagina-acao{display:inline-flex;align-items:center;flex:0 0 auto;background:#eaf3ff;color:#174b7a;border:1px solid #78a6d4;border-radius:3px;padding:2px 7px;cursor:pointer;font-size:11.5px;font-weight:700;white-space:nowrap}
+.ed-add-painel-ed:hover,.ed-pagina-acao:hover{background:#d6eaff;border-color:#397bb7}
+.ed-pagina-acao.risco{background:#fff0f0;color:#8b2525;border-color:#d69a9a}
+.ed-pagina-acao.risco:hover{background:#ffe0e0;border-color:#bc5e5e}
+.ed-pg-ed{flex:0 0 auto;border:1px solid var(--e-bd);border-radius:3px;background:var(--e-in);color:var(--e-fr);padding:2px 7px;cursor:pointer;font-size:11.5px;white-space:nowrap}
+.ed-pg-ed:hover{border-color:var(--e-acb);color:var(--e-tx)}
+.ed-pg-ed.ativa{background:var(--e-ac);border-color:var(--e-acb);color:var(--e-tx);font-weight:700}
+.ed-sobre-aviso{display:none;align-items:center;gap:4px;color:#0f5d38;background:#dcefe4;border:1px solid #82b99a;border-radius:3px;padding:2px 6px;font-size:11px;font-weight:700;white-space:nowrap}
+.ed.modo-pagina .ed-sobre-aviso{display:inline-flex}
+.ed.modo-pagina .ed-cmd [data-ed="ant"],.ed.modo-pagina .ed-cmd [data-ed="prox"],.ed.modo-pagina .ed-cmd [data-ed="cortar"],.ed.modo-pagina .ed-cmd label:has([data-r="tam"]),.ed.modo-pagina .ed-cmd label:has([data-r="forma"]),.ed.modo-pagina .ed-cmd label:has([data-r="borda"]){display:none}
+.ed-cam-base{display:flex;align-items:center;min-height:24px;padding:3px 6px;border-top:1px solid var(--e-bd);color:var(--e-fr);font-size:11px;font-style:italic}
+/* Gerenciador de páginas: mantém a edição no estúdio, com conjuntos em miniatura. */
+.ed-pg-janela{position:absolute;inset:0;z-index:120;display:grid;place-items:center;padding:18px;background:rgba(25,25,25,.42);overflow:auto}
+.ed-pg-dialog{width:min(820px,calc(100vw - 32px));max-height:min(760px,calc(100vh - 32px));overflow:auto;background:var(--e-bg);border:1px solid var(--e-bd);box-shadow:0 12px 34px rgba(0,0,0,.35);border-radius:6px;color:var(--e-tx);padding:16px}
+.ed-pg-janela.edicao{background:transparent;pointer-events:none;place-items:start end;padding:12px}.ed-pg-janela.edicao .ed-pg-dialog{pointer-events:auto;width:min(360px,calc(100vw - 24px));max-height:calc(100vh - 24px);margin:0}
+.ed-pg-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:13px}
+.ed-pg-cab h2{margin:0;font-size:17px}.ed-pg-cab p{margin:3px 0 0;color:var(--e-fr);font-size:12px}
+.ed-pg-fechar{flex:0 0 auto}
+.ed-conjuntos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.ed-conjunto{min-height:170px;padding:10px;border:1px solid var(--e-bd);border-radius:4px;background:var(--e-hd)}
+.ed-conjunto-titulo{margin:0 0 8px;color:var(--e-fr);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.ed-conjunto-folhas{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.ed-pg-mini{margin:0;color:var(--e-tx);display:grid;gap:4px;justify-items:center;min-width:86px;padding:4px;border-radius:4px}
+.ed-pg-mini.ativa{background:var(--e-ac);box-shadow:inset 0 0 0 1px var(--e-acb)}
+.ed-mini-papel{display:block;overflow:hidden;width:72px;height:103px;background:#fff;border:1px solid #b9b9b9;box-shadow:1px 2px 2px rgba(0,0,0,.14)}
+.ed-mini-papel img{display:block;width:100%;height:100%;object-fit:contain}.ed-mini-papel.vazia{background:#fff}
+.ed-mini-num{font-weight:700;font-size:12px}.ed-pg-vazio{color:var(--e-fr);font-size:11px}
+.ed-pg-rodape{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid var(--e-bd)}
+.ed-pg-config{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:end;padding:10px;border:1px solid var(--e-bd);border-radius:4px;background:var(--e-hd)}
+.ed-pg-config label{display:grid;gap:4px;color:var(--e-fr);font-weight:700}.ed-pg-config select{min-width:0;height:29px}
+.ed-pg-config .ed-pg-botoes{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap}
+.ed-pg-aviso{margin:13px 0 0;padding:9px 10px;border-left:3px solid var(--e-acb);border-radius:3px;background:var(--e-hd);color:var(--e-fr);font-size:12px;line-height:1.4}
+@media (max-width:600px){.ed-pg-janela{padding:8px}.ed-pg-dialog{width:calc(100vw - 16px);max-height:calc(100vh - 16px);padding:12px}.ed-pg-config{grid-template-columns:1fr}.ed-conjuntos{grid-template-columns:1fr}.ed-pg-linha{flex-wrap:wrap}.ed-pg-linha strong{width:100%}}
+@media (max-width:820px){.ed-paginas-ed{max-width:190px}.ed-pagina-acoes{max-width:360px}.ed-sobre-aviso{font-size:10.5px}}
 
 /* corpo: ferramentas | docks | tela | docks */
 .ed-corpo{position:relative;flex:1;min-height:0;display:grid;grid-template-columns:42px 238px minmax(0,1fr) 274px;grid-template-rows:minmax(0,1fr)}
@@ -459,6 +527,10 @@ body.ed-aberto{overflow:hidden}
 .ed-palco{position:relative;flex:1;min-width:0;min-height:0;background:#a4a4a4;overflow:hidden;touch-action:none}
 .ed-palco canvas{position:absolute;left:0;top:0;width:100%;height:100%;touch-action:none}
 .ed-palco canvas[data-r=view]{pointer-events:none}
+/* Preencher tela: mantém todas as barras e painéis; apenas enquadra a folha inteira. */
+.ed.preencher-tela .ed-palco{background:#fff}
+/* Folha inteira: o palco vira a própria folha. Não há área externa cinza. */
+.ed.modo-foco{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;z-index:10000;background:#fff;padding:0!important}.ed.modo-foco .ed-menus,.ed.modo-foco .ed-cmd,.ed.modo-foco .ed-tools,.ed.modo-foco .ed-lat,.ed.modo-foco .ed-abas,.ed.modo-foco .ed-status{display:none!important}.ed.modo-foco .ed-corpo{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr);width:100%;height:100%}.ed.modo-foco .ed-centro{grid-column:1;grid-row:1;width:100%;height:100%;background:#fff}.ed.modo-foco .ed-palco{width:100%;height:100%;background:#fff}
 .ed-carregando{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:14px;background:rgba(0,0,0,.25);pointer-events:none}
 .ed-status{display:flex;align-items:center;gap:12px;padding:2px 8px;background:var(--e-bg);border-top:1px solid var(--e-bd);color:var(--e-fr);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden}
 .ed-status .estado{min-width:0;color:var(--e-fr);font-size:11.5px}
@@ -530,9 +602,14 @@ body.ed-aberto{overflow:hidden}
 .quadros{display:flex;flex-flow:row;justify-content:center;align-items:flex-start;align-content:normal;gap:0;overflow:auto;padding:3px}
 .pag-papel{position:relative;flex:0 0 auto;background:#fff;box-shadow:3px 3px 0 var(--sombra);border:1px solid var(--calha)}
 .cel{position:absolute;padding:4px}
+.mover-painel{cursor:grab!important;touch-action:none}
+.mover-painel:active{cursor:grabbing!important}
 .cel .quadro{position:absolute;inset:4px;width:auto;height:auto;max-width:none;background:#fff;border:2px solid #111;box-shadow:none}
 .cel .quadro .palco-painel img{object-fit:cover}
 .cel .quadro.sem-borda{border-color:transparent}
+.cel .quadro.sobreposto{background:transparent;border-color:transparent;z-index:2}
+.cel .quadro.sobreposto .palco-painel{background:transparent;overflow:visible;outline:none;box-shadow:none}
+.cel .quadro.sobreposto.forma .palco-painel{background:transparent}
 .cel .quadro.forma{border:0;background:transparent}
 .cel .quadro.forma .palco-painel{background:#fff}
 .quadro-forma{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:1}
@@ -556,6 +633,14 @@ body.ed-aberto{overflow:hidden}
       <div style="padding:2px 6px 10px">
         <button class="bt forte" id="abrirDesenhoLivre" style="width:100%;text-align:left">✎ Desenho Livre</button>
         <p style="font-size:11px;color:var(--fraco);margin:5px 2px 0">Desenhe sem precisar criar uma obra.</p>
+      </div>
+      <div style="padding:0 6px 10px">
+        <button class="bt" id="abrirNotas" style="width:100%;text-align:left">▤ Notas</button>
+        <p style="font-size:11px;color:var(--fraco);margin:5px 2px 0">Escreva e guarde ideias, lembretes ou qualquer texto.</p>
+      </div>
+      <div id="blocoNotas">
+        <div class="grupo-titulo"><span>Notas</span><button class="bt mini" id="novaNota">Nova</button></div>
+        <div id="listaNotas"></div>
       </div>
       <div class="grupo-titulo">
         <span>Obras</span>
@@ -603,10 +688,13 @@ body.ed-aberto{overflow:hidden}
   <main class="principal">
     <div class="barra">
       <button class="bt bt-menu" id="btMenu" aria-label="Abrir lista de obras">☰</button>
+      <button class="bt" id="voltarEntrada" title="Voltar à entrada">← Entrada</button>
       <div class="tit">
         <input id="tituloCap" type="text" placeholder="Título do capítulo" aria-label="Título do capítulo" disabled>
       </div>
+      <button class="bt" id="btBackup" title="Guardar ou restaurar obras e notas">Backup</button>
       <button class="bt" id="btExportar" disabled>Exportar</button>
+      <div class="conta-nuvem" id="contaNuvem"><button type="button" class="bt mini" id="btContaNuvem" title="Entrar para sincronizar em outros aparelhos">Entrar com Google</button><span class="estado-nuvem" id="estadoNuvem" aria-live="polite">Somente neste aparelho</span></div>
       <span class="estado" id="estado"></span>
     </div>
     <div class="tela" id="tela"></div>
@@ -625,6 +713,22 @@ body.ed-aberto{overflow:hidden}
     <button class="bt" id="btCopiar">Copiar texto</button>
     <button class="bt" id="btBaixar">Baixar roteiro (.txt)</button>
     <button class="bt forte" id="btPdf" title="Uma folha por página, com os painéis desenhados e os balões">Baixar capítulo (PDF)</button>
+  </div>
+</dialog>
+
+<dialog id="dlgBackup">
+  <div class="dlg-topo">
+    <h3>Backup de obras e notas</h3>
+    <button class="bt mini" id="fecharBackup">Fechar</button>
+  </div>
+  <div class="dlg-corpo" style="max-width:560px">
+    <p>Guarde suas obras, capítulos, páginas, painéis, roteiros e notas em um arquivo. Use <strong>Importar backup</strong> na versão publicada para levar esse conteúdo à nuvem.</p>
+    <p>Imagens e desenhos feitos no editor permanecem guardados somente neste aparelho.</p>
+  </div>
+  <div class="dlg-pe">
+    <button class="bt" id="btBaixarBackup">Baixar backup</button>
+    <button class="bt forte" id="btImportarBackup">Importar backup</button>
+    <input id="arquivoBackup" type="file" accept="application/json,.json" hidden>
   </div>
 </dialog>
 
@@ -713,6 +817,54 @@ var baixadorLocal={
 };
 
 window.__mesaArmazenamento={db:dbLocal, baixador:baixadorLocal, temLocalStorage:!!ls};
+})();
+</script>
+<!-- Firebase: login Google e banco de roteiro. O desenho em camadas segue local neste plano. -->
+<script src="https://www.gstatic.com/firebasejs/12.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.8.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore-compat.js"></script>
+<script>
+/* ========== conexão opcional com a nuvem ========== */
+(function(){
+  "use strict";
+  var config={
+    apiKey:"AIzaSyAK4r6DEbZs2UVj_NIhfxqe4co2GhnYaeI",
+    authDomain:"mrxx-1f0d2.firebaseapp.com",
+    projectId:"mrxx-1f0d2",
+    storageBucket:"mrxx-1f0d2.firebasestorage.app",
+    messagingSenderId:"883285473642",
+    appId:"1:883285473642:web:197629e09d585be1f10d13",
+    measurementId:"G-EZ5QHS7Q8V"
+  };
+  var auth=null, banco=null, usuario=null, erro=null, ouvintes=[], resolver;
+  var pronto=new Promise(function(res){ resolver=res; });
+  function avisar(){ ouvintes.slice().forEach(function(fn){ try{ fn(usuario,erro); }catch(e){} }); }
+  function concluir(){ if(resolver){ resolver(); resolver=null; } }
+  if(!window.firebase){ erro="sdk_indisponivel"; concluir(); }
+  else{
+    try{
+      if(!firebase.apps.length) firebase.initializeApp(config);
+      auth=firebase.auth(); banco=firebase.firestore();
+      try{ banco.settings({ignoreUndefinedProperties:true}); }catch(e){}
+      auth.onAuthStateChanged(function(u){ usuario=u||null; avisar(); concluir(); },function(e){ erro=e&&e.code||"auth_erro"; avisar(); concluir(); });
+    }catch(e){ erro=e&&e.code||"firebase_erro"; concluir(); }
+  }
+  function entrar(){
+    if(!auth) return Promise.reject(new Error("Firebase indisponível"));
+    var provedor=new firebase.auth.GoogleAuthProvider();
+    provedor.setCustomParameters({prompt:"select_account"});
+    return auth.signInWithPopup(provedor).catch(function(e){
+      if(e&&("auth/popup-blocked"===e.code||"auth/cancelled-popup-request"===e.code)) return auth.signInWithRedirect(provedor);
+      throw e;
+    });
+  }
+  window.MesaNuvem={
+    pronto:pronto, entrar:entrar,
+    sair:function(){ return auth?auth.signOut():Promise.resolve(); },
+    usuario:function(){ return usuario; }, banco:function(){ return usuario?banco:null; },
+    disponivel:function(){ return !!(auth&&banco); }, erro:function(){ return erro; },
+    aoMudar:function(fn){ if(typeof fn==="function") ouvintes.push(fn); }
+  };
 })();
 </script>
 <script>
@@ -939,7 +1091,15 @@ var HTML_ATALHOS_DETALHADOS=IDS_ATALHOS_DETALHADOS.map(function(id,i){
 }).join("");
 
 var AMOSTRAS=["#000000","#ffffff","#555555","#aaaaaa","#d63a3a","#e8892b","#f2d13b","#3fa34d","#2a6fdb","#7a45c9","#e46ab0","#7a4a2b"];
-var CFG={ferr:"caneta",cor:"#000000",pressao:true,tol:24,ref:true,preencher:false,sim:"",simN:6,balTipo:"fala",ajust:{}};
+var CFG={ferr:"caneta",cor:"#000000",tomDesenho:"#1d1d1d",imgFerr:"lapis",pressao:true,tol:24,ref:true,preencher:false,sim:"",simN:6,balTipo:"fala",ajust:{}};
+try{
+  var tomDesenhoGuardado=localStorage.getItem("mesa.ed.tomDesenho");
+  if(/^#[0-9a-f]{6}$/i.test(tomDesenhoGuardado||"")) CFG.tomDesenho=tomDesenhoGuardado.toLowerCase();
+}catch(e){}
+try{
+  var ferrImagemGuardada=localStorage.getItem("mesa.ed.imgFerr");
+  if(PINCEIS[ferrImagemGuardada]) CFG.imgFerr=ferrImagemGuardada;
+}catch(e){}
 Object.keys(PINCEIS).forEach(function(k){
   CFG.ajust[k]={tam:PINCEIS[k].tam,op:PINCEIS[k].op,estab:PINCEIS[k].estab};
 });
@@ -1268,9 +1428,15 @@ function desenharNav(){
   c.setTransform(d,0,0,d,0,0); c.fillStyle="#8c8c8c"; c.fillRect(0,0,W,H);
   c.save(); c.translate(ox,oy); c.scale(k,k); c.imageSmoothingQuality="medium";
   c.fillStyle="#fff"; c.fillRect(0,0,S.dim.w,S.dim.h);
-  camadasEm(c,true); desenharBorda(c); desenharBaloes(c,S.baloes,Math.max(S.dim.w,S.dim.h));
+  fundoEm(c); camadasEm(c,true); desenharBorda(c); desenharBaloes(c,S.baloes,Math.max(S.dim.w,S.dim.h));
   c.restore();
-  var vx=ox+(-S.tx/S.z)*k, vy=oy+(-S.ty/S.z)*k, vw=(S.pw/S.z)*k, vh=(S.ph/S.z)*k;
+  /* O retângulo do navegador representa apenas a parte da folha que cabe no
+     palco. Assim ele não extrapola a miniatura quando a folha já está inteira
+     visível ou quando o deslocamento chega a uma borda. */
+  var vwDoc=Math.min(S.dim.w,S.pw/S.z), vhDoc=Math.min(S.dim.h,S.ph/S.z);
+  var dx=clamp(-S.tx/S.z,0,Math.max(0,S.dim.w-vwDoc));
+  var dy=clamp(-S.ty/S.z,0,Math.max(0,S.dim.h-vhDoc));
+  var vx=ox+dx*k, vy=oy+dy*k, vw=vwDoc*k, vh=vhDoc*k;
   c.lineWidth=1.5; c.strokeStyle="#e0262b"; c.strokeRect(vx,vy,vw,vh);
   S.navGeo={ox:ox,oy:oy,k:k};
 }
@@ -1278,7 +1444,8 @@ function navPonteiro(e){
   if(!S||!S.navGeo) return;
   var r=E.nav.getBoundingClientRect(), g=S.navGeo;
   var dx=((e.clientX-r.left)-g.ox)/g.k, dy=((e.clientY-r.top)-g.oy)/g.k;
-  S.tx=S.pw/2-dx*S.z; S.ty=S.ph/2-dy*S.z; S.ajustado=false; pedir(true);
+  S.tx=S.pw/2-dx*S.z; S.ty=S.ph/2-dy*S.z;
+  limitarNavegacao(); S.ajustado=false; pedir(true);
 }
 
 /* ---------- estado e DOM ---------- */
@@ -1322,16 +1489,26 @@ function montarDOM(){
   var janela=PAINEIS.map(function(p){
     return '<button type="button" class="ed-mi" data-pn-tog="'+p[0]+'"><span class="ck">✓</span>'+p[1]+'</button>';
   }).join("")+'<hr><button type="button" class="ed-mi" data-ed="paineis-reset"><span class="ck"></span>Restaurar paletas</button>';
+  function grupoFerrConversao(titulo,ids){
+    return '<optgroup label="'+titulo+'">'+ids.map(function(id){ return '<option value="'+id+'">'+esc(PINCEIS[id].nome)+'</option>'; }).join('')+'</optgroup>';
+  }
+  var opcoesFerrConversao=
+    grupoFerrConversao("Lápis",["lapis","lapis6b"].concat(GRAUS_LAPIS.map(function(x){ return "lapis"+x[0]; })))+
+    grupoFerrConversao("Lapiseiras",LAPISSEIRAS.map(function(x){ return "lapiseira"+x[0]; }))+
+    grupoFerrConversao("Canetas",["esfero","caneta"].concat(PONTAS_CANETA.map(function(x){ return "caneta"+x[0]; }),["nanquim","marcador"]))+
+    grupoFerrConversao("Pincéis",["aerografo","pincel","seco"]);
+  var seletorFerrConversao='<label class="ed-mi ed-mi-select"><span>Ferramenta da conversão</span><select data-r="imgFerr" aria-label="Ferramenta para converter a imagem">'+opcoesFerrConversao+'</select></label>';
   var menus=
     menu("Arquivo",mi("voltar","Voltar ao roteiro")+mi("ant","Painel anterior")+mi("prox","Próximo painel")+'<hr>'+mi("png","Baixar PNG do painel"))+
     menu("Editar",mi("desfazer","Desfazer","Ctrl+Z")+mi("refazer","Refazer","Ctrl+Y")+'<hr>'+mi("m-cortar","Cortar","Ctrl+X")+mi("m-copiar","Copiar","Ctrl+C")+mi("m-colar","Colar","Ctrl+V")+mi("m-apagar","Apagar seleção","Del"))+
     menu("Camada",mi("c-nova","Nova camada")+mi("c-dup","Duplicar camada")+mi("c-mescla","Mesclar com a de baixo")+mi("c-apaga","Apagar camada")+'<hr>'+mi("c-sobe","Subir camada")+mi("c-desce","Descer camada"))+
     menu("Seleção",mi("m-sel-tudo","Selecionar tudo","Ctrl+A")+mi("m-sel-nada","Desfazer seleção","Esc")+'<hr>'+mi("s-fh","Espelhar horizontalmente")+mi("s-fv","Espelhar verticalmente")+mi("s-gira","Girar 90°"))+
+    menu("Imagem",mi("img-importar","Importar imagem…")+seletorFerrConversao+mi("img-converter-ferr","Converter com a ferramenta escolhida")+mi("img-tom-desenho","Escolher tom de lápis/caneta…")+'<hr>'+mi("img-ajustar-folha","Ajustar imagem à folha")+mi("img-preencher-folha","Preencher folha (cortar bordas)")+mi("img-desenho-lapis","Transformar em desenho: Lápis")+mi("img-desenho-caneta","Transformar em desenho: Caneta / mangá")+mi("img-desenho-nanquim","Transformar em desenho: Nanquim")+mi("img-desenho-colorido","Transformar em desenho: Lápis de cor")+mi("img-desenho-aquarela","Transformar em desenho: Aquarela")+mi("img-remover","Retirar imagem da camada ativa")+mi("img-original","Restaurar imagem original")+mi("img-saturacao","Ajustar saturação…")+mi("img-filtro-sepia","Filtro: Sépia")+mi("img-filtro-quente","Filtro: Quente")+mi("img-filtro-frio","Filtro: Frio")+mi("img-filtro-contraste","Filtro: Alto contraste")+mi("img-filtro-vintage","Filtro: Vintage")+mi("img-filtro-negativo","Filtro: Negativo")+mi("img-cinza","Converter camada ativa para tons de cinza")+mi("img-recortar","Recortar camada à seleção"))+
     menu("Balão",mi("b-novo","Novo balão no centro")+mi("b-dup","Duplicar balão")+mi("b-frente","Trazer para a frente")+mi("b-apaga","Apagar balão"))+
     menu("Visualizar",mi("zoom+","Aumentar zoom","+")+mi("zoom-","Diminuir zoom","−")+mi("ajustar","Ajustar à tela","0")+mi("preencher","Preencher toda a área")+mi("zoom100","Tamanho real (100%)"))+
     menu("Janela",janela)+
     menu("Ajuda",mi("ajuda","Atalhos e dicas"));
-  var ajuda='<div class="ed-ajuda oculto" data-r="ajuda"><div class="ed-ajuda-c"><h3>Atalhos e dicas — guia completo</h3>'+
+  var ajuda='<div class="ed-ajuda oculto" data-r="ajuda" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Atalhos e dicas" tabindex="-1"><div class="ed-ajuda-c"><div style="display:flex;align-items:center;gap:10px;justify-content:space-between"><h3>Atalhos e dicas — guia completo</h3><button type="button" class="bt mini" data-ed="ajuda-fechar" aria-label="Fechar ajuda">✕ Fechar</button></div>'+
     '<h4>Atalhos de teclado</h4><dl><dt>P · Q · K</dt><dd>Lápis HB, Lápis 6B, Esferográfica</dd><dt>B · N · M</dt><dd>Caneta G, Nanquim, Marcador</dd>'+
     '<dt>R · A · D · S</dt><dd>Aerógrafo, Pincel macio, Pincel seco, Esfumar</dd><dt>E</dt><dd>Borracha</dd>'+
     '<dt>L · U · O</dt><dd>Linha, Retângulo, Elipse. Segure Shift para restringir ângulos ou proporções quando disponível.</dd><dt>G · I</dt><dd>Balde de tinta, Conta-gotas</dd>'+
@@ -1342,6 +1519,7 @@ function montarDOM(){
     '<h4>Lápis e lapiseiras</h4><p><b>2H, H e F:</b> traço fino e claro, bons para construção e esboço leve. <b>HB/B/1B–3B:</b> esboço geral e linhas mais visíveis. <b>4B–6B:</b> traço escuro para sombras e desenho expressivo. <b>7B–10B:</b> muito macios e escuros; use opacidade/tamanho menores para detalhes. <b>Lapiseiras 0,3/0,5 mm:</b> detalhes finos; <b>0,7/0,9 mm:</b> esboço e contorno; <b>2,0 mm:</b> traço mais grosso.</p>'+
     '<h4>Canetas e arte-final</h4><p><b>Caneta G:</b> varie a pressão para linhas expressivas e contornos de mangá. <b>003–009 e 01–02:</b> detalhes, cílios e hachuras finas. <b>03–05:</b> contornos comuns. <b>06–09 e 1–3:</b> linhas grossas, silhuetas e impacto. <b>BR · Brush:</b> linhas com aparência de pincel. <b>Nanquim:</b> linha uniforme e limpa. <b>Esferográfica:</b> rascunho com linha firme.</p>'+
     '<h4>Pincéis, efeitos e borracha</h4><p><b>Marcador:</b> preenchimentos e sombras gráficas; reduza a opacidade para tons suaves. <b>Aerógrafo:</b> luz, brilho e sombra gradual; use tamanho grande e opacidade baixa. <b>Pincel macio:</b> pintura e transições suaves. <b>Pincel seco:</b> textura, cabelo, tecido e hachuras. <b>Esfumar:</b> arraste sobre cores existentes para misturá-las. <b>Borracha:</b> apague com cuidado; ajuste o tamanho para limpar detalhes ou áreas grandes.</p>'+
+    '<h4>Imagens e fotografias</h4><p><b>＋ Imagem / menu Imagem:</b> importe JPG, PNG, WebP e outros formatos aceitos pelo navegador. A imagem entra em uma nova camada e fica salva localmente junto do desenho para uso off-line. Use <b>Selecionar (V)</b> para mover ou redimensionar; o menu Seleção permite espelhar e girar. Ajuste a opacidade nas propriedades da camada. O menu Imagem também permite converter a camada ativa para tons de cinza ou recortá-la à seleção. Imagens muito grandes podem ocupar bastante armazenamento; o limite de importação é 25 MB por arquivo.</p>'+
     '<h4>Formas, balões e edição</h4><p><b>Linha/Retângulo/Elipse:</b> arraste para criar; Shift restringe ângulo/proporção quando aplicável. <b>Balde:</b> clique na área fechada e ajuste Tolerância se sobrar espaço ou vazar cor; “Usar todas as camadas” considera o desenho combinado. <b>Conta-gotas:</b> clique para copiar uma cor do desenho. <b>Seleção:</b> arraste para selecionar, mova dentro da seleção e use as alças para transformar. <b>Balão:</b> escolha o tipo na paleta Material [Balão] e clique na página; selecione o balão para editar. <b>Mão:</b> arraste para navegar sem desenhar.</p>'+
     '<p class="ed-dica">Dica: selecione qualquer ferramenta para ver uma dica específica logo abaixo das propriedades. Clique no grupo da esquerda e escolha uma opção na lista “Sub ferramenta” para acessar todas as pontas e graduações. Os valores de tamanho e opacidade são ajustáveis por ferramenta.</p>'+
     '<div class="ed-acoes-cam"><button type="button" class="bt" data-ed="ajuda">Fechar</button></div></div></div>';
@@ -1414,6 +1592,14 @@ function montarDOM(){
   '<div class="ed-menus" role="menubar">'+menus+'</div>'+
   '<div class="ed-cmd">'+
     '<button type="button" class="bt" data-ed="voltar">← Roteiro</button>'+
+    '<span class="ed-paginas-ed" data-r="paginasEd" aria-label="Páginas do capítulo"></span>'+
+    '<span class="ed-pagina-acoes" data-r="paginaAcoes" aria-label="Controles de página">'+
+      '<button type="button" class="ed-pagina-acao" data-ed="pagina-ant" title="Página anterior (Alt + Page Up)" aria-label="Página anterior">◀ Página</button>'+
+      '<button type="button" class="ed-pagina-acao" data-ed="pagina-gerenciar" title="Ver os conjuntos de páginas">▦ Páginas</button>'+
+      '<button type="button" class="ed-pagina-acao" data-ed="pagina-opcoes" title="Editar esta página">Editar página</button>'+
+      '<button type="button" class="ed-add-painel-ed" data-ed="pagina-nova" title="Criar uma página como no roteiro">＋ Página</button>'+
+      '<button type="button" class="ed-pagina-acao" data-ed="pagina-prox" title="Próxima página (Alt + Page Down)" aria-label="Próxima página">Página ▶</button>'+
+    '</span>'+    '<span class="ed-sobre-aviso" data-r="sobreAviso">Sobreposição ativa</span>'+
     '<span class="ed-vsep"></span>'+
     '<span class="ed-grupo"><button type="button" class="bt mini" data-ed="ant" aria-label="Painel anterior" title="Painel anterior">‹</button>'+
       '<button type="button" class="bt mini" data-ed="prox" aria-label="Próximo painel" title="Próximo painel">›</button></span>'+
@@ -1426,10 +1612,16 @@ function montarDOM(){
     '<button type="button" class="bt mini" data-ed="cortar" title="Cortar painel: arraste os pontos; toque na linha para criar um ponto; toque duplo (ou Delete) remove o ponto selecionado">Cortar painel</button>'+
     '<label class="ed-rot">Borda <input type="range" data-r="borda" min="0" max="40" step="1"><output data-r="bordaV"></output></label>'+
     '<span class="ed-esp"></span>'+
-    '<button type="button" class="bt mini" data-ed="preencher" title="Ampliar o desenho para cobrir toda a área, escondendo o cinza">Preencher tela</button>'+
+    '<button type="button" class="bt mini" data-ed="preencher" title="Enquadrar a folha inteira na área de desenho">Preencher tela</button>'+
+    '<button type="button" class="bt mini" data-ed="foco" title="Ocultar toda a interface e deixar apenas a folha (Tab ou Esc para voltar)">Tela cheia</button>'+
+    '<button type="button" class="bt mini" data-ed="img-importar">＋ Imagem</button>'+
     '<button type="button" class="bt mini" data-ed="png">Baixar PNG</button>'+
     '<button type="button" class="bt mini ed-bt-lat" data-ed="lat">Paletas</button>'+
   '</div>'+
+  '<div class="ed-pg-janela oculto" data-r="paginaJanela" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Gerenciador de páginas">'+
+    '<section class="ed-pg-dialog" data-r="paginaConteudo"></section>'+
+  '</div>'+  '<input type="file" data-r="imagemArquivo" accept="image/*" style="display:none" aria-label="Escolher imagem para importar">'+
+  '<input type="color" data-r="tomDesenho" value="#1d1d1d" class="ed-tom-in" tabindex="-1" aria-label="Tom para converter imagem em lápis ou caneta">'+
   '<div class="ed-corpo">'+
     '<div class="ed-tools" role="toolbar" aria-label="Ferramentas">'+tools+'</div>'+
     '<div class="ed-centro">'+
@@ -1461,7 +1653,7 @@ function abrir(opts){
   var chave=TAMANHOS[painel.tamanho]?painel.tamanho:PADRAO_TAM;
   var dim=dimensoes(chave);
   var s=S={
-    opts:opts,painel:painel,chave:chave,dim:dim,camadas:[],ativa:null,
+    opts:opts,painel:painel,chave:chave,dim:dim,camadas:[],ativa:null,fundo:opts.fundoPagina||null,modoPagina:!!opts.modoPagina,
     hist:[],refaz:[],bytes:0,
     z:1,tx:0,ty:0,pw:0,ph:0,dpr:window.devicePixelRatio||1,ajustado:true,
     ptrs:{},nptr:0,vivo:null,flut:null,sel:null,selOp:null,baloes:[],balSel:null,balOp:null,balIni:null,balSnap:null,balValId:null,
@@ -1473,19 +1665,24 @@ function abrir(opts){
   };
   $ed.classList.remove("oculto");
   $ed.classList.toggle("modo-livre",!!opts.modoLivre);
+  $ed.classList.toggle("modo-pagina",!!opts.modoPagina);
   document.body.classList.add("ed-aberto");
+  var textoVoltar=opts.rotuloVoltar||(opts.modoLivre?"← Voltar":"← Roteiro");
+  var ariaVoltar=opts.ariaVoltar||(opts.modoLivre?"Fechar desenho livre":"Fechar e voltar ao roteiro");
   qa("[data-ed=voltar]").forEach(function(b,i){
-    if(i===0) b.textContent=opts.modoLivre?"← Voltar":"← Roteiro";
-    b.setAttribute("aria-label",opts.modoLivre?"Fechar desenho livre":"Fechar e voltar ao roteiro");
-    b.setAttribute("title",opts.modoLivre?"Fechar desenho livre":"Fechar e voltar ao roteiro");
+    if(i===0) b.textContent=textoVoltar;
+    b.setAttribute("aria-label",ariaVoltar);
+    b.setAttribute("title",ariaVoltar);
   });
   E.carregando.classList.remove("oculto");
   E.titulo.textContent=opts.titulo||"Painel";
   E.tam.value=chave;
+  if(E.tomDesenho) E.tomDesenho.value=CFG.tomDesenho;
+  if(E.imgFerr) E.imgFerr.value=CFG.imgFerr;
   E.borda.value=bordaAtual(); E.bordaV.textContent=bordaAtual();
   atualizarForma();
   qa("[data-ed=ant]").forEach(function(b){ b.disabled=!opts.ant; }); qa("[data-ed=prox]").forEach(function(b){ b.disabled=!opts.prox; });
-  fecharMenus(); E.ajuda.classList.add("oculto");
+  fecharMenus(); E.ajuda.classList.add("oculto"); E.ajuda.setAttribute("aria-hidden","true");
   E.estado.textContent="";
   E.lat.classList.remove("aberta");
   ajustarCanvasPalco();
@@ -1506,7 +1703,7 @@ function abrir(opts){
     });
     var pend=rec.camadas.map(function(c){
       var L=criarCamada(c.nome||"Camada",c.id);
-      L.vis=c.vis!==false; L.op=c.op==null?100:c.op; L.modo=c.modo||"normal"; L.blob=c.blob||null; L.sujo=false;
+      L.vis=c.vis!==false; L.op=c.op==null?100:c.op; L.modo=c.modo||"normal"; L.blob=c.blob||null; L.originalBlob=c.originalBlob||null; L.sujo=false;
       s.camadas.push(L);
       return decodificar(c.blob).then(function(img){
         if(img){ L.cx.drawImage(img,ox,oy); if(ox||oy) L.sujo=true; }
@@ -1521,7 +1718,7 @@ function abrir(opts){
   function pronto(){
     if(S!==s) return;
     s.carregando=false; E.carregando.classList.add("oculto");
-    ajustar(); listaCamadas(); pedir(true); atualizarBal();
+    ajustar(); listaPaginasEditor(); listaCamadas(); pedir(true); atualizarBal();
   }
 }
 
@@ -1551,7 +1748,7 @@ function bordaAtual(){
 
 function sair(depois){
   if(!S) return Promise.resolve();
-  var s=S; commitFlut();
+  var s=S; alternarModoFoco(false); commitFlut();
   return salvarAgora().then(function(){
     document.removeEventListener("keydown",onKey,true);
     document.removeEventListener("keyup",onKeyUp,true);
@@ -1580,7 +1777,7 @@ function salvarAgora(){
     return new Promise(function(res){ L.cv.toBlob(function(b){ L.blob=b; res(); },"image/png"); });
   })).then(function(){
     var rec={v:1,w:s.dim.w,h:s.dim.h,ativa:s.ativa,baloes:s.baloes.map(cloneBal),camadas:s.camadas.map(function(L){
-      return {id:L.id,nome:L.nome,vis:L.vis,op:L.op,modo:L.modo,blob:L.blob};
+      return {id:L.id,nome:L.nome,vis:L.vis,op:L.op,modo:L.modo,blob:L.blob,originalBlob:L.originalBlob||null};
     })};
     return bdGravar(s.painel.id,rec);
   }).then(function(ok){
@@ -1592,10 +1789,10 @@ function salvarAgora(){
 function miniatura(s){
   var k=320/Math.max(s.dim.w,s.dim.h);
   var c=novoCanvas(Math.max(1,Math.round(s.dim.w*k)),Math.max(1,Math.round(s.dim.h*k))), x=c.getContext("2d");
-  x.fillStyle="#fff"; x.fillRect(0,0,c.width,c.height);
+  if(!(s.painel&&s.painel.sobreposto)){ x.fillStyle="#fff"; x.fillRect(0,0,c.width,c.height); }
   x.save(); x.scale(k,k); x.imageSmoothingQuality="high";
   camadasEm(x,false,s); desenharBaloes(x,s.baloes,Math.max(s.dim.w,s.dim.h)); x.restore();
-  return c.toDataURL("image/jpeg",0.72);
+  return c.toDataURL(s.painel&&s.painel.sobreposto?"image/png":"image/jpeg",0.72);
 }
 
 /* ---------- composição ---------- */
@@ -1624,6 +1821,15 @@ function camadasEm(c,efetivas,s){
   });
   c.globalAlpha=1; c.globalCompositeOperation="source-over";
 }
+
+function fundoEm(c,s){
+  s=s||S;
+  if(!s||!s.fundo) return;
+  c.save(); c.globalAlpha=1; c.globalCompositeOperation="source-over";
+  c.drawImage(s.fundo,0,0,s.dim.w,s.dim.h);
+  c.restore();
+}
+
 function desenharBorda(c,s){
   s=s||S;
   var b=typeof s.painel.borda==="number"?s.painel.borda:BORDA_PADRAO; if(b<=0) return;
@@ -1788,24 +1994,109 @@ function ajustarCanvasPalco(){
   [E.view,E.over].forEach(function(c){ c.width=Math.round(r.width*d); c.height=Math.round(r.height*d); });
   if(S){ S.dpr=d; S.pw=r.width; S.ph=r.height; }
 }
+/* Mantém a folha dentro de uma área navegável finita. Quando ela cabe por
+   inteiro, ela fica centralizada; com zoom, ainda há uma pequena margem para
+   alcançar as bordas sem permitir que a folha suma para fora do palco. */
+function limitarNavegacao(){
+  if(!S||!S.pw||!S.ph||!S.dim||!S.z) return;
+  var margem=($ed&&($ed.classList.contains("preencher-tela")||$ed.classList.contains("modo-foco")))?0:
+    clamp(Math.round(Math.min(S.pw,S.ph)*0.08),24,72);
+  function limitar(pos,tamanho,janela){
+    if(tamanho<=janela-margem*2) return (janela-tamanho)/2;
+    return clamp(pos,janela-tamanho-margem,margem);
+  }
+  S.tx=limitar(S.tx,S.dim.w*S.z,S.pw);
+  S.ty=limitar(S.ty,S.dim.h*S.z,S.ph);
+}
 function ajustar(){
   if(!S||!S.pw) return;
+  /* Sempre que o editor estiver em Tela cheia, a folha cobre o palco inteiro.
+     Isso também é reaplicado depois de o navegador concluir a tela cheia nativa. */
+  if($ed&&$ed.classList.contains("modo-foco")){ preencherModoFoco(); return; }
   var m=28, z=Math.min((S.pw-m*2)/S.dim.w,(S.ph-m*2)/S.dim.h);
   S.z=clamp(z,0.05,1.5); S.tx=(S.pw-S.dim.w*S.z)/2; S.ty=(S.ph-S.dim.h*S.z)/2;
+  limitarNavegacao();
+  S.ajustado=true; atualizarZoom(); pedir(true);
+}
+function preencherModoFoco(){
+  if(!S||!S.pw||!S.ph||!S.dim||!S.dim.w||!S.dim.h) return;
+  /* A folha usa o enquadramento de cobertura: cada ponto visível pertence à folha.
+     Trechos fora da tela continuam acessíveis com a ferramenta Mover/arrastar. */
+  var z=Math.max(S.pw/S.dim.w,S.ph/S.dim.h);
+  S.z=clamp(z,0.01,16);
+  S.tx=(S.pw-S.dim.w*S.z)/2;
+  S.ty=(S.ph-S.dim.h*S.z)/2;
+  limitarNavegacao();
   S.ajustado=true; atualizarZoom(); pedir(true);
 }
 function preencherArea(){
-  if(!S||!S.pw||!S.ph) return;
-  /* Amplia até o desenho cobrir todo o palco; as bordas podem ficar fora da área visível. */
-  var z=Math.max(S.pw/S.dim.w,S.ph/S.dim.h);
-  S.z=clamp(z,0.05,16);
-  S.tx=(S.pw-S.dim.w*S.z)/2;
-  S.ty=(S.ph-S.dim.h*S.z)/2;
-  S.ajustado=false; atualizarZoom(); pedir(true);
+  if(!S||!E.palco||!S.dim||!S.dim.w||!S.dim.h) return;
+  /* Mantém a interface do editor visível e enquadra a folha inteira no palco.
+     O Escape apenas sai deste modo de enquadramento. */
+  if($ed) $ed.classList.add("preencher-tela");
+  S.ajustado=true;
+  requestAnimationFrame(function(){
+    if(!S) return;
+    ajustarCanvasPalco();
+    if(!S.pw||!S.ph) return;
+    /* Ajusta a folha inteira à janela, mantendo a proporção e sem cortes. */
+    var z=Math.min(S.pw/S.dim.w,S.ph/S.dim.h);
+    S.z=clamp(z,0.01,16);
+    S.tx=(S.pw-S.dim.w*S.z)/2;
+    S.ty=(S.ph-S.dim.h*S.z)/2;
+    limitarNavegacao();
+    atualizarZoom(); pedir(true);
+  });
+}
+function sairPreencherTela(){
+  if(!$ed||!$ed.classList.contains("preencher-tela")) return false;
+  $ed.classList.remove("preencher-tela");
+  requestAnimationFrame(function(){
+    if(!S) return;
+    ajustarCanvasPalco();
+    ajustar();
+  });
+  return true;
+}
+function reaplicarFolhaInteira(){
+  if(!S||!$ed||!$ed.classList.contains("modo-foco")) return;
+  ajustarCanvasPalco();
+  preencherModoFoco();
+}
+function alternarModoFoco(entrar,usarTelaInteira){
+  if(!$ed) return;
+  if(typeof entrar!=="boolean") entrar=!$ed.classList.contains("modo-foco");
+  var pedido=null;
+  if(entrar){
+    fecharJanelaPagina();
+    $ed.classList.remove("preencher-tela");
+    $ed.classList.add("modo-foco");
+    if(usarTelaInteira!==false&&$ed.requestFullscreen&&!document.fullscreenElement){
+      pedido=$ed.requestFullscreen();
+      if(pedido&&pedido.catch) pedido.catch(function(){});
+    }
+  }else{
+    $ed.classList.remove("modo-foco");
+    if(usarTelaInteira!==false&&document.fullscreenElement&&document.exitFullscreen){
+      document.exitFullscreen().catch(function(){});
+    }
+  }
+  requestAnimationFrame(function(){
+    if(!S) return;
+    ajustarCanvasPalco();
+    ajustar();
+  });
+  /* requestFullscreen muda as medidas depois do clique em alguns navegadores. */
+  if(entrar){
+    window.setTimeout(reaplicarFolhaInteira,80);
+    window.setTimeout(reaplicarFolhaInteira,260);
+    if(pedido&&pedido.then) pedido.then(function(){ window.setTimeout(reaplicarFolhaInteira,0); }).catch(function(){});
+  }
 }
 function zoomEm(f,cx,cy){
   var nz=clamp(S.z*f,0.05,16); f=nz/S.z;
   S.tx=cx-(cx-S.tx)*f; S.ty=cy-(cy-S.ty)*f; S.z=nz; S.ajustado=false;
+  limitarNavegacao();
   atualizarZoom(); pedir(true);
 }
 function zoomCentro(f){ zoomEm(f,S.pw/2,S.ph/2); }
@@ -1828,10 +2119,11 @@ function quadro(){
 }
 function renderView(){
   var v=E.view, c=v.getContext("2d"), d=S.dpr, z=S.z;
-  c.setTransform(1,0,0,1,0,0); c.fillStyle="#a4a4a4"; c.fillRect(0,0,v.width,v.height);
+  c.setTransform(1,0,0,1,0,0); c.fillStyle=($ed&&($ed.classList.contains("preencher-tela")||$ed.classList.contains("modo-foco")))?"#fff":"#a4a4a4"; c.fillRect(0,0,v.width,v.height);
   c.setTransform(d*z,0,0,d*z,d*S.tx,d*S.ty);
   c.imageSmoothingEnabled=z<2; c.imageSmoothingQuality="high";
   c.fillStyle="#fff"; c.fillRect(0,0,S.dim.w,S.dim.h);
+  fundoEm(c);
   if(!S.carregando) camadasEm(c,true);
   var fm=formaDe(S.painel);
   if(fm){                                    /* fora do corte fica apagado (não entra na exportação) */
@@ -2636,7 +2928,8 @@ function onMove(e){
   if(S.ptrs[e.pointerId]){ S.ptrs[e.pointerId]={x:p.x,y:p.y}; }
   if(S.gesto){ atualizarGesto(); return; }
   if(S.pan){
-    S.tx=S.pan.tx+(p.x-S.pan.x); S.ty=S.pan.ty+(p.y-S.pan.y); S.ajustado=false; pedir(true); return;
+    S.tx=S.pan.tx+(p.x-S.pan.x); S.ty=S.pan.ty+(p.y-S.pan.y);
+    limitarNavegacao(); S.ajustado=false; pedir(true); return;
   }
   if(S.vDrag&&e.pointerId===S.vDrag.id){ cortarMove(p,e); return; }
   if(S.vivo&&e.pointerId===S.vivo.id){
@@ -2674,6 +2967,7 @@ function atualizarGesto(){
   var d=Math.hypot(b.x-a.x,b.y-a.y)||1, cx=(a.x+b.x)/2, cy=(a.y+b.y)/2;
   var nz=clamp(g.z0*d/g.d0,0.05,16), wx=(g.cx0-g.tx0)/g.z0, wy=(g.cy0-g.ty0)/g.z0;
   S.z=nz; S.tx=cx-wx*nz; S.ty=cy-wy*nz; S.ajustado=false;
+  limitarNavegacao();
   atualizarZoom(); pedir(true);
 }
 function onWheel(e){
@@ -2681,7 +2975,10 @@ function onWheel(e){
   e.preventDefault();
   var p=ptoPalco(e);
   if(e.ctrlKey||e.metaKey) zoomEm(Math.exp(-clamp(e.deltaY,-120,120)*0.0025),p.x,p.y);
-  else{ S.tx-=e.deltaX; S.ty-=e.deltaY; S.ajustado=false; pedir(true); }
+  else{
+    S.tx-=e.deltaX; S.ty-=e.deltaY; S.ajustado=false;
+    limitarNavegacao(); pedir(true);
+  }
 }
 
 /* ---------- ferramentas e interface lateral ---------- */
@@ -2768,7 +3065,131 @@ function ajustaTam(dir){
   a.tam=clamp(t+dir*passo,1,200); atualizarFerr(); pedir(false);
 }
 
-/* camadas */
+function paginaMiniatura(p,i){
+  return '<figure class="ed-pg-mini'+(p.ativa?' ativa':'')+'" aria-label="Prévia da Página '+(i+1)+(p.ativa?', página atual':'')+'">'+
+    '<span class="ed-mini-papel vazia"><img class="oculto" data-ed-mini-prev="'+i+'" alt="Prévia da Página '+(i+1)+'"></span><figcaption class="ed-mini-num">'+(i+1)+'</figcaption></figure>';
+}
+function carregarMiniaturasPaginas(){
+  if(!S||S.paginaModalModo!=="conjuntos"||!E.paginaConteudo) return;
+  var obter=S.opts&&S.opts.obterMiniaturaPagina;
+  if(typeof obter!=="function") return;
+  var geracao=(S.geracaoMiniaturas||0)+1;
+  S.geracaoMiniaturas=geracao;
+  Array.prototype.forEach.call(E.paginaConteudo.querySelectorAll("[data-ed-mini-prev]"),function(img){
+    var indice=parseInt(img.getAttribute("data-ed-mini-prev"),10);
+    if(isNaN(indice)) return;
+    Promise.resolve(obter(indice)).then(function(preview){
+      if(!preview||!S||S.geracaoMiniaturas!==geracao||!img.isConnected) return;
+      var src=typeof preview==="string"?preview:(preview.toDataURL?preview.toDataURL("image/jpeg",0.82):"");
+      if(!src) return;
+      img.src=src; img.classList.remove("oculto");
+      var papel=img.parentNode; if(papel) papel.classList.remove("vazia");
+    }).catch(function(){});
+  });
+}function conjuntosPaginas(pags){
+  var html="", inicio=0, conjunto=1;
+  while(inicio<pags.length){
+    var quantidade=inicio===0?1:2, fim=Math.min(pags.length,inicio+quantidade), itens=[], i;
+    for(i=inicio;i<fim;i++) itens.push(paginaMiniatura(pags[i],i));
+    html+='<section class="ed-conjunto"><p class="ed-conjunto-titulo">Conjunto '+conjunto+' · '+
+      (fim-inicio===1?'Página '+(inicio+1):'Páginas '+(inicio+1)+'–'+fim)+'</p>'+
+      '<div class="ed-conjunto-folhas">'+itens.join("")+'</div></section>';
+    inicio=fim; conjunto++;
+  }
+  return html||'<p class="ed-pg-vazio">Nenhuma página neste capítulo.</p>';
+}
+function opcoesLayoutEditor(){
+  var layouts=(S.opts&&typeof S.opts.obterLayouts==="function"?S.opts.obterLayouts():(S.opts&&S.opts.layouts)||[]),
+      atual=(S.opts&&typeof S.opts.obterLayoutAtual==="function"?S.opts.obterLayoutAtual():(S.opts&&S.opts.layoutAtual)||"");
+  return layouts.map(function(l){ return '<option value="'+esc(l.id)+'"'+(l.id===atual?' selected':'')+'>'+esc(l.nome)+'</option>'; }).join("");
+}
+
+function paineisDaPaginaNoEditor(){
+  var itens=S&&S.opts&&typeof S.opts.obterPaineisPagina==="function"?S.opts.obterPaineisPagina():[];
+  return Array.isArray(itens)?itens:[];
+}
+function opcoesPaineisEditor(paineis){
+  return paineis.map(function(p,i){
+    var nome=p.nome||("Painel "+(i+1));
+    return '<option value="'+esc(p.id)+'">'+esc(nome)+'</option>';
+  }).join("");
+}function renderJanelaPagina(){
+  if(!S||!E.paginaConteudo) return;
+  var pags=(S.opts&&typeof S.opts.obterPaginas==="function"?S.opts.obterPaginas():(S.opts&&S.opts.paginas)||[]), ativa=0, i;
+  for(i=0;i<pags.length;i++) if(pags[i].ativa){ ativa=i; break; }
+  var modo=S.paginaModalModo||"conjuntos", paineis=paineisDaPaginaNoEditor(), h;
+  if(modo==="editar"){
+    h='<div class="ed-pg-cab"><div><h2>Editar página '+(ativa+1)+'</h2><p>Os painéis desta página permanecem visíveis na folha do editor.</p></div>'+
+      '<button type="button" class="bt mini ed-pg-fechar" data-ed="pagina-modal-fechar">Fechar</button></div>'+
+      '<div class="ed-pg-config"><label>Layout da página <select data-ed-layout aria-label="Layout da página">'+opcoesLayoutEditor()+'</select></label>'+
+        '<label>Editar painel <select data-ed-painel aria-label="Painel a editar"'+(paineis.length?"":" disabled")+'>'+opcoesPaineisEditor(paineis)+'</select></label>'+
+        '<div class="ed-pg-botoes">'+
+          '<button type="button" class="bt" data-ed="painel-editar"'+(paineis.length?"":" disabled")+'>Editar painel</button>'+
+          '<button type="button" class="bt" data-ed="pagina-adicionar">＋ Painéis</button>'+
+          '<button type="button" class="bt" data-ed="pagina-nova">＋ Página</button>'+
+          '<button type="button" class="bt" data-ed="pagina-duplicar">Duplicar página</button>'+
+          '<button type="button" class="bt risco" data-ed="pagina-apagar">Apagar página</button>'+
+        '</div></div>'+
+      '<p class="ed-pg-aviso">Ao escolher um layout ou adicionar painéis, a folha é atualizada aqui no editor. O conjunto de páginas fica apenas para organizar e conferir as prévias.</p>';
+  }else{
+    h='<div class="ed-pg-cab"><div><h2>Conjunto de páginas</h2><p>Miniaturas das páginas que você criou, organizadas em conjuntos.</p></div>'+
+      '<button type="button" class="bt mini ed-pg-fechar" data-ed="pagina-modal-fechar">Fechar</button></div>'+
+      '<div class="ed-conjuntos">'+conjuntosPaginas(pags)+'</div>';
+  }
+  E.paginaConteudo.innerHTML=h;
+  if(modo==="conjuntos") carregarMiniaturasPaginas();
+}
+function abrirJanelaPagina(modo){
+  if(!S||!S.modoPagina||!E.paginaJanela) return;
+  S.paginaModalModo=modo||"conjuntos";
+  E.paginaJanela.classList.toggle("edicao",S.paginaModalModo==="editar");
+  renderJanelaPagina();
+  E.paginaJanela.classList.remove("oculto");
+  E.paginaJanela.setAttribute("aria-hidden","false");
+}
+function fecharJanelaPagina(){
+  if(!E.paginaJanela) return;
+  E.paginaJanela.classList.remove("edicao");
+  E.paginaJanela.classList.add("oculto");
+  E.paginaJanela.setAttribute("aria-hidden","true");
+}
+function irPaginaEditor(indice){
+  if(!S||!S.modoPagina||S.trocandoPagina) return false;
+  var pags=S.opts&&typeof S.opts.obterPaginas==="function"?S.opts.obterPaginas():(S.opts&&S.opts.paginas)||[], ir=S.opts&&S.opts.irPagina;
+  if(!ir||!(indice>=0&&indice<pags.length)||pags[indice].ativa) return false;
+  S.trocandoPagina=true;
+  fecharJanelaPagina();
+  sair(function(){ ir(indice); });
+  return true;
+}
+function moverPaginaEditor(passo){
+  if(!S||!S.modoPagina) return false;
+  var pags=S.opts&&typeof S.opts.obterPaginas==="function"?S.opts.obterPaginas():(S.opts&&S.opts.paginas)||[], ativa=0, i;
+  for(i=0;i<pags.length;i++) if(pags[i].ativa){ ativa=i; break; }
+  return irPaginaEditor(Math.max(0,Math.min(pags.length-1,ativa+passo)));
+}
+function abrirPainelNoEditor(id){
+  if(!S||!S.modoPagina||S.trocandoPagina||!id) return false;
+  var abrir=S.opts&&S.opts.abrirPainel;
+  if(typeof abrir!=="function") return false;
+  S.trocandoPagina=true;
+  fecharJanelaPagina();
+  sair(function(){ abrir(id); });
+  return true;
+}
+function listaPaginasEditor(){
+  if(!S||!E.paginasEd) return;
+  var pags=(S.opts&&typeof S.opts.obterPaginas==="function"?S.opts.obterPaginas():(S.opts&&S.opts.paginas)||[]), ativa=0, i;
+  for(i=0;i<pags.length;i++) if(pags[i].ativa){ ativa=i; break; }
+  E.paginasEd.innerHTML=pags.map(function(p,i){
+    var nome=p.nome||("Página "+(i+1));
+    return '<button type="button" class="ed-pg-ed'+(p.ativa?' ativa':'')+'" data-ed-pagina="'+i+'"'+(p.ativa?' aria-current="page"':'')+' title="Abrir '+esc(nome)+'">'+esc(nome)+'</button>';
+  }).join('');
+  var ant=$ed.querySelector('[data-ed="pagina-ant"]'), prox=$ed.querySelector('[data-ed="pagina-prox"]');
+  if(ant) ant.disabled=ativa<=0;
+  if(prox) prox.disabled=ativa>=pags.length-1;
+  if(E.paginaJanela&&!E.paginaJanela.classList.contains("oculto")) renderJanelaPagina();
+}/* camadas */
 function listaCamadas(){
   if(!S) return;
   var h="", i;
@@ -2778,6 +3199,7 @@ function listaCamadas(){
        '<input type="checkbox" data-cam="vis"'+(L.vis?" checked":"")+' aria-label="Mostrar camada">'+
        '<span class="ed-cam-nome">'+esc(L.nome)+'</span></div>';
   }
+  if(S.modoPagina) h+='<div class="ed-cam-base">🔒 Base da página e dos painéis</div>';
   E.camadas.innerHTML=h;
   var A=camadaAtiva();
   if(A){ E.cOp.value=A.op; E.cOpV.textContent=A.op+"%"; E.cModo.value=A.modo; }
@@ -2860,6 +3282,222 @@ function mudarTamanho(chave){
   aviso("Tamanho alterado. O desenho foi centralizado e o histórico de desfazer foi reiniciado.");
 }
 
+/* ---------- importação e ajustes de imagens ---------- */
+function importarImagem(arquivo){
+  if(!S||!arquivo) return;
+  if(!/^image\//i.test(arquivo.type||"")){ aviso("Escolha um arquivo de imagem (JPG, PNG, WebP ou outro formato aceito pelo navegador)."); return; }
+  if(arquivo.size>25*1024*1024){ aviso("Essa imagem tem mais de 25 MB. Reduza o tamanho do arquivo antes de importar."); return; }
+  var url=URL.createObjectURL(arquivo), img=new Image();
+  img.onload=function(){
+    URL.revokeObjectURL(url);
+    if(!S) return;
+    try{
+      commitFlut(); fecharEdicaoBal();
+      var maxW=Math.round(S.dim.w*0.82), maxH=Math.round(S.dim.h*0.82);
+      var escala=Math.min(1,maxW/img.naturalWidth,maxH/img.naturalHeight);
+      var w=Math.max(1,Math.round(img.naturalWidth*escala)), h=Math.max(1,Math.round(img.naturalHeight*escala));
+      var listaAntes=S.camadas.slice(), ativaAntes=S.ativa;
+      var nome=(arquivo.name||"Imagem").replace(/\.[^.]+$/,"").slice(0,26)||"Imagem";
+      var L=criarCamada("Imagem: "+nome); L.cx.drawImage(img,Math.round((S.dim.w-w)/2),Math.round((S.dim.h-h)/2),w,h); L.sujo=true;
+      /* A base dos efeitos deve ser ImageData, não um elemento canvas. */
+      L._baseEfeitos=L.cx.getImageData(0,0,S.dim.w,S.dim.h);
+      /* Guarda uma cópia original para restaurar mesmo depois de filtros e ao reabrir o projeto. */
+      L.cv.toBlob(function(blob){ if(blob){ L.originalBlob=blob; agendarSalvar(); } },"image/png");
+      S.camadas.push(L); S.ativa=L.id; S.sel={x:Math.round((S.dim.w-w)/2),y:Math.round((S.dim.h-h)/2),w:w,h:h};
+      S.tocou=true;
+      empurrar({t:"estrutura",antes:{lista:listaAntes,ativa:ativaAntes},depois:{lista:S.camadas.slice(),ativa:S.ativa}});
+      trocarFerr("selecionar"); listaCamadas(); atualizarBotoesHist(); pedir(true);
+      aviso("Imagem importada em uma nova camada. Use Selecionar (V) para mover, redimensionar, espelhar ou girar; ajuste a opacidade nas propriedades da camada.");
+    }catch(e){ aviso("Não foi possível importar essa imagem. Tente uma imagem menor ou em JPG/PNG."); }
+  };
+  img.onerror=function(){ URL.revokeObjectURL(url); aviso("Não foi possível abrir essa imagem. Tente JPG, PNG ou WebP."); };
+  img.src=url;
+}
+function retirarImagemAtiva(){
+  if(!S) return;
+  commitFlut();
+  var L=camadaAtiva(); if(!L) return;
+  if(!/^Imagem:/i.test(L.nome)){ aviso("Selecione a camada da imagem que deseja retirar."); return; }
+  var antes=recortar(L.cv,0,0,S.dim.w,S.dim.h);
+  L.cx.clearRect(0,0,S.dim.w,S.dim.h); L.sujo=true;
+  var depois=recortar(L.cv,0,0,S.dim.w,S.dim.h);
+  empurrar({t:"px",layer:L.id,x:0,y:0,antes:antes,depois:depois});
+  S.sel=null; pedir(true); aviso("Imagem retirada. Use Ctrl+Z para desfazer.");
+}
+function restaurarImagemOriginal(){
+  if(!S) return;
+  commitFlut();
+  var L=camadaAtiva(); if(!L) return;
+  if(!/^Imagem:/i.test(L.nome)){ aviso("Selecione a camada da imagem que deseja restaurar."); return; }
+  if(!L.originalBlob){ aviso("Esta imagem foi importada antes da função de restauração. Importe-a novamente para poder restaurar o original."); return; }
+  var antes=recortar(L.cv,0,0,S.dim.w,S.dim.h), original=L.originalBlob;
+  decodificar(original).then(function(img){
+    if(!img||!S||!porId(L.id)) { aviso("Não foi possível restaurar a imagem original."); return; }
+    L.cx.clearRect(0,0,S.dim.w,S.dim.h); L.cx.drawImage(img,0,0,S.dim.w,S.dim.h); L.sujo=true;
+    L._baseEfeitos=L.cx.getImageData(0,0,S.dim.w,S.dim.h);
+    var depois=recortar(L.cv,0,0,S.dim.w,S.dim.h);
+    empurrar({t:"px",layer:L.id,x:0,y:0,antes:antes,depois:depois}); pedir(true);
+    aviso("Imagem restaurada ao estado original. Use Ctrl+Z para desfazer a restauração.");
+  });
+}
+function baseOriginalEfeitos(L){
+  /* Todos os efeitos partem de ImageData da mesma base, não do resultado do
+     filtro anterior. Isso evita acúmulo e mantém compatibilidade com putImageData. */
+  if(!L._baseEfeitos){
+    L._baseEfeitos=L.cx.getImageData(0,0,S.dim.w,S.dim.h);
+  }
+  return L._baseEfeitos;
+}
+function copiarImageData(base,ctx){
+  var copia=ctx.createImageData(base.width,base.height);
+  copia.data.set(base.data);
+  return copia;
+}
+function converterCamadaCinza(){
+  if(!S) return;
+  commitFlut();
+  var L=camadaAtiva(); if(!L) return;
+  var antes=recortar(L.cv,0,0,S.dim.w,S.dim.h), c=L.cx, im;
+  try{ im=copiarImageData(baseOriginalEfeitos(L),c); }catch(e){ aviso("Não foi possível editar os pixels dessa camada."); return; }
+  var d=im.data;
+  for(var i=0;i<d.length;i+=4){ var g=Math.round(d[i]*0.299+d[i+1]*0.587+d[i+2]*0.114); d[i]=d[i+1]=d[i+2]=g; }
+  c.putImageData(im,0,0); L.sujo=true;
+  var depois=recortar(L.cv,0,0,S.dim.w,S.dim.h);
+  empurrar({t:"px",layer:L.id,x:0,y:0,antes:antes,depois:depois}); pedir(true);
+  aviso("Camada convertida para tons de cinza. Você pode desfazer com Ctrl+Z.");
+}
+function ajustarSaturacao(){
+  if(!S) return;
+  commitFlut();
+  var L=camadaAtiva(); if(!L) return;
+  var atual=prompt("Saturação da camada ativa (0 a 200):\n0 = sem cor, 100 = original, 200 = cores intensas","100");
+  if(atual===null) return;
+  var fator=Number(atual);
+  if(!isFinite(fator)||atual.trim()===""||fator<0||fator>200){ aviso("Digite um valor de 0 a 200."); return; }
+  aplicarAjusteImagem("saturacao",fator/100);
+  aviso("Saturação ajustada. Use Ctrl+Z para desfazer.");
+}
+function aplicarFiltroImagem(tipo){
+  var nomes={sepia:"Sépia",quente:"Quente",frio:"Frio",contraste:"Alto contraste",vintage:"Vintage",negativo:"Negativo"};
+  aplicarAjusteImagem(tipo,null);
+  if(nomes[tipo]) aviso("Filtro "+nomes[tipo]+" aplicado à camada ativa. Use Ctrl+Z para desfazer.");
+}
+function aplicarAjusteImagem(tipo,valor){
+  if(!S) return;
+  commitFlut();
+  var L=camadaAtiva(); if(!L) return;
+  var antes=recortar(L.cv,0,0,S.dim.w,S.dim.h), c=L.cx, im;
+  try{ im=copiarImageData(baseOriginalEfeitos(L),c); }catch(e){ aviso("Não foi possível editar os pixels dessa camada."); return; }
+  var d=im.data;
+  for(var i=0;i<d.length;i+=4){
+    var r=d[i],g=d[i+1],b=d[i+2],nr=r,ng=g,nb=b;
+    if(tipo==="saturacao"){
+      var lum=0.299*r+0.587*g+0.114*b;
+      nr=lum+(r-lum)*valor; ng=lum+(g-lum)*valor; nb=lum+(b-lum)*valor;
+    }else if(tipo==="sepia"){
+      nr=0.393*r+0.769*g+0.189*b; ng=0.349*r+0.686*g+0.168*b; nb=0.272*r+0.534*g+0.131*b;
+    }else if(tipo==="quente"){
+      nr=r*1.08+10; ng=g*1.02+2; nb=b*0.88-4;
+    }else if(tipo==="frio"){
+      nr=r*0.88-3; ng=g*1.01+2; nb=b*1.12+10;
+    }else if(tipo==="contraste"){
+      nr=(r-128)*1.35+128; ng=(g-128)*1.35+128; nb=(b-128)*1.35+128;
+    }else if(tipo==="vintage"){
+      nr=0.393*r+0.769*g+0.189*b; ng=0.349*r+0.686*g+0.168*b; nb=0.272*r+0.534*g+0.131*b;
+      nr=nr*0.88+18; ng=ng*0.88+12; nb=nb*0.82+4;
+    }else if(tipo==="negativo"){
+      nr=255-r; ng=255-g; nb=255-b;
+    }
+    d[i]=Math.max(0,Math.min(255,Math.round(nr)));
+    d[i+1]=Math.max(0,Math.min(255,Math.round(ng)));
+    d[i+2]=Math.max(0,Math.min(255,Math.round(nb)));
+  }
+  c.putImageData(im,0,0); L.sujo=true;
+  var depois=recortar(L.cv,0,0,S.dim.w,S.dim.h);
+  empurrar({t:"px",layer:L.id,x:0,y:0,antes:antes,depois:depois}); pedir(true);
+}
+function ajustarImagemFolha(modo){
+  if(!S) return;
+  commitFlut();
+  var L=camadaAtiva();
+  if(!L || !/^Imagem:/i.test(L.nome)){ aviso("Selecione a camada da imagem que deseja ajustar."); return; }
+  var w=S.dim.w,h=S.dim.h, ctx=L.cx, data;
+  try{ data=ctx.getImageData(0,0,w,h); }catch(e){ aviso("Não foi possível ler a imagem para ajustá-la."); return; }
+  var d=data.data,minX=w,minY=h,maxX=-1,maxY=-1;
+  for(var y=0;y<h;y++) for(var x=0;x<w;x++) if(d[(y*w+x)*4+3]>4){ if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y; }
+  if(maxX<minX||maxY<minY){ aviso("A camada não contém uma imagem visível."); return; }
+  var sw=maxX-minX+1,sh=maxY-minY+1,src=novoCanvas(sw,sh); src.getContext("2d").putImageData(ctx.getImageData(minX,minY,sw,sh),0,0);
+  var escala=modo==="cover"?Math.max(w/sw,h/sh):Math.min(w/sw,h/sh),dw=Math.max(1,Math.round(sw*escala)),dh=Math.max(1,Math.round(sh*escala));
+  var antes=recortar(L.cv,0,0,w,h),novo=novoCanvas(w,h),nc=novo.getContext("2d");
+  nc.imageSmoothingEnabled=true; nc.imageSmoothingQuality="high"; nc.drawImage(src,Math.round((w-dw)/2),Math.round((h-dh)/2),dw,dh);
+  L.cv=novo;L.cx=nc;L.sujo=true;L._baseEfeitos=null;
+  var depois=recortar(L.cv,0,0,w,h); empurrar({t:"px",layer:L.id,x:0,y:0,antes:antes,depois:depois});
+  S.sel={x:0,y:0,w:w,h:h}; pedir(true);
+  aviso(modo==="cover"?"Imagem ampliada para preencher a folha; as bordas podem ser cortadas. Use Ctrl+Z para desfazer.":"Imagem ajustada e centralizada na folha, sem deformar. Use Ctrl+Z para desfazer.");
+}
+function transformarFotoDesenho(estilo,ferramenta){
+  if(!S) return;
+  commitFlut();
+  var L=camadaAtiva();
+  if(!L || !/^Imagem:/i.test(L.nome)){ aviso("Selecione a camada da imagem que deseja transformar."); return; }
+  var ferramentaEscolhida=ferramenta&&PINCEIS[ferramenta]?ferramenta:null, B=ferramentaEscolhida?PINCEIS[ferramentaEscolhida]:null;
+  var modo=estilo;
+  if(B) modo=ferramentaEscolhida==="nanquim"?"nanquim":((B.tipo==="lapis"||B.tipo==="macio")?"lapis":"caneta");
+  var grafite=B?clamp(B.grao==null?0.55:B.grao,0.12,1):0.55, tamanhoFerr=B?clamp(B.tam||5,1,70):5;
+  var w=S.dim.w,h=S.dim.h,c=L.cx,im;
+  try{ im=copiarImageData(baseOriginalEfeitos(L),c); }catch(e){ aviso("Não foi possível processar esta imagem."); return; }
+  var d=im.data, n=w*h, gray=new Float32Array(n), alpha=new Uint8ClampedArray(n), tom=hexRgb(CFG.tomDesenho||"#1d1d1d");
+  for(var i=0,p=0;i<d.length;i+=4,p++){gray[p]=0.299*d[i]+0.587*d[i+1]+0.114*d[i+2];alpha[p]=d[i+3];}
+  var antes=recortar(L.cv,0,0,w,h);
+  function pix(x,y){x=Math.max(0,Math.min(w-1,x));y=Math.max(0,Math.min(h-1,y));return gray[y*w+x];}
+  for(var yy=0;yy<h;yy++) for(var xx=0;xx<w;xx++){
+    var q=yy*w+xx,idx=q*4;if(alpha[q]===0)continue;
+    var g=gray[q],gx=-pix(xx-1,yy-1)+pix(xx+1,yy-1)-2*pix(xx-1,yy)+2*pix(xx+1,yy)-pix(xx-1,yy+1)+pix(xx+1,yy+1),gy=-pix(xx-1,yy-1)-2*pix(xx,yy-1)-pix(xx+1,yy-1)+pix(xx-1,yy+1)+2*pix(xx,yy+1)+pix(xx+1,yy+1),edge=Math.min(1,Math.sqrt(gx*gx+gy*gy)/190),r=d[idx],gg=d[idx+1],b=d[idx+2],nr=r,ng=gg,nb=b;
+    if(modo==="lapis"){
+      var textura=((xx*17+yy*31+(xx*yy)%23)%11)-5,forcaL=B?(0.35+grafite*0.55):0.78,bordaL=B?(70+grafite*125+Math.min(36,tamanhoFerr*0.55)):170;
+      var baseL=Math.max(0,Math.min(255,Math.round(255-(255-g)*forcaL-edge*bordaL+textura))),escL=(255-baseL)/255;
+      nr=255-(255-tom[0])*escL; ng=255-(255-tom[1])*escL; nb=255-(255-tom[2])*escL;
+    }else if(modo==="caneta"||modo==="nanquim"){
+      var lim=modo==="nanquim"?160:185,bordaC=modo==="nanquim"?0.18:0.27;
+      if(B){
+        lim=clamp(Math.round(175+Math.min(25,tamanhoFerr*0.45)-(B.op<70?8:0)),105,205);
+        bordaC=clamp(0.33-Math.min(0.16,tamanhoFerr*0.002),0.12,0.33);
+        if(ferramentaEscolhida==="nanquim"){ lim=160; bordaC=0.18; }
+      }
+      var base=(g<lim?20:255);if(edge>bordaC)base=0;
+      var escC=(255-base)/255; nr=255-(255-tom[0])*escC; ng=255-(255-tom[1])*escC; nb=255-(255-tom[2])*escC;
+    }else if(estilo==="colorido"){
+      var lum=0.299*r+0.587*gg+0.114*b,fac=1.28;nr=lum+(r-lum)*fac-edge*100;ng=lum+(gg-lum)*fac-edge*100;nb=lum+(b-lum)*fac-edge*100;
+    }else if(estilo==="aquarela"){
+      function poster(v){return Math.round(v/42)*42;}
+      nr=poster(r)*(1-edge*0.48)+Math.max(0,r-18)*edge*0.48;ng=poster(gg)*(1-edge*0.48)+Math.max(0,gg-18)*edge*0.48;nb=poster(b)*(1-edge*0.48)+Math.max(0,b-18)*edge*0.48;
+    }
+    d[idx]=Math.max(0,Math.min(255,Math.round(nr)));d[idx+1]=Math.max(0,Math.min(255,Math.round(ng)));d[idx+2]=Math.max(0,Math.min(255,Math.round(nb)));
+  }
+  c.putImageData(im,0,0);L.sujo=true;
+  var depois=recortar(L.cv,0,0,w,h);empurrar({t:"px",layer:L.id,x:0,y:0,antes:antes,depois:depois});pedir(true);
+  var nomes={lapis:"Lápis",caneta:"Caneta / mangá",nanquim:"Nanquim",colorido:"Lápis de cor",aquarela:"Aquarela"};
+  var nomeEfeito=ferramentaEscolhida?B.nome:nomes[estilo];
+  var detalheTom=(modo==="lapis"||modo==="caneta"||modo==="nanquim")?" no tom "+CFG.tomDesenho.toUpperCase():"";
+  aviso("Efeito "+nomeEfeito+detalheTom+" aplicado. A imagem original continua guardada; use Restaurar imagem original ou Ctrl+Z.");
+}
+function recortarCamadaSelecao(){
+  if(!S) return;
+  commitFlut();
+  var L=camadaAtiva(), r=S.sel;
+  if(!L||!r||r.w<1||r.h<1){ aviso("Use a ferramenta Selecionar para marcar a área que deseja manter."); return; }
+  var antes=recortar(L.cv,0,0,S.dim.w,S.dim.h);
+  var x=Math.max(0,Math.floor(r.x)), y=Math.max(0,Math.floor(r.y));
+  var x2=Math.min(S.dim.w,Math.ceil(r.x+r.w)), y2=Math.min(S.dim.h,Math.ceil(r.y+r.h));
+  if(x2<=x||y2<=y) return;
+  L.cx.clearRect(0,0,S.dim.w,y); L.cx.clearRect(0,y2,S.dim.w,S.dim.h-y2);
+  L.cx.clearRect(0,y,x,S.dim.h); L.cx.clearRect(x2,y,S.dim.w-x2,S.dim.h);
+  L.sujo=true; var depois=recortar(L.cv,0,0,S.dim.w,S.dim.h);
+  empurrar({t:"px",layer:L.id,x:0,y:0,antes:antes,depois:depois});
+  S.sel={x:x,y:y,w:x2-x,h:y2-y}; pedir(true);
+  aviso("Camada recortada à seleção. As outras camadas não foram alteradas.");
+}
+
 /* exportar */
 function baixar(blob,nome){
   var a=document.createElement("a"), u=URL.createObjectURL(blob);
@@ -2871,16 +3509,84 @@ function exportar(){
   var c=novoCanvas(S.dim.w,S.dim.h), x=c.getContext("2d"), f=formaDe(S.painel);
   if(f){ x.save(); x.beginPath(); trilhaForma(x,f,S.dim.w,S.dim.h); x.clip(); }   /* fora do corte fica transparente */
   x.fillStyle="#fff"; x.fillRect(0,0,c.width,c.height);
-  camadasEm(x,false); desenharBorda(x); desenharBaloes(x,S.baloes,Math.max(S.dim.w,S.dim.h));
+  fundoEm(x); camadasEm(x,false); desenharBorda(x); desenharBaloes(x,S.baloes,Math.max(S.dim.w,S.dim.h));
   if(f) x.restore();
   c.toBlob(function(b){ baixar(b,(S&&S.opts.arquivo||"painel")+".png"); },"image/png");
 }
 
+function atualizarPaginaNoEditor(res,b,limpar,limparPainel){
+  var s=S, montar=s.opts&&s.opts.refazerFundoPagina;
+  /* Atualiza a interface já; a composição visual corre depois e nunca bloqueia os botões. */
+  if(res.removida&&limpar) limpar(res.removida);
+  if(res.painelRemovido&&limparPainel) limparPainel(res.painelRemovido);
+  listaPaginasEditor(); pedir(true);
+  if(res.mensagem&&s.opts&&s.opts.aviso) s.opts.aviso(res.mensagem);
+  if(!res.recarregar||typeof montar!=="function") return;
+  var revisao=(s.revisaoPagina||0)+1;
+  s.revisaoPagina=revisao;
+  Promise.resolve(montar()).then(function(base){
+    if(S!==s||s.revisaoPagina!==revisao) return;
+    if(base) s.fundo=base;
+    pedir(true);
+  }).catch(function(err){
+    console.error("atualizar página:",err);
+    if(s.opts&&s.opts.aviso) s.opts.aviso("A página foi criada; a prévia será atualizada ao reabrir.");
+  });
+}
+function executarEdicaoPagina(tipo,valor,b){
+  if(!S||!S.opts||!S.opts.editarPagina||S.trocandoPagina) return;
+  var editar=S.opts.editarPagina, ir=S.opts.irPagina, limpar=S.opts.limparPaginaRemovida, limparPainel=S.opts.limparPainelRemovido;
+  var res=editar(tipo,valor);
+  if(!res||typeof res.indice!=="number") return;
+  if(res.recarregar||res.atualizarUI){ atualizarPaginaNoEditor(res,b,limpar,limparPainel); return; }
+  S.trocandoPagina=true;
+  if(b){ b.disabled=true; b.textContent="Abrindo…"; }
+  sair(function(){
+    if(res.removida&&limpar) limpar(res.removida);
+    if(res.painelRemovido&&limparPainel) limparPainel(res.painelRemovido);
+    if(ir) ir(res.indice);
+  });
+}function confirmarAcaoPagina(b,texto,tipo,valor){
+  if(!b) return;
+  if(b.getAttribute("data-armado")==="1"){
+    b.removeAttribute("data-armado"); executarEdicaoPagina(tipo,valor,b); return;
+  }
+  var original=b.textContent;
+  b.setAttribute("data-armado","1"); b.textContent=texto;
+  setTimeout(function(){
+    if(b&&b.isConnected&&b.getAttribute("data-armado")==="1"){
+      b.removeAttribute("data-armado"); b.textContent=original;
+    }
+  },2600);
+}
+function escolherQuantidadeNoEditor(tipo,b,paginaDestino){
+  if(!S||!S.opts||!S.opts.escolherQuantidade) return;
+  S.opts.escolherQuantidade(b,tipo,function(valor){
+    if(typeof paginaDestino==="number") valor.paginaDestino=paginaDestino;
+    executarEdicaoPagina(tipo,valor,b);
+  });
+}
 /* ---------- eventos da interface ---------- */
 function acao(n,b){
   if(!S) return;
   switch(n){
-    case "voltar": sair(); break;
+    case "voltar": fecharJanelaPagina(); sair(); break;
+    case "pagina-gerenciar": abrirJanelaPagina("conjuntos"); break;
+    case "pagina-opcoes": abrirJanelaPagina("editar"); break;
+    case "pagina-modal-fechar": fecharJanelaPagina(); break;
+    case "pagina-ant": moverPaginaEditor(-1); break;
+    case "pagina-prox": moverPaginaEditor(1); break;
+    case "painel-editar":
+      var seletorPainel=E.paginaConteudo&&E.paginaConteudo.querySelector("[data-ed-painel]");
+      abrirPainelNoEditor(seletorPainel&&seletorPainel.value); break;
+    case "pagina-adicionar": escolherQuantidadeNoEditor("painel",b); break;
+    case "pagina-nova": escolherQuantidadeNoEditor("nova",b); break;
+    case "pagina-duplicar": executarEdicaoPagina("duplicar",null,b); break;
+    case "pagina-apagar": confirmarAcaoPagina(b,"Confirmar apagar","apagar",null); break;
+    case "painel-duplicar":
+      executarEdicaoPagina("painel-duplicar",{indice:+b.getAttribute("data-ed-painel")},b); break;
+    case "painel-apagar":
+      confirmarAcaoPagina(b,"Confirmar apagar","painel-apagar",{indice:+b.getAttribute("data-ed-painel")}); break;
     case "ant": if(S.opts.ant){ var a=S.opts.ant; sair(a); } break;
     case "prox": if(S.opts.prox){ var p=S.opts.prox; sair(p); } break;
     case "desfazer": desfazer(); break;
@@ -2889,6 +3595,30 @@ function acao(n,b){
     case "zoom-": zoomCentro(0.8); break;
     case "ajustar": ajustar(); break;
     case "preencher": preencherArea(); break;
+    case "foco": alternarModoFoco(); break;
+    case "img-importar": if(E.imagemArquivo) E.imagemArquivo.click(); break;
+    case "img-converter-ferr": transformarFotoDesenho("ferramenta",CFG.imgFerr); break;
+    case "img-tom-desenho":
+      if(E.tomDesenho){ E.tomDesenho.value=CFG.tomDesenho; E.tomDesenho.click(); }
+      break;
+    case "img-ajustar-folha": ajustarImagemFolha("contain"); break;
+    case "img-preencher-folha": ajustarImagemFolha("cover"); break;
+    case "img-desenho-lapis": transformarFotoDesenho("lapis"); break;
+    case "img-desenho-caneta": transformarFotoDesenho("caneta"); break;
+    case "img-desenho-nanquim": transformarFotoDesenho("nanquim"); break;
+    case "img-desenho-colorido": transformarFotoDesenho("colorido"); break;
+    case "img-desenho-aquarela": transformarFotoDesenho("aquarela"); break;
+    case "img-remover": retirarImagemAtiva(); break;
+    case "img-original": restaurarImagemOriginal(); break;
+    case "img-saturacao": ajustarSaturacao(); break;
+    case "img-filtro-sepia": aplicarFiltroImagem("sepia"); break;
+    case "img-filtro-quente": aplicarFiltroImagem("quente"); break;
+    case "img-filtro-frio": aplicarFiltroImagem("frio"); break;
+    case "img-filtro-contraste": aplicarFiltroImagem("contraste"); break;
+    case "img-filtro-vintage": aplicarFiltroImagem("vintage"); break;
+    case "img-filtro-negativo": aplicarFiltroImagem("negativo"); break;
+    case "img-cinza": converterCamadaCinza(); break;
+    case "img-recortar": recortarCamadaSelecao(); break;
     case "png": exportar(); break;
     case "cortar": alternarCorte(); break;
     case "lat": E.lat.classList.toggle("aberta"); break;
@@ -2912,18 +3642,35 @@ function acao(n,b){
     case "m-sel-tudo": selecionarTudo(); break;
     case "m-sel-nada": cancelarSel(); break;
     case "zoom100": zoomCentro(1/S.z); break;
-    case "ajuda": E.ajuda.classList.toggle("oculto"); break;
+    case "ajuda":
+      if(E.ajuda.classList.contains("oculto")){
+        fecharMenus(); E.ajuda.classList.remove("oculto");
+        E.ajuda.setAttribute("aria-hidden","false");
+        var fecharAjuda=E.ajuda.querySelector("[data-ed=ajuda-fechar]");
+        if(fecharAjuda) fecharAjuda.focus();
+      }else fecharAjuda();
+      break;
+    case "ajuda-fechar": fecharAjuda(); break;
     case "paineis-reset": ESTADO_PN={sim:{f:1}}; salvarPn(); aplicarPaineis(); atualizarMenus(); pedirNav(); break;
   }
   if(b&&b.blur) b.blur();
 }
+function fecharAjuda(){
+  if(!E.ajuda) return;
+  E.ajuda.classList.add("oculto");
+  E.ajuda.setAttribute("aria-hidden","true");
+  var gatilho=$ed&&$ed.querySelector('.ed-menu .ed-ml [data-ed="ajuda"]');
+  if(gatilho&&S) gatilho.focus();
+}
 function ligarEventos(){
   $ed.addEventListener("click",function(ev){
+    if(ev.target===E.ajuda){ fecharAjuda(); return; }
+    if(ev.target===E.paginaJanela){ fecharJanelaPagina(); return; }
     var mb=ev.target.closest(".ed-mb");
     if(mb){ if(mb.classList.contains("aberto")) fecharMenus(); else abrirMenu(mb); return; }
     var pt=ev.target.closest("[data-pn-tog]");
     if(pt){ alternarPainel(pt.getAttribute("data-pn-tog")); atualizarMenus(); return; }
-    if(ev.target.closest(".ed-ml")) fecharMenus();
+    if(ev.target.closest(".ed-ml")&&!ev.target.closest("select,input,label")) fecharMenus();
     var th=ev.target.closest(".pn-t");
     if(th&&!ev.target.closest("button,select,input,label")){ fecharPn(th.getAttribute("data-pn-t")); return; }
     var gp=ev.target.closest("[data-grp]");
@@ -2943,6 +3690,12 @@ function ligarEventos(){
       tm.blur(); return;
     }
     var b=ev.target.closest("[data-ed]");
+    var pgEd=ev.target.closest("[data-ed-pagina]");
+    if(pgEd){
+      var num=parseInt(pgEd.getAttribute("data-ed-pagina"),10);
+      if(!isNaN(num)){ pgEd.blur(); irPaginaEditor(num); }
+      return;
+    }
     if(b){ acao(b.getAttribute("data-ed"),b); return; }
     var f=ev.target.closest("[data-ferr]");
     if(f){ trocarFerr(f.getAttribute("data-ferr")); f.blur(); return; }
@@ -2991,6 +3744,7 @@ function ligarEventos(){
     else if(r==="pEstab"&&CFG.ajust[S.ferr]){ n=+t.value; CFG.ajust[S.ferr].estab=n; E.pEstabV.textContent=n; }
     else if(r==="pTol"){ CFG.tol=+t.value; E.pTolV.textContent=t.value; }
     else if(r==="cor"){ definirCor(t.value); }
+    else if(r==="tomDesenho"){ CFG.tomDesenho=t.value.toLowerCase(); }
     else if(r==="navZoom"){ var nz=0.05*Math.pow(320,(+t.value)/100); zoomEm(nz/S.z,S.pw/2,S.ph/2); }
     else if(r==="simN"){ CFG.simN=+t.value; E.simNV.textContent=t.value; pedir(false); }
     else if(r==="balTxt"){ balEdit(function(b){ b.txt=t.value; }); }
@@ -3004,8 +3758,21 @@ function ligarEventos(){
   $ed.addEventListener("change",function(ev){
     if(!S) return;
     var t=ev.target, r=t.getAttribute("data-r");
-    if(r==="tam") mudarTamanho(t.value);
+    if(t.hasAttribute("data-ed-layout")){ executarEdicaoPagina("layout",t.value,null); t.blur(); }
+    else if(r==="tam") mudarTamanho(t.value);
     else if(r==="forma"){ escolherForma(t.value); t.blur(); }
+    else if(r==="imgFerr"){
+      if(PINCEIS[t.value]){
+        CFG.imgFerr=t.value;
+        try{ localStorage.setItem("mesa.ed.imgFerr",CFG.imgFerr); }catch(e){}
+        aviso(nomeFerr(CFG.imgFerr)+" selecionada para converter imagens.");
+      }
+    }
+    else if(r==="tomDesenho"){
+      CFG.tomDesenho=t.value.toLowerCase();
+      try{ localStorage.setItem("mesa.ed.tomDesenho",CFG.tomDesenho); }catch(e){}
+      aviso("Tom "+CFG.tomDesenho.toUpperCase()+" escolhido para lápis, caneta e nanquim.");
+    }
     else if(r==="corHex"){
       var hv=t.value.trim(); if(hv[0]!=="#") hv="#"+hv;
       if(/^#[0-9a-f]{3}$/i.test(hv)) hv="#"+hv[1]+hv[1]+hv[2]+hv[2]+hv[3]+hv[3];
@@ -3027,6 +3794,11 @@ function ligarEventos(){
       if(C) mudarProp(C,{vis:t.checked});
     }
   });
+  if(E.imagemArquivo) E.imagemArquivo.addEventListener("change",function(ev){
+    var f=ev.target.files&&ev.target.files[0];
+    if(f) importarImagem(f);
+    ev.target.value="";
+  });
   E.over.addEventListener("pointerdown",onDown);
   E.over.addEventListener("pointermove",onMove);
   E.over.addEventListener("pointerup",onUp);
@@ -3038,23 +3810,30 @@ function ligarEventos(){
     new ResizeObserver(function(){
       if(!S) return;
       ajustarCanvasPalco();
-      if(S.ajustado) ajustar(); else pedir(true);
+      if(S.ajustado){ if($ed&&$ed.classList.contains("modo-foco")) preencherModoFoco(); else ajustar(); }
+      else{ limitarNavegacao(); pedir(true); }
     }).observe(E.palco);
   }
   window.addEventListener("beforeunload",function(){ if(S&&S.sujo) salvarAgora(); });
   document.addEventListener("visibilitychange",function(){ if(document.hidden&&S&&S.sujo) salvarAgora(); });
+  document.addEventListener("fullscreenchange",function(){ if($ed&&$ed.classList.contains("modo-foco")&&!document.fullscreenElement) alternarModoFoco(false,false); });
 }
 
 /* ---------- teclado ---------- */
 function onKey(e){
   if(!S) return;
-  if(menuAberto()&&(e.key||"")==="Escape"){ e.stopPropagation(); fecharMenus(); return; }
-  if(!E.ajuda.classList.contains("oculto")&&(e.key||"")==="Escape"){ e.stopPropagation(); E.ajuda.classList.add("oculto"); return; }
+  if(!E.ajuda.classList.contains("oculto")&&(e.key||"")==="Escape"){ e.preventDefault(); e.stopPropagation(); fecharAjuda(); return; }
+  if($ed&&$ed.classList.contains("modo-foco")&&((e.key||"")==="Tab"||(e.key||"")==="Escape")){ e.preventDefault(); e.stopPropagation(); alternarModoFoco(false); return; }
+  if((e.key||"")==="Escape"&&sairPreencherTela()){ e.preventDefault(); e.stopPropagation(); return; }
+  if(menuAberto()&&(e.key||"")==="Escape"){ e.preventDefault(); e.stopPropagation(); fecharMenus(); return; }
   var t=e.target, tag=t&&t.tagName;
   if(tag==="TEXTAREA"||tag==="SELECT"||(tag==="INPUT"&&(t.type==="text"||t.type==="number"))) return;
   var ctrl=e.ctrlKey||e.metaKey, k=(e.key||"").toLowerCase();
   /* Alt + tecla escolhe diretamente uma ponta/graduação específica. */
   if(e.altKey && !ctrl){
+    if(S.modoPagina&&((e.key||"")==="PageUp"||(e.key||"")==="PageDown")){
+      e.preventDefault(); e.stopPropagation(); moverPaginaEditor((e.key||"")==="PageUp"?-1:1); return;
+    }
     var idAtalhoDetalhado=MAPA_ATALHOS_DETALHADOS[k];
     if(idAtalhoDetalhado){ e.preventDefault(); e.stopPropagation(); trocarFerr(idAtalhoDetalhado); return; }
   }
@@ -3097,6 +3876,20 @@ function onKeyUp(e){
 
 /* painel pronto (camadas + balões) como canvas; usado nas prévias e nas exportações */
 function compor(id,painel,maxLado,comBorda){
+  /* A prévia da página usa as camadas ainda abertas no editor, inclusive antes de salvar. */
+  if(S&&S.painel&&S.painel.id===id){
+    var dimAtual=dimensoes(TAMANHOS[painel&&painel.tamanho]?painel.tamanho:PADRAO_TAM);
+    var fatorAtual=Math.min(1,maxLado/Math.max(dimAtual.w,dimAtual.h));
+    var atual=novoCanvas(Math.max(1,Math.round(dimAtual.w*fatorAtual)),Math.max(1,Math.round(dimAtual.h*fatorAtual))), xa=atual.getContext("2d");
+    if(!(painel&&painel.sobreposto)){ xa.fillStyle="#fff"; xa.fillRect(0,0,atual.width,atual.height); }
+    xa.save(); xa.scale(fatorAtual,fatorAtual); xa.imageSmoothingQuality="high";
+    camadasEm(xa,true,S);
+    desenharBaloes(xa,S.baloes,Math.max(dimAtual.w,dimAtual.h));
+    var bordaAtualComposta=painel&&typeof painel.borda==="number"?painel.borda:BORDA_PADRAO;
+    if(comBorda&&bordaAtualComposta>0){ xa.strokeStyle="#111"; xa.lineWidth=bordaAtualComposta; xa.strokeRect(bordaAtualComposta/2,bordaAtualComposta/2,dimAtual.w-bordaAtualComposta,dimAtual.h-bordaAtualComposta); }
+    xa.restore();
+    return Promise.resolve(atual);
+  }
   return bdLer(id).then(function(rec){
     if(!rec||!rec.camadas||!rec.camadas.length) return null;
     var chave=TAMANHOS[painel&&painel.tamanho]?painel.tamanho:PADRAO_TAM, dim=dimensoes(chave);
@@ -3104,7 +3897,7 @@ function compor(id,painel,maxLado,comBorda){
     var ox=Math.round((dim.w-(rec.w||dim.w))/2), oy=Math.round((dim.h-(rec.h||dim.h))/2);
     return Promise.all(rec.camadas.map(function(c){ return decodificar(c.blob); })).then(function(imgs){
       var cv=novoCanvas(Math.max(1,Math.round(dim.w*k)),Math.max(1,Math.round(dim.h*k))), x=cv.getContext("2d");
-      x.fillStyle="#fff"; x.fillRect(0,0,cv.width,cv.height);
+      if(!(painel&&painel.sobreposto)){ x.fillStyle="#fff"; x.fillRect(0,0,cv.width,cv.height); }
       x.save(); x.scale(k,k); x.imageSmoothingQuality="high";
       rec.camadas.forEach(function(c,i){
         if(c.vis===false||!imgs[i]) return;
@@ -3125,7 +3918,7 @@ function compor(id,painel,maxLado,comBorda){
 /* prévia em boa resolução (usada na lista de painéis do roteiro) */
 function previa(id,painel){
   return compor(id,painel,1100,false).then(function(cv){
-    return cv?new Promise(function(res){ cv.toBlob(res,"image/jpeg",0.86); }):null;
+    return cv?new Promise(function(res){ cv.toBlob(res,painel&&painel.sobreposto?"image/png":"image/jpeg",0.86); }):null;
   });
 }
 if(document.fonts&&document.fonts.load){
@@ -3187,9 +3980,11 @@ function opcoesTamanho(valor){
 }
 
 /* ========== estado ========== */
-var db=null, baixador=null, base="roteiros/local";
+var db=null, dbLocal=null, baixador=null, base="roteiros/local", baseLocal="roteiros/local", contaNuvemPronta=false, nuvemAtiva=false;
 var obras=[], caps=[], obraAtual=null, capAtual=null, doc=null;
 var pendente=null, salvando=false, sujo=false;
+var notas=[], notaAtual=null, modoNotas=false;
+var pendenteNota=null, salvandoNota=false, notaSuja=false;
 
 var el=function(id){return document.getElementById(id);};
 var tela=el("tela"), estado=el("estado");
@@ -3204,17 +3999,133 @@ function aviso(txt){
   clearTimeout(tAviso); tAviso=setTimeout(function(){a.classList.add("oculto");},2600);
 }
 
-/* ========== armazenamento ========== */
+/* ========== armazenamento e sincronização ========== */
+function dadosProfundos(v){ return JSON.parse(JSON.stringify(v)); }
+async function contarDocumentos(banco,raiz){
+  var grupos=["obras","capitulos","notas"], total=0;
+  for(var i=0;i<grupos.length;i++){
+    var lista=await banco.collection(raiz+"/"+grupos[i]).get(); total+=lista.size||0;
+  }
+  return total;
+}
+async function copiarBibliotecaLocal(bancoDestino,raizDestino){
+  var grupos=["obras","capitulos","notas"];
+  for(var i=0;i<grupos.length;i++){
+    var grupo=grupos[i], lista=await dbLocal.collection(baseLocal+"/"+grupo).get();
+    for(var j=0;j<lista.docs.length;j++){
+      var item=lista.docs[j];
+      await bancoDestino.collection(raizDestino+"/"+grupo).doc(item.id).set(dadosProfundos(item.data()));
+    }
+  }
+}
+function atualizarContaNuvem(){
+  var b=el("btContaNuvem"), rotulo=el("estadoNuvem"), n=window.MesaNuvem;
+  if(!b||!rotulo) return;
+  if(!n||!n.disponivel()){
+    b.disabled=true; b.textContent="Nuvem indisponível";
+    rotulo.textContent="Use a versão publicada"; return;
+  }
+  var u=n.usuario();
+  if(u){
+    b.disabled=false; b.textContent="Sair";
+    b.title="Sair de "+(u.email||"sua conta");
+    rotulo.textContent=nuvemAtiva?("Nuvem: "+(u.displayName||u.email||"conectada")):"Nuvem aguardando regras";
+  }else if(location.protocol==="file:"){
+    b.disabled=false; b.textContent="Entrar com Google";
+    b.title="Publique o site no Firebase Hosting antes de entrar";
+    rotulo.textContent="Publique para sincronizar";
+  }else{
+    b.disabled=false; b.textContent="Entrar com Google";
+    b.title="Entrar para sincronizar em outros aparelhos";
+    rotulo.textContent="Somente neste aparelho";
+  }
+}
+async function usarContaNuvem(){
+  var n=window.MesaNuvem, u=n&&n.usuario(), remoto=n&&n.banco();
+  if(!u||!remoto) return false;
+  var raizNuvem="usuarios/"+u.uid;
+  try{
+    var totalNuvem=await contarDocumentos(remoto,raizNuvem);
+    var totalLocal=await contarDocumentos(dbLocal,baseLocal);
+    if(!totalNuvem&&totalLocal){
+      var enviar=window.confirm("Sua nuvem está vazia. Copiar agora as obras, capítulos, páginas, painéis e notas deste aparelho? Os desenhos em camadas continuam guardados apenas neste aparelho.");
+      if(enviar){
+        estado.textContent="enviando para a nuvem…";
+        await copiarBibliotecaLocal(remoto,raizNuvem);
+      }
+    }
+    db=remoto; base=raizNuvem; nuvemAtiva=true; return true;
+  }catch(e){
+    db=dbLocal; base=baseLocal; nuvemAtiva=false;
+    aviso("A conta entrou, mas a nuvem ainda precisa das regras de segurança do Firestore.");
+    return false;
+  }
+}
 async function iniciarArmazenamento(){
-  db=window.__mesaArmazenamento.db;
+  dbLocal=window.__mesaArmazenamento.db;
+  db=dbLocal; base=baseLocal;
   baixador=window.__mesaArmazenamento.baixador;
   if(!window.__mesaArmazenamento.temLocalStorage){
     aviso("Este navegador bloqueou o armazenamento local — as mudanças não vão persistir ao recarregar.");
+  }
+  if(window.MesaNuvem){
+    await window.MesaNuvem.pronto;
+    await usarContaNuvem();
+    atualizarContaNuvem();
+    window.MesaNuvem.aoMudar(function(){
+      atualizarContaNuvem();
+      if(contaNuvemPronta) window.location.reload();
+    });
+    contaNuvemPronta=true;
   }
 }
 
 function colObras(){ return db.collection(base+"/obras"); }
 function colCaps(){ return db.collection(base+"/capitulos"); }
+function colNotas(){ return db.collection(base+"/notas"); }
+
+/* Backup portátil: dados do roteiro viajam entre o arquivo local e a versão publicada.
+   Os pixels das camadas continuam no IndexedDB do aparelho de origem. */
+async function criarBackup(){
+  var grupos=["obras","capitulos","notas"], pacote={versao:1,criadoEm:Date.now(),obras:[],capitulos:[],notas:[]};
+  if(sujo) await salvar();
+  if(notaSuja) await salvarNota();
+  for(var i=0;i<grupos.length;i++){
+    var grupo=grupos[i], lista=await db.collection(base+"/"+grupo).get();
+    pacote[grupo]=lista.docs.map(function(item){ return {id:item.id,dados:dadosProfundos(item.data())}; });
+  }
+  return pacote;
+}
+async function baixarBackup(){
+  if(!baixador){ aviso("Download indisponível neste navegador."); return; }
+  try{
+    var pacote=await criarBackup();
+    await baixador.save({filename:"mesa-de-roteiro-backup-"+new Date().toISOString().slice(0,10)+".json",data:JSON.stringify(pacote,null,2)});
+    aviso("Backup baixado. Guarde esse arquivo em um local seguro.");
+  }catch(e){ aviso("Não foi possível criar o backup."); }
+}
+async function importarBackupArquivo(arquivo){
+  if(!arquivo) return;
+  try{
+    var pacote=JSON.parse(await arquivo.text()), grupos=["obras","capitulos","notas"], total=0;
+    for(var i=0;i<grupos.length;i++){
+      if(!Array.isArray(pacote[grupos[i]])) throw new Error("formato");
+      total+=pacote[grupos[i]].length;
+    }
+    if(!window.confirm("Importar "+total+" item(ns)? Itens com o mesmo nome serão atualizados. Nada será apagado.")) return;
+    estado.textContent="importando backup…";
+    for(var g=0;g<grupos.length;g++){
+      var itens=pacote[grupos[g]];
+      for(var j=0;j<itens.length;j++){
+        if(!itens[j]||!itens[j].id||!itens[j].dados) throw new Error("formato");
+        await db.collection(base+"/"+grupos[g]).doc(itens[j].id).set(dadosProfundos(itens[j].dados));
+      }
+    }
+    await carregarListas();
+    desenharLateral(); desenhar(); atualizarPersonagens();
+    aviso("Backup importado com sucesso.");
+  }catch(e){ aviso("Esse arquivo não é um backup válido da Mesa de Roteiro."); }
+}
 
 async function carregarListas(){
   if(!db) return;
@@ -3225,6 +4136,11 @@ async function carregarListas(){
     var v=d.data();
     return {id:d.id,obraId:v.obraId,numero:v.numero,titulo:v.titulo,
             nPaineis:contarPaineis(v.paginas),atualizadoEm:v.atualizadoEm||0};
+  });
+  var sn=await colNotas().orderBy("atualizadoEm","desc").get();
+  notas=sn.docs.map(function(d){
+    var v=d.data();
+    return {id:d.id,titulo:v.titulo||"",texto:v.texto||"",criadoEm:v.criadoEm||0,atualizadoEm:v.atualizadoEm||0};
   });
 }
 
@@ -3266,8 +4182,123 @@ async function salvar(){
   if(sujo){ clearTimeout(pendente); pendente=setTimeout(salvar,900); }
 }
 
+/* ========== notas livres ========== */
+function notaObj(idNota){
+  return notas.filter(function(n){ return n.id===idNota; })[0]||null;
+}
+function dataNota(v,completa){
+  if(!v) return "agora";
+  try{
+    return new Date(v).toLocaleString("pt-BR",completa
+      ? {day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"}
+      : {day:"2-digit",month:"2-digit"});
+  }catch(e){ return "agora"; }
+}
+function marcarNotaSuja(){
+  notaSuja=true; estado.textContent="não salvo";
+  clearTimeout(pendenteNota);
+  pendenteNota=setTimeout(salvarNota,700);
+}
+async function salvarNota(){
+  if(!db||!notaAtual||salvandoNota||!notaSuja) return;
+  var n=notaObj(notaAtual); if(!n) return;
+  salvandoNota=true; estado.textContent="salvando…";
+  try{
+    n.atualizadoEm=Date.now();
+    await colNotas().doc(n.id).set({
+      titulo:n.titulo||"", texto:n.texto||"", criadoEm:n.criadoEm||n.atualizadoEm,
+      atualizadoEm:n.atualizadoEm
+    });
+    notaSuja=false; estado.textContent="salvo";
+    notas.sort(function(a,b){ return (b.atualizadoEm||0)-(a.atualizadoEm||0); });
+    desenharNotasLateral();
+  }catch(e){
+    estado.textContent="erro ao salvar";
+    aviso("Não foi possível salvar a nota. O texto continua na tela — tente novamente em instantes.");
+  }
+  salvandoNota=false;
+  if(notaSuja){ clearTimeout(pendenteNota); pendenteNota=setTimeout(salvarNota,900); }
+}
+async function abrirNotas(){
+  if(sujo){ clearTimeout(pendente); await salvar(); }
+  modoNotas=true;
+  if(!notaAtual&&notas.length) notaAtual=notas[0].id;
+  desenharLateral(); desenhar(); alternarLateral(false);
+}
+async function criarNota(){
+  if(!db){ aviso("Sem armazenamento disponível nesta visualização."); return; }
+  if(sujo){ clearTimeout(pendente); await salvar(); }
+  if(notaSuja){ clearTimeout(pendenteNota); await salvarNota(); }
+  var agora=Date.now(), n={titulo:"Sem título",texto:"",criadoEm:agora,atualizadoEm:agora};
+  var ref=colNotas().doc(id("n"));
+  try{ await ref.set(n); }
+  catch(e){ aviso("Não foi possível criar a nota. Tente novamente."); return; }
+  n.id=ref.path.split("/").pop(); notas.unshift(n);
+  modoNotas=true; notaAtual=n.id; notaSuja=false;
+  estado.textContent="salvo";
+  desenharLateral(); desenhar(); alternarLateral(false);
+  requestAnimationFrame(function(){ var campo=el("notaTitulo"); if(campo){ campo.focus(); campo.select(); } });
+}
+async function abrirNota(idNota){
+  if(!notaObj(idNota)) return;
+  if(notaSuja){ clearTimeout(pendenteNota); await salvarNota(); }
+  modoNotas=true; notaAtual=idNota; notaSuja=false;
+  estado.textContent="salvo";
+  desenharLateral(); desenhar(); alternarLateral(false);
+}
+async function voltarEntrada(){
+  if(sujo){ clearTimeout(pendente); await salvar(); }
+  if(notaSuja){ clearTimeout(pendenteNota); await salvarNota(); }
+  modoNotas=false; doc=null; capAtual=null; pgAtual=0; selPainel=null;
+  estado.textContent="";
+  desenharLateral(); desenhar();
+  tela.scrollTop=0;
+}
+async function apagarNota(idNota){
+  if(!db||!notaObj(idNota)) return;
+  if(notaAtual===idNota&&notaSuja){ clearTimeout(pendenteNota); await salvarNota(); }
+  try{ await colNotas().doc(idNota).delete(); }
+  catch(e){ aviso("Não foi possível apagar a nota. Tente novamente."); return; }
+  notas=notas.filter(function(n){ return n.id!==idNota; });
+  if(notaAtual===idNota) notaAtual=notas.length?notas[0].id:null;
+  notaSuja=false; estado.textContent="salvo";
+  desenharLateral(); if(modoNotas) desenhar();
+  aviso("Nota apagada.");
+}
+function desenharNotas(){
+  tela.classList.remove("modo-pag");
+  el("blocoPaginas").classList.add("oculto");
+  el("blocoInfo").classList.add("oculto");
+  el("tituloCap").disabled=true;
+  el("tituloCap").value="Notas";
+  el("btExportar").disabled=true;
+  var n=notaObj(notaAtual);
+  if(!n){
+    tela.innerHTML='<div class="centro"><button type="button" class="bt" data-nota-acao="entrada">← Voltar à entrada</button><h2 style="margin-top:18px">Suas notas</h2><p>Guarde ideias, lembretes ou qualquer texto em notas separadas.</p><button type="button" class="bt forte" data-nota-acao="nova">Criar nota</button></div>';
+    return;
+  }
+  tela.innerHTML='<div class="folha notas-tela">'+
+    '<div class="notas-cabeca"><button type="button" class="bt" data-nota-acao="entrada">← Entrada</button><h2>Notas</h2><button type="button" class="bt forte" data-nota-acao="nova">+ Nova nota</button><button type="button" class="bt risco" data-nota-acao="apagar" data-nota-id="'+esc(n.id)+'">Apagar</button></div>'+
+    '<article class="nota-editor">'+
+      '<input id="notaTitulo" type="text" data-nota-campo="titulo" value="'+esc(n.titulo)+'" placeholder="Título da nota" aria-label="Título da nota">'+
+      '<textarea id="notaTexto" data-nota-campo="texto" placeholder="Escreva o que quiser…" aria-label="Conteúdo da nota">'+esc(n.texto)+'</textarea>'+
+      '<p class="nota-meta">Salvamento automático · última alteração '+esc(dataNota(n.atualizadoEm,true))+'</p>'+ 
+    '</article></div>';
+}
+function desenharNotasLateral(){
+  var host=el("listaNotas"); if(!host) return;
+  host.innerHTML=notas.length ? notas.map(function(n){
+    var titulo=(n.titulo||"").trim()||"Sem título";
+    return '<div class="nota-item-wrap">'+
+      '<button type="button" class="item" data-nota="'+esc(n.id)+'" aria-current="'+(modoNotas&&notaAtual===n.id)+'">'+
+        '<span class="rotulo">'+esc(titulo)+'</span><span class="contagem">'+esc(dataNota(n.atualizadoEm,false))+'</span></button>'+
+      '<button type="button" class="bt-texto risco" data-nota-acao="apagar" data-nota-id="'+esc(n.id)+'" aria-label="Apagar nota" title="Apagar nota">apagar</button>'+ 
+    '</div>';
+  }).join("") : '<p class="vazio-lateral">Nenhuma nota ainda.</p>';
+}
 /* ========== lateral ========== */
 function desenharLateral(){
+  desenharNotasLateral();
   var lo=el("listaObras");
   if(!obras.length){
     lo.innerHTML='<p class="vazio-lateral">Nenhuma obra ainda. Crie a primeira para começar.</p>';
@@ -3321,6 +4352,8 @@ function fecharFormObra(){
 async function criarObra(t){
   t=(t||"").trim(); if(!t) return;
   if(!db){ aviso("Sem armazenamento disponível nesta visualização."); return; }
+  if(notaSuja){ clearTimeout(pendenteNota); await salvarNota(); }
+  modoNotas=false;
   var o={titulo:t,criadoEm:Date.now(),personagens:[]};
   var ref=colObras().doc(id("o"));
   try{ await ref.set(o); }catch(e){ aviso("Não deu para criar a obra. Tente de novo."); return; }
@@ -3397,6 +4430,8 @@ async function removerPersonagem(nome){
 
 async function criarCapitulo(){
   if(!obraAtual||!db) return;
+  if(notaSuja){ clearTimeout(pendenteNota); await salvarNota(); }
+  modoNotas=false;
   var meus=caps.filter(function(c){return c.obraId===obraAtual;});
   var novo={
     obraId:obraAtual, numero:meus.length+1, titulo:"",
@@ -3424,6 +4459,7 @@ function duplicarPainel(pn){
     falas:(pn.falas||[]).map(function(f){return {quem:f.quem||"",tipo:f.tipo||"fala",texto:f.texto||""};}),
     sfx:pn.sfx||"", nota:pn.nota||""
   };
+  if(pn.sobreposto) c.sobreposto=true;
   if(typeof pn.borda==="number") c.borda=pn.borda;
   if(formaValida(pn.forma)) c.forma=pn.forma.slice();
   if(pn.recolhido) c.recolhido=true;
@@ -3437,12 +4473,19 @@ function duplicarPainel(pn){
 function apagarDesenhosDe(paginas){
   (paginas||[]).forEach(function(pg){
     (pg.paineis||[]).forEach(function(pn){ window.EditorDesenho.apagar(pn.id); });
+    window.EditorDesenho.apagar(idArtePagina(pg));
   });
 }
 function duplicarPagina(pg){
   var c={id:id("pg"),paineis:(pg.paineis||[]).map(duplicarPainel)};
   if(pg.visual) c.visual=JSON.parse(JSON.stringify(pg.visual));
   if(pg.layoutPag) c.layoutPag=pg.layoutPag;
+  if(pg.composicaoLivre){
+    c.composicaoLivre={};
+    (pg.paineis||[]).forEach(function(pn,i){
+      if(pg.composicaoLivre[pn.id]) c.composicaoLivre[c.paineis[i].id]=JSON.parse(JSON.stringify(pg.composicaoLivre[pn.id]));
+    });
+  }
   return c;
 }
 function resumoPainel(pn){
@@ -3455,6 +4498,28 @@ function novaPagina(qtd){
   var n=qtd||1, paineis=[], i;
   for(i=0;i<n;i++) paineis.push(novoPainel());
   return {id:id("pg"),paineis:paineis};
+}
+/* atalhos de composição disponíveis diretamente nas informações do painel */
+var FORMAS_RAPIDAS_PAINEL={
+  ret:null,
+  diagonal:[0.16,0,1,0,0.84,1,0,1],
+  trapezio:[0.18,0,0.82,0,1,1,0,1],
+  estilha:[0.13,0,0.88,0,1,0.24,0.83,1,0.13,1,0,0.76]
+};
+function mesmaFormaRapida(a,b){
+  if(!a&&!b) return true;
+  if(!a||!b||a.length!==b.length) return false;
+  for(var i=0;i<a.length;i++) if(Math.abs(a[i]-b[i])>0.0001) return false;
+  return true;
+}
+function formaRapidaAtual(pn){
+  var f=formaPainel(pn), ks=Object.keys(FORMAS_RAPIDAS_PAINEL);
+  for(var i=0;i<ks.length;i++) if(mesmaFormaRapida(f,FORMAS_RAPIDAS_PAINEL[ks[i]])) return ks[i];
+  return "custom";
+}
+function aplicarFormaRapida(pn,chave){
+  var f=FORMAS_RAPIDAS_PAINEL[chave];
+  if(f) pn.forma=f.slice(); else delete pn.forma;
 }
 
 /* Constrói a frase-resumo de um painel a partir das escolhas feitas nele. */
@@ -3512,13 +4577,15 @@ function normalizarDocumento(d){
 
 async function abrirCapitulo(cid){
   if(sujo){ clearTimeout(pendente); await salvar(); }
+  if(notaSuja){ clearTimeout(pendenteNota); await salvarNota(); }
+  modoNotas=false;
   try{
     var s=await colCaps().doc(cid).get();
     if(!s.exists){ aviso("Capítulo não encontrado."); return; }
     doc=s.data(); doc.id=cid; capAtual=cid; obraAtual=doc.obraId;
     if(!doc.paginas||!doc.paginas.length) doc.paginas=[novaPagina()];
     normalizarDocumento(doc);
-    visHist={}; visAberto={}; pgAtual=0; selPainel=null;
+    pgAtual=0; selPainel=null;
     estado.textContent="salvo";
     desenharLateral(); desenhar(); atualizarPersonagens();
     alternarLateral(false);
@@ -3533,7 +4600,7 @@ function LS(d,r,a,b){ return {dir:d,ratio:r,a:a,b:b}; }
 var LAYOUTS_PAG={
   U6:{n:6,nome:"6 · 3 à esquerda + alto + 2 embaixo",build:function(){
     return LS("h",0.64,LS("v",0.47,LS("h",0.34,LF(),LS("h",0.44,LF(),LF())),LF()),LS("v",0.71,LF(),LF()));}},
-  U1:{n:1,nome:"1 · página cheia",build:function(){ return LF(); }},
+  U1:{n:1,nome:"Splash page · página inteira",build:function(){ return LF(); }},
   U2:{n:2,nome:"2 · um sobre o outro",build:function(){ return LS("h",0.5,LF(),LF()); }},
   U3:{n:3,nome:"3 · tiras",build:function(){ return LS("h",0.34,LF(),LS("h",0.5,LF(),LF())); }},
   U3b:{n:3,nome:"3 · 1 grande + 2",build:function(){ return LS("h",0.6,LF(),LS("v",0.5,LF(),LF())); }},
@@ -3569,8 +4636,27 @@ function layoutDaPagina(pg,np){
   }
   return no;
 }
-function celulasPagina(pg,np){
+function celulasBase(pg,np){
   var out=[]; rectsArvore(layoutDaPagina(pg,np),7,5,86,90,out); return out;
+}
+function limitarNumero(v,min,max){ return Math.max(min,Math.min(max,v)); }
+function garantirComposicaoLivre(pg){
+  var mapa=pg.composicaoLivre||(pg.composicaoLivre={}), base=celulasBase(pg,(pg.paineis||[]).length);
+  (pg.paineis||[]).forEach(function(pn,i){
+    if(mapa[pn.id]) return;
+    var c=base[i]||{x:7,y:5,w:86,h:90};
+    mapa[pn.id]={x:c.x,y:c.y,w:c.w,h:c.h,z:i+1};
+  });
+  return mapa;
+}
+function celulasPagina(pg,np){
+  var base=celulasBase(pg,np), mapa=pg.composicaoLivre, paineis=pg.paineis||[];
+  if(!mapa) return base;
+  return base.map(function(c,i){
+    var q=paineis[i]&&mapa[paineis[i].id]; if(!q) return c;
+    var w=limitarNumero(+q.w||c.w,8,98), h=limitarNumero(+q.h||c.h,8,98);
+    return {x:limitarNumero(+q.x||c.x,1,99-w),y:limitarNumero(+q.y||c.y,1,99-h),w:w,h:h,z:+q.z||i+1};
+  });
 }
 function opcoesLayoutPag(pg,np){
   var ids=Object.keys(LAYOUTS_PAG);
@@ -3583,6 +4669,7 @@ function opcoesLayoutPag(pg,np){
 }
 var pgAtual=0, selPainel=null;
 function desenhar(){
+  if(modoNotas){ desenharNotas(); return; }
   tela.classList.remove("modo-pag");
   el("blocoPaginas").classList.add("oculto"); el("blocoInfo").classList.add("oculto");
   el("tituloCap").disabled=!doc;
@@ -3591,18 +4678,29 @@ function desenhar(){
 
   if(!doc){
     if(!obras.length){
-      /* tela 1: crie sua obra e já caia direto na criação */
+      /* tela inicial: três caminhos claros para começar */
       tela.innerHTML=
-        '<div class="centro">'+
-        '<h2>Crie sua obra</h2>'+
-        '<p>Dê um nome e comece a escrever. Cada obra guarda seus capítulos e personagens; cada capítulo se divide em páginas, e cada página em painéis, que você também pode desenhar. Tudo é salvo sozinho.</p>'+
-        '<form id="formBoasVindas" class="form-obra" autocomplete="off">'+
-          '<input type="text" id="campoBoasVindas" placeholder="Nome da obra" maxlength="120" aria-label="Nome da obra">'+
-          '<button type="submit" class="bt forte">Criar e começar</button>'+
-        '</form>'+
-        '<p style="margin-top:20px"><strong>Ou desenhe sem criar uma obra</strong></p>'+
-        '<button type="button" class="bt" id="boasVindasDesenho">✎ Abrir Desenho Livre</button>'+
-        '</div>';
+        '<div class="centro entrada">'+
+        '<p class="entrada-sobrancelha">Mesa de Roteiro</p>'+
+        '<h2>Por onde você quer começar?</h2>'+
+        '<p class="entrada-intro">Crie sua história, registre uma ideia em uma nota ou comece a desenhar. Você pode alternar entre essas opções quando quiser.</p>'+
+        '<section class="entrada-criar" aria-labelledby="entradaCriarTitulo">'+
+          '<h3 id="entradaCriarTitulo">Criar uma obra</h3>'+
+          '<p>Use uma obra para organizar capítulos, personagens, páginas e painéis.</p>'+
+          '<form id="formBoasVindas" class="entrada-form" autocomplete="off">'+
+            '<div style="flex:1 1 260px"><label for="campoBoasVindas">Nome da obra</label><input type="text" id="campoBoasVindas" placeholder="Ex.: Minha história" maxlength="120" required></div>'+
+            '<button type="submit" class="bt forte">Criar obra</button>'+
+          '</form>'+
+        '</section>'+
+        '<section class="entrada-acoes" aria-label="Outras formas de começar">'+
+          '<button type="button" class="entrada-acao" id="boasVindasNotas">'+
+            '<span class="entrada-icone" aria-hidden="true">▤</span><span class="entrada-texto"><strong>Notas</strong><small>Escreva ideias, lembretes ou qualquer texto.</small></span><span class="entrada-seta" aria-hidden="true">→</span>'+
+          '</button>'+
+          '<button type="button" class="entrada-acao" id="boasVindasDesenho">'+
+            '<span class="entrada-icone" aria-hidden="true">✎</span><span class="entrada-texto"><strong>Desenho livre</strong><small>Desenhe sem criar uma obra antes.</small></span><span class="entrada-seta" aria-hidden="true">→</span>'+
+          '</button>'+
+        '</section></div>';
+      el("boasVindasNotas").onclick=abrirNotas;
       el("boasVindasDesenho").onclick=abrirDesenhoLivre;
       el("formBoasVindas").addEventListener("submit",function(ev){
         ev.preventDefault();
@@ -3612,15 +4710,23 @@ function desenhar(){
       });
       return;
     }
+    var acaoRoteiro=obraAtual
+      ? '<button type="button" class="entrada-acao entrada-acao-principal" id="comecar"><span class="entrada-icone" aria-hidden="true">+</span><span class="entrada-texto"><strong>Novo capítulo</strong><small>Crie o próximo capítulo da obra selecionada.</small></span><span class="entrada-seta" aria-hidden="true">→</span></button>'
+      : '<button type="button" class="entrada-acao entrada-acao-principal" id="escolherObra"><span class="entrada-icone" aria-hidden="true">☰</span><span class="entrada-texto"><strong>Escolher uma obra</strong><small>Abra o menu para selecionar uma obra ou criar uma nova.</small></span><span class="entrada-seta" aria-hidden="true">→</span></button>';
     tela.innerHTML=
-      '<div class="centro">'+
-      '<h2>Escolha um capítulo</h2>'+
-      '<p>Selecione um capítulo na lista ao lado, ou crie um novo. Você também pode desenhar livremente sem vincular o desenho a uma obra.</p>'+
-      '<button class="bt forte" id="comecar">Novo capítulo</button> '+
-      '<button class="bt" id="comecarDesenhoLivre">✎ Desenho Livre</button>'+
-      '</div>';
+      '<div class="centro entrada">'+
+      '<p class="entrada-sobrancelha">Mesa de Roteiro</p>'+
+      '<h2>Continue por onde preferir</h2>'+
+      '<p class="entrada-intro">Abra uma obra, crie um capítulo, registre uma ideia em Notas ou desenhe sem vínculo com o roteiro.</p>'+
+      '<section class="entrada-acoes" aria-label="Ações principais">'+
+        acaoRoteiro+
+        '<button type="button" class="entrada-acao" id="comecarNotas"><span class="entrada-icone" aria-hidden="true">▤</span><span class="entrada-texto"><strong>Notas</strong><small>Crie e organize anotações livres.</small></span><span class="entrada-seta" aria-hidden="true">→</span></button>'+
+        '<button type="button" class="entrada-acao" id="comecarDesenhoLivre"><span class="entrada-icone" aria-hidden="true">✎</span><span class="entrada-texto"><strong>Desenho livre</strong><small>Abra uma folha para desenhar agora.</small></span><span class="entrada-seta" aria-hidden="true">→</span></button>'+
+      '</section></div>';
     var b=el("comecar");
     if(b) b.onclick=criarCapitulo;
+    var eo=el("escolherObra"); if(eo) eo.onclick=function(){ alternarLateral(true); };
+    var bn=el("comecarNotas"); if(bn) bn.onclick=abrirNotas;
     var bl=el("comecarDesenhoLivre"); if(bl) bl.onclick=abrirDesenhoLivre;
     return;
   }
@@ -3631,6 +4737,8 @@ function desenhar(){
   var html='<div class="folha pag"><section class="pagina" data-pg="'+pg.id+'">'+
     '<div class="cabeca-pagina">'+
       '<h2>Painéis</h2>'+
+      '<span class="troca-pagina" aria-label="Trocar página"><button type="button" class="bt mini" data-acao="pagina-anterior" title="Página anterior (Alt + Page Up)"'+(ip===0?" disabled":"")+'>‹</button><span class="rotulo">Página '+(ip+1)+'/'+doc.paginas.length+'</span><button type="button" class="bt mini" data-acao="pagina-proxima" title="Próxima página (Alt + Page Down)"'+(ip===doc.paginas.length-1?" disabled":"")+'>›</button></span>'+
+      '<button class="bt mini forte" data-acao="abrir-editor-capitulo" title="Abrir a página composta no editor completo">Abrir no editor</button>'+
       '<button class="bt mini forte" data-acao="add-painel" data-pg="'+pg.id+'" aria-label="Adicionar painel" title="Adicionar painel">+</button>'+
       '<span class="info">Página '+(ip+1)+' · '+np+(np===1?" painel":" painéis")+'</span>'+
       '<select class="sel-layout" data-layout-pag="'+pg.id+'" aria-label="Layout da página">'+opcoesLayoutPag(pg,np)+'</select>'+
@@ -3640,18 +4748,14 @@ function desenhar(){
     '<div class="quadros" id="quadros"><div class="pag-papel" id="papel">';
   celulasPagina(pg,np).forEach(function(c,k){
     var pn=(pg.paineis||[])[k];
-    html+='<div class="cel" style="left:'+c.x+'%;top:'+c.y+'%;width:'+c.w+'%;height:'+c.h+'%">'+
+    html+='<div class="cel" style="left:'+c.x+'%;top:'+c.y+'%;width:'+c.w+'%;height:'+c.h+'%;z-index:'+(c.z||k+1)+'">'+
       (pn?htmlPainel(pn,k,ip,np):'<button type="button" class="quadro vazio-cel" data-acao="add-um" data-pg="'+pg.id+'" aria-label="Adicionar o painel '+(k+1)+'" title="Adicionar painel">+</button>')+
       '</div>';
   });
-  html+='</div></div>'+
-    '<details class="detalhes visual-pg" data-vis-pg="'+pg.id+'"'+(visAberto[pg.id]?" open":"")+'>'+
-      '<summary>Layout visual da página (frame de mangá para desenhar)</summary>'+
-      '<div data-vis-host></div></details>'+
+  html+='</div></div>'+ 
     '</section></div>';
   tela.innerHTML=html;
   tela.classList.add("modo-pag");
-  montarVisuais();
   carregarPrevias();
   desenharPaginasLat();
   mostrarInfo();
@@ -3720,7 +4824,7 @@ function htmlPainel(pn,i,ip,np){
       '<defs><clipPath id="'+cid+'"><polygon points="'+pts+'"/></clipPath></defs>'+
       '<polygon points="'+pts+'" clip-path="url(#'+cid+')"/></svg>';
   }
-  return '<article class="painel quadro'+(fm?" forma":"")+(semBorda?" sem-borda":"")+(pn.id===selPainel?" sel":"")+'" data-pn="'+pn.id+'" data-pg-idx="'+ip+'" style="--r:'+(tm.w/tm.h)+'">'+
+  return '<article class="painel quadro'+(fm?" forma":"")+(semBorda?" sem-borda":"")+(pn.sobreposto?" sobreposto":"")+(pn.id===selPainel?" sel":"")+'" data-pn="'+pn.id+'" data-pg-idx="'+ip+'" style="--r:'+(tm.w/tm.h)+'">'+
     '<button type="button" class="palco-painel'+(pn.miniatura?"":" vazio")+'"'+(fm?' style="clip-path:'+formaCss(fm)+'"':'')+' data-acao="desenhar-painel" aria-label="Abrir o editor de desenho do painel '+(i+1)+'">'+
       (pn.miniatura?'<img src="'+esc(pn.miniatura)+'" data-prev="'+pn.id+'" alt="Desenho do painel '+(i+1)+'">':(fm?'<span title="Sem desenho. Clique para desenhar.">✎</span>':'<span>Sem desenho.<br>Clique para desenhar.</span>'))+
     '</button>'+
@@ -3730,6 +4834,7 @@ function htmlPainel(pn,i,ip,np){
       '<div class="acoes">'+
         '<button class="bt mini" data-acao="subir" '+(i===0?"disabled":"")+' aria-label="Mover para trás" title="Mover para trás">←</button>'+
         '<button class="bt mini" data-acao="descer" '+(i===np-1?"disabled":"")+' aria-label="Mover para frente" title="Mover para frente">→</button>'+
+        '<button type="button" class="bt mini mover-painel" data-mover-painel="'+pn.id+'" aria-label="Arraste para mover este painel na página" title="Arraste para mover na página">mover</button>'+
         '<button class="bt mini" data-acao="duplicar-painel" aria-label="Duplicar este painel" title="Duplicar">⧉</button>'+
         '<button class="bt mini risco" data-acao="del-painel" aria-label="Apagar painel">✕</button>'+
       '</div>'+
@@ -3738,6 +4843,7 @@ function htmlPainel(pn,i,ip,np){
 
 function htmlInfo(pn,i,ip){
   var obraChars=(obraObjAtual()&&obraObjAtual().personagens)||[];
+  var semBorda=typeof pn.borda==="number"&&pn.borda<=0, formaAtual=formaRapidaAtual(pn);
   var h='<div class="painel info-lat" data-pn="'+pn.id+'" data-pg-idx="'+ip+'">'+
     '<div class="info-painel">'+
       '<div class="frase-resumo" data-frase>'+esc(fraseResumoPainel(pn))+'</div>'+
@@ -3763,6 +4869,17 @@ function htmlInfo(pn,i,ip){
             opcoesTamanho(pn.tamanho)+
           '</select></div>'+
       '</div>'+
+      '<fieldset class="opcoes-quadro"><legend>Quadro e diagramação</legend>'+
+        '<p>Arraste <b>mover</b> no próprio painel para reposicioná-lo. Use formas irregulares, deixe-o flutuar sobre os demais ou desenhe por cima em “Layout visual da página”.</p>'+
+        '<div class="chips">'+
+          '<button type="button" class="chip'+(semBorda?" ativo":"")+'" data-acao="toggle-borda" aria-pressed="'+(semBorda?"true":"false")+'">'+(semBorda?"Adicionar borda":"Sem borda")+'</button>'+
+          '<button type="button" class="chip'+(pn.sobreposto?" ativo":"")+'" data-acao="toggle-sobreposto" aria-pressed="'+(pn.sobreposto?"true":"false")+'">'+(pn.sobreposto?"Painel flutuante":"Flutuar por cima")+'</button>'+
+          '<button type="button" class="chip'+(formaAtual==="ret"?" ativo":"")+'" data-acao="forma-painel" data-forma="ret">Retangular</button>'+
+          '<button type="button" class="chip'+(formaAtual==="diagonal"?" ativo":"")+'" data-acao="forma-painel" data-forma="diagonal">Diagonal</button>'+
+          '<button type="button" class="chip'+(formaAtual==="trapezio"?" ativo":"")+'" data-acao="forma-painel" data-forma="trapezio">Trapézio</button>'+
+          '<button type="button" class="chip'+(formaAtual==="estilha"?" ativo":"")+'" data-acao="forma-painel" data-forma="estilha">Irregular</button>'+
+        '</div>'+ 
+      '</fieldset>'+
       '<div class="campo"><label>Personagens em cena</label><div class="chips" data-chips>'+
         (obraChars.length ? obraChars.map(function(nome){
           var ativo=(pn.personagens||[]).indexOf(nome)>-1;
@@ -3887,6 +5004,7 @@ function montarPopQtd(opts){
 }
 function abrirEscolhaQtd(ancora,cb,opts){
   montarPopQtd(opts);
+  popQtd.style.zIndex=document.body.classList.contains("ed-aberto")?"160":"60";
   popQtdCb=cb; popQtdAncora=ancora;
   var r=ancora.getBoundingClientRect();
   popQtd.classList.remove("oculto");
@@ -3957,6 +5075,135 @@ function abrirEditorDesenho(pid){
   });
 }
 
+/* Página composta: os painéis ficam unidos na base; a arte criada aqui é uma sobreposição independente. */
+function idArtePagina(pg){ return "pagina-inteira-"+pg.id; }
+function painelInteiroDaPagina(pg){ return {id:idArtePagina(pg),tamanho:"pagina",borda:0,sobreposto:true}; }
+function abrirEditorCapitulo(indice){
+  if(!doc||!window.EditorDesenho) return;
+  var ip=typeof indice==="number"?indice:pgAtual;
+  if(ip<0||ip>=doc.paginas.length) return;
+  var pg=doc.paginas[ip]; pgAtual=ip; selPainel=null;
+  var qtdPaineis=(pg.paineis||[]).length;
+  var layoutAtual=pg.layoutPag||(qtdPaineis<=6?"U6":"GR"+(qtdPaineis+(qtdPaineis%2)));
+  var arvoreAtual=arvoreDoLayout(layoutAtual);
+  if(!arvoreAtual||folhasDoLayout(arvoreAtual)<qtdPaineis){
+    layoutAtual=qtdPaineis<=6?"U6":"GR"+(qtdPaineis+(qtdPaineis%2));
+  }
+  var layoutsEditor=Object.keys(LAYOUTS_PAG).filter(function(chave){
+    return LAYOUTS_PAG[chave].n>=qtdPaineis;
+  }).map(function(chave){ return {id:chave,nome:LAYOUTS_PAG[chave].nome}; });
+  if(qtdPaineis>6) layoutsEditor.push({id:layoutAtual,nome:"Grade · "+qtdPaineis+" quadros"});
+  alternarLateral(false); aviso("Montando a página…");
+  /* A base é a página já diagramada. Ela aparece bloqueada; todo traço novo entra nas camadas acima. */
+  compPagina(pg,1143,true).then(function(base){
+    if(!doc||doc.paginas[ip]!==pg) return;
+    window.EditorDesenho.abrir({
+      painel:painelInteiroDaPagina(pg),
+      titulo:"Capítulo "+(doc.numero||1)+" · Página "+(ip+1)+" · sobreposição",
+      arquivo:(nomeObra()+" cap "+(doc.numero||1)+" pagina "+(ip+1)).replace(/[^\wÀ-ÿ \-]/g,"").trim(),
+      rotuloVoltar:"← Roteiro",
+      ariaVoltar:"Fechar o editor da página e voltar ao roteiro",
+      fundoPagina:base,
+      modoPagina:true,
+      paginas:doc.paginas.map(function(p,i){ return {nome:"Página "+(i+1),ativa:i===ip,nPaineis:(p.paineis||[]).length}; }),
+      layoutAtual:layoutAtual,
+      layouts:layoutsEditor,
+      obterPaginas:function(){
+        return doc.paginas.map(function(p,i){ return {nome:"Página "+(i+1),ativa:i===ip,nPaineis:(p.paineis||[]).length}; });
+      },
+      obterMiniaturaPagina:function(indice){
+        var alvo=doc&&doc.paginas[indice];
+        return alvo?compPagina(alvo,260,false):null;
+      },
+      obterPaineisPagina:function(){
+        return (pg.paineis||[]).map(function(p,i){ return {id:p.id,nome:"Painel "+(i+1)}; });
+      },
+      abrirPainel:function(id){
+        if((pg.paineis||[]).some(function(p){ return p.id===id; })) abrirEditorDesenho(id);
+      },
+      obterLayoutAtual:function(){ return pg.layoutPag||layoutAtual; },
+      obterLayouts:function(){
+        var n=(pg.paineis||[]).length, atual=pg.layoutPag||(n<=6?"U6":"GR"+(n+(n%2)));
+        var itens=Object.keys(LAYOUTS_PAG).filter(function(chave){ return LAYOUTS_PAG[chave].n>=n; }).map(function(chave){
+          return {id:chave,nome:LAYOUTS_PAG[chave].nome};
+        });
+        if(n>6&&itens.filter(function(item){ return item.id===atual; }).length===0){
+          itens.push({id:atual,nome:"Grade · "+n+" quadros"});
+        }
+        return itens;
+      },
+      escolherQuantidade:function(ancora,tipo,receber){
+        if(tipo==="painel"){
+          abrirEscolhaQtd(ancora,function(n,duplicarId){ receber({quantidade:n,duplicarId:duplicarId||""}); },{duplicaveis:listaDuplicaveis(20)});
+        }else if(tipo==="nova"){
+          abrirEscolhaQtd(ancora,function(n){ receber({quantidade:n}); });
+        }
+      },
+      refazerFundoPagina:function(){ return compPagina(pg,1143,true); },
+      editarPagina:function(tipo,valor){
+        if(!doc||doc.paginas[ip]!==pg) return false;
+        var atual=doc.paginas.indexOf(pg), lista=pg.paineis||[];
+        if(atual<0) return false;
+        if(tipo==="painel"){
+          var destino=valor&&parseInt(valor.paginaDestino,10), alvo=pg, quantidade, i, origem;
+          if(destino>=0&&destino<doc.paginas.length) alvo=doc.paginas[destino];
+          lista=alvo.paineis||[];
+          quantidade=Math.max(1,Math.min(24,parseInt(valor&&valor.quantidade,10)||1));
+          if(valor&&valor.duplicarId){
+            origem=acharPainelPorId(valor.duplicarId);
+            if(!origem) return false;
+            lista.push(duplicarPainel(origem));
+          }else for(i=0;i<quantidade;i++) lista.push(novoPainel());
+          if(alvo.composicaoLivre) garantirComposicaoLivre(alvo);
+          marcarSujo();
+          return {indice:atual,recarregar:alvo===pg,atualizarUI:true,
+            mensagem:alvo===pg?"Painel adicionado à página.":"Painéis adicionados à Página "+(destino+1)+"."};
+        }
+        if(tipo==="painel-apagar"){
+          var indiceApagar=valor&&parseInt(valor.indice,10);
+          if(!(indiceApagar>=0&&indiceApagar<lista.length)) indiceApagar=lista.length-1;
+          if(lista.length<2){ aviso("Mantenha pelo menos um painel nesta página."); return false; }
+          var painelRemovido=lista.splice(indiceApagar,1)[0];
+          if(pg.composicaoLivre) delete pg.composicaoLivre[painelRemovido.id];
+          marcarSujo(); return {indice:atual,recarregar:true,painelRemovido:painelRemovido};
+        }
+        if(tipo==="painel-duplicar"){
+          var indiceDuplicar=valor&&parseInt(valor.indice,10);
+          if(!(indiceDuplicar>=0&&indiceDuplicar<lista.length)) return false;
+          lista.splice(indiceDuplicar+1,0,duplicarPainel(lista[indiceDuplicar]));
+          marcarSujo(); return {indice:atual,recarregar:true};
+        }
+        if(tipo==="nova"){
+          var nPaineis=Math.max(1,Math.min(24,parseInt(valor&&valor.quantidade,10)||1));
+          doc.paginas.splice(atual+1,0,novaPagina(nPaineis));
+          marcarSujo(); return {indice:atual,recarregar:true,mensagem:"Nova página criada. Ela está disponível em Páginas."};
+        }
+        if(tipo==="duplicar"){
+          doc.paginas.splice(atual+1,0,duplicarPagina(pg));
+          marcarSujo(); return {indice:atual+1,trocar:true};
+        }
+        if(tipo==="layout"){
+          var novaArvore=arvoreDoLayout(valor);
+          if(!novaArvore||folhasDoLayout(novaArvore)<lista.length) return false;
+          pg.layoutPag=valor; marcarSujo(); return {indice:atual,recarregar:true};
+        }
+        if(tipo==="apagar"){
+          if(doc.paginas.length<2){ aviso("Mantenha pelo menos uma página no capítulo."); return false; }
+          doc.paginas.splice(atual,1);
+          marcarSujo(); return {indice:Math.min(atual,doc.paginas.length-1),trocar:true,removida:pg};
+        }
+        return false;
+      },
+      limparPaginaRemovida:function(removida){ apagarDesenhosDe([removida]); },
+      limparPainelRemovido:function(painel){ window.EditorDesenho.apagar(painel.id); },
+      irPagina:function(n){ abrirEditorCapitulo(n); },
+      aviso:aviso,
+      falas:function(){ return []; },
+      aoMudar:function(){ marcarSujo(); },
+      aoFechar:function(){ var st=tela.scrollTop; desenhar(); tela.scrollTop=st; }
+    });
+  }).catch(function(err){ console.error("montar página:",err); aviso("Não foi possível abrir esta página no editor."); });
+}
 /* ========== desenho livre, independente de obras e capítulos ========== */
 function abrirDesenhoLivre(){
   if(!window.EditorDesenho) return;
@@ -3966,12 +5213,15 @@ function abrirDesenhoLivre(){
     titulo:"Desenho Livre",
     arquivo:"desenho-livre",
     modoLivre:true,
+    rotuloVoltar:"← Entrada",
+    ariaVoltar:"Fechar desenho livre e voltar à entrada",
     aviso:aviso,
     falas:function(){return [];},
     aoMudar:function(){},
-    aoFechar:function(){}
+    aoFechar:voltarEntrada
   });
 }
+
 
 /* ========== layout visual: frames de mangá para redimensionar e desenhar ========== */
 /* Cada página pode ter um layout visual (pg.visual), salvo junto com o capítulo:
@@ -3992,11 +5242,9 @@ var LAYOUTS_VISUAIS={
   C:{nome:"C · 3 tiras",build:function(){return vS("h",0.34,vF(),vS("h",0.5,vF(),vF()));}},
   D:{nome:"D · grade 2×2",build:function(){return vS("h",0.5,vS("v",0.5,vF(),vF()),vS("v",0.5,vF(),vF()));}},
   E:{nome:"E · 1 grande + 2",build:function(){return vS("h",0.6,vF(),vS("v",0.5,vF(),vF()));}},
-  F:{nome:"F · página cheia",build:function(){return vF();}}
+  F:{nome:"F · Splash page (página inteira)",build:function(){return vF();}}
 };
 var LAYOUT_PADRAO="A";
-var vFerr={t:"p",c:"#111111",w:3};   /* ferramenta atual: lápis/borracha, cor, espessura */
-var visAberto={}, visHist={};
 
 function vDpr(){ return window.devicePixelRatio||1; }
 
@@ -4015,16 +5263,6 @@ function vDesenharTraco(ctx,s,cw,ch,esc){
     ctx.stroke();
   }
   ctx.restore();
-}
-
-/* mantém lápis/borracha, cor e espessura iguais em todas as páginas abertas */
-function vSincronizarBarras(){
-  var i, a=tela.querySelectorAll('[data-v="lapis"]'), b=tela.querySelectorAll('[data-v="borracha"]'),
-      c=tela.querySelectorAll('[data-v="cor"]'), w=tela.querySelectorAll('[data-v="tam"]');
-  for(i=0;i<a.length;i++) a[i].classList.toggle("forte",vFerr.t==="p");
-  for(i=0;i<b.length;i++) b[i].classList.toggle("forte",vFerr.t==="e");
-  for(i=0;i<c.length;i++) c[i].value=vFerr.c;
-  for(i=0;i<w.length;i++) w[i].value=vFerr.w;
 }
 
 /* ---------- exportação: página composta e PDF do capítulo ---------- */
@@ -4047,31 +5285,37 @@ function retsPagina(pg){
     if(n.dir==="v"){ var w1=w*n.ratio; pos(n.a,x,y,w1,h); pos(n.b,x+w1,y,w-w1,h); }
     else{ var h1=h*n.ratio; pos(n.a,x,y,w,h1); pos(n.b,x,y+h1,w,h-h1); }
   })(tree,0,0,1,1);
-  return {leaves:leaves,tracos:dados.s||{}};
+  return {leaves:leaves,tracos:dados.s||{},sobre:dados.o||[]};
 }
 
 /* página inteira, igual ao que aparece na tela: o layout escolhido da página, cada painel preenchendo o
    seu quadro (recortado na forma, se tiver) com desenho e balões. Painel sem desenho mostra o rabisco do layout visual. */
-async function compPagina(pg,W){
-  try{ if(document.fonts&&document.fonts.load) await document.fonts.load('700 24px "Comic Neue"'); }catch(e){}
+async function compPagina(pg,W,semSobre){
+  /* A fonte pode estar indisponível em um HTML local; não bloqueie a página esperando por ela. */
+  try{ if(document.fonts&&document.fonts.load) document.fonts.load('700 24px "Comic Neue"').catch(function(){}); }catch(e){}
   var H=Math.round(W*7/5), k=W/PAG_REF, ins=4*k;
   var out=novoCanvas(W,H), cx=out.getContext("2d");
   cx.fillStyle="#fff"; cx.fillRect(0,0,W,H);
-  var lst=pg.paineis||[], cels=celulasPagina(pg,lst.length), tracos=retsPagina(pg).tracos, i, c, pn;
-  for(i=0;i<lst.length&&i<cels.length;i++){
-    c=cels[i]; pn=lst[i];
+  var referencia=retsPagina(pg), lst=pg.paineis||[], cels=celulasPagina(pg,lst.length), tracos=referencia.tracos, sobre=referencia.sobre, i, c, pn;
+  var itens=[];
+  for(i=0;i<lst.length&&i<cels.length;i++) itens.push({cel:cels[i],painel:lst[i],ord:i});
+  /* a mesma pilha escolhida no editor é preservada no arquivo exportado */
+  itens.sort(function(a,b){ return (a.cel.z||a.ord+1)-(b.cel.z||b.ord+1); });
+  for(i=0;i<itens.length;i++){
+    c=itens[i].cel; pn=itens[i].painel;
     var fx=c.x/100*W+ins, fy=c.y/100*H+ins, fw=c.w/100*W-2*ins, fh=c.h/100*H-2*ins;
     if(fw<4||fh<4) continue;
     var fm=formaPainel(pn), bw=(typeof pn.borda==="number"&&pn.borda<=0)?0:2*k;
     var img=pn.temDesenho?await window.EditorDesenho.compor(pn.id,pn,1600,false):null;
     cx.save(); trilhaQuadro(cx,fm,fx,fy,fw,fh); cx.clip();
-    cx.fillStyle="#fff"; cx.fillRect(fx,fy,fw,fh);
-    if(img){                                     /* preenche o quadro inteiro, cortando o excesso no centro */
+    /* painel flutuante preserva transparência para revelar os quadros abaixo */
+    if(!pn.sobreposto){ cx.fillStyle="#fff"; cx.fillRect(fx,fy,fw,fh); }
+    if(img){
       var sc=Math.max(fw/img.width,fh/img.height), dw=img.width*sc, dh=img.height*sc;
       cx.imageSmoothingQuality="high";
       cx.drawImage(img,fx+(fw-dw)/2,fy+(fh-dh)/2,dw,dh);
     }else{
-      var lt=tracos[i];
+      var lt=tracos[itens[i].ord];
       if(lt&&lt.length){
         var rb=novoCanvas(Math.max(1,Math.round(fw)),Math.max(1,Math.round(fh))), rc=rb.getContext("2d");
         lt.forEach(function(t){ vDesenharTraco(rc,t,rb.width,rb.height,k); });
@@ -4079,12 +5323,19 @@ async function compPagina(pg,W){
       }
     }
     cx.restore();
-    if(bw>0){                                    /* borda por dentro do contorno, como na tela */
+    if(bw>0){
       cx.save(); trilhaQuadro(cx,fm,fx,fy,fw,fh); cx.clip();
       trilhaQuadro(cx,fm,fx,fy,fw,fh);
       cx.strokeStyle="#111"; cx.lineWidth=bw*2; cx.lineJoin="miter"; cx.miterLimit=10; cx.stroke();
       cx.restore();
     }
+  }
+  /* traços de sobreposição já existentes ficam acima dos quadros e bordas */
+  if(!semSobre&&sobre&&sobre.length) sobre.forEach(function(t){ vDesenharTraco(cx,t,W,H,k); });
+  /* As camadas do editor de página formam a sobreposição final, sem alterar painel algum. */
+  if(!semSobre){
+    var artePagina=await window.EditorDesenho.compor(idArtePagina(pg),painelInteiroDaPagina(pg),1600,false);
+    if(artePagina) cx.drawImage(artePagina,0,0,W,H);
   }
   return out;
 }
@@ -4142,228 +5393,12 @@ async function exportarCapituloPDF(btn){
   btn.textContent=rot; btn.disabled=false;
 }
 
-function montarVisuais(){
-  if(!doc) return;
-  var hosts=tela.querySelectorAll("[data-vis-pg]"), i, k;
-  for(i=0;i<hosts.length;i++){
-    k=acharPagina(hosts[i].getAttribute("data-vis-pg"));
-    if(k>-1) montarVisual(hosts[i].querySelector("[data-vis-host]"),doc.paginas[k],k);
-  }
-}
-
-function montarVisual(host,pg,ipg){
-  if(!host) return;
-  var v=pg.visual||{ativo:LAYOUT_PADRAO,dados:{}};   /* só vira parte do capítulo quando o usuário mexe */
-  if(!v.dados) v.dados={};
-  if(!LAYOUTS_VISUAIS[v.ativo]) v.ativo=LAYOUT_PADRAO;
-  var cur=null, obs=[];
-  function garantir(){ if(!pg.visual) pg.visual=v; }
-
-  var opcoes=Object.keys(LAYOUTS_VISUAIS).map(function(k){
-    return '<option value="'+k+'">'+esc(LAYOUTS_VISUAIS[k].nome)+'</option>';
-  }).join("");
-  host.innerHTML=
-    '<div class="vis-barra">'+
-      '<select data-v="layout" aria-label="Layout da página">'+opcoes+'</select>'+
-      '<button type="button" class="bt mini" data-v="lapis">Lápis</button>'+
-      '<button type="button" class="bt mini" data-v="borracha">Borracha</button>'+
-      '<input type="color" data-v="cor" aria-label="Cor do traço" value="'+esc(vFerr.c)+'">'+
-      '<input type="range" data-v="tam" min="1" max="30" value="'+vFerr.w+'" aria-label="Espessura do traço">'+
-      '<button type="button" class="bt mini" data-v="desfazer">Desfazer</button>'+
-      '<button type="button" class="bt mini" data-v="refazer">Refazer</button>'+
-      '<button type="button" class="bt mini risco" data-v="limpar">Limpar</button>'+
-      '<button type="button" class="bt mini" data-v="png" title="Baixa a página inteira, com os desenhos dos painéis e os balões">Exportar página (PNG)</button>'+
-    '</div>'+
-    '<div class="vis-pagina"></div>'+
-    '<p class="vis-dica">Arraste as linhas entre os quadros para mudar o tamanho. Desenhe dentro de cada quadro.</p>';
-  var barra=host.querySelector(".vis-barra"), pgEl=host.querySelector(".vis-pagina");
-  barra.querySelector('[data-v="layout"]').value=v.ativo;
-  barra.querySelector('[data-v="lapis"]').classList.toggle("forte",vFerr.t==="p");
-  barra.querySelector('[data-v="borracha"]').classList.toggle("forte",vFerr.t==="e");
-
-  function hist(){ var k=pg.id+":"+v.ativo; return visHist[k]||(visHist[k]={u:[],r:[]}); }
-
-  function redesenhar(leaf){
-    var c=leaf.canvas, ctx=leaf.ctx, lst=cur.dados.s[leaf.idx]||[], i;
-    ctx.clearRect(0,0,c.width,c.height);
-    for(i=0;i<lst.length;i++) vDesenharTraco(ctx,lst[i],c.width,c.height);
-  }
-  function dimensionar(leaf){
-    if(!cur||cur.leaves.indexOf(leaf)<0) return;
-    var c=leaf.canvas, r=c.getBoundingClientRect();
-    if(!r.width||!r.height) return;        /* seção fechada: ajusta quando abrir */
-    c.width=Math.round(r.width*vDpr()); c.height=Math.round(r.height*vDpr());
-    redesenhar(leaf);
-  }
-
-  function posicionar(node,x,y,w,h){       /* x,y,w,h em % da página */
-    node.rect={x:x,y:y,w:w,h:h};
-    if(node.leaf){
-      var st=node.cell.style; st.left=x+"%"; st.top=y+"%"; st.width=w+"%"; st.height=h+"%";
-      return;
-    }
-    var g=node.gutter.style;
-    if(node.dir==="v"){
-      var w1=w*node.ratio;
-      posicionar(node.a,x,y,w1,h); posicionar(node.b,x+w1,y,w-w1,h);
-      g.left=(x+w1)+"%"; g.top=y+"%"; g.height=h+"%";
-    }else{
-      var h1=h*node.ratio;
-      posicionar(node.a,x,y,w,h1); posicionar(node.b,x,y+h1,w,h-h1);
-      g.top=(y+h1)+"%"; g.left=x+"%"; g.width=w+"%";
-    }
-  }
-
-  function ligarGutter(node){
-    var g=node.gutter;
-    g.addEventListener("pointerdown",function(e){
-      e.preventDefault(); g.setPointerCapture(e.pointerId); g.classList.add("drag");
-      var moveu=false;
-      function mover(ev){
-        var pr=pgEl.getBoundingClientRect(), r=node.rect, ratio;
-        if(node.dir==="v") ratio=(ev.clientX-(pr.left+pr.width*r.x/100))/(pr.width*r.w/100);
-        else ratio=(ev.clientY-(pr.top+pr.height*r.y/100))/(pr.height*r.h/100);
-        node.ratio=Math.min(0.9,Math.max(0.1,ratio));
-        moveu=true;
-        posicionar(cur.tree,0,0,100,100);
-      }
-      function soltar(){
-        g.classList.remove("drag");
-        g.removeEventListener("pointermove",mover);
-        g.removeEventListener("pointerup",soltar);
-        g.removeEventListener("pointercancel",soltar);
-        if(!moveu) return;
-        garantir();
-        cur.dados.r=cur.splits.map(function(s){ return +s.ratio.toFixed(4); });
-        marcarSujo();
-      }
-      g.addEventListener("pointermove",mover);
-      g.addEventListener("pointerup",soltar);
-      g.addEventListener("pointercancel",soltar);
-    });
-  }
-
-  function ligarDesenho(leaf){
-    var c=leaf.canvas, tr=null, ult=null;
-    function pos(e){
-      var r=c.getBoundingClientRect();
-      return [+((e.clientX-r.left)/r.width).toFixed(4), +((e.clientY-r.top)/r.height).toFixed(4)];
-    }
-    c.addEventListener("pointerdown",function(e){
-      if(e.button>0) return;
-      c.setPointerCapture(e.pointerId);
-      var p=pos(e);
-      tr={t:vFerr.t,c:vFerr.c,w:vFerr.t==="e"?vFerr.w*3:vFerr.w,p:[p]};
-      (cur.dados.s[leaf.idx]||(cur.dados.s[leaf.idx]=[])).push(tr);
-      ult=p; redesenhar(leaf);
-    });
-    c.addEventListener("pointermove",function(e){
-      if(!tr) return;
-      var p=pos(e);
-      if(Math.abs(p[0]-ult[0])+Math.abs(p[1]-ult[1])<0.002) return;   /* ignora pontos quase iguais: poupa espaço */
-      tr.p.push(p); ult=p; redesenhar(leaf);
-    });
-    function fim(){
-      if(!tr) return;
-      garantir();
-      var h=hist(); h.u.push({idx:leaf.idx,s:tr}); h.r.length=0;
-      tr=null; marcarSujo();
-    }
-    c.addEventListener("pointerup",fim);
-    c.addEventListener("pointercancel",fim);
-  }
-
-  function construir(node){
-    if(node.leaf){
-      var cell=document.createElement("div"); cell.className="vis-cell";
-      var fr=document.createElement("div"); fr.className="vis-frame";
-      var cv=document.createElement("canvas");
-      var num=document.createElement("span"); num.className="vis-num"; num.textContent=String(node.idx+1);
-      fr.appendChild(cv); fr.appendChild(num); cell.appendChild(fr); pgEl.appendChild(cell);
-      node.cell=cell; node.canvas=cv; node.ctx=cv.getContext("2d");
-      var ro=new ResizeObserver(function(){ dimensionar(node); });
-      ro.observe(fr); obs.push(ro);
-      ligarDesenho(node);
-    }else{
-      construir(node.a); construir(node.b);
-      var g=document.createElement("div"); g.className="vis-gutter "+node.dir;
-      pgEl.appendChild(g); node.gutter=g; ligarGutter(node);
-    }
-  }
-
-  function carregar(key){
-    obs.forEach(function(o){ o.disconnect(); }); obs=[];
-    v.ativo=key;
-    var dados=v.dados[key]||(v.dados[key]={r:[],s:{}});
-    if(!dados.s) dados.s={};
-    var tree=LAYOUTS_VISUAIS[key].build(), splits=[], leaves=[];
-    (function varrer(n){
-      if(n.leaf){ n.idx=leaves.length; leaves.push(n); }
-      else{ splits.push(n); varrer(n.a); varrer(n.b); }
-    })(tree);
-    if(dados.r && dados.r.length===splits.length) splits.forEach(function(s,i){ s.ratio=dados.r[i]; });
-    cur={key:key,tree:tree,splits:splits,leaves:leaves,dados:dados};
-    pgEl.innerHTML="";
-    construir(tree);
-    posicionar(tree,0,0,100,100);
-  }
-
-  barra.addEventListener("click",function(ev){
-    var b=ev.target.closest("button[data-v]"); if(!b) return;
-    var a=b.getAttribute("data-v"), h, e, lst, i;
-    if(a==="lapis"){ vFerr.t="p"; vSincronizarBarras(); }
-    else if(a==="borracha"){ vFerr.t="e"; vSincronizarBarras(); }
-    else if(a==="desfazer"){
-      h=hist(); e=h.u.pop(); if(!e) return;
-      lst=cur.dados.s[e.idx]||[]; i=lst.indexOf(e.s);
-      if(i>-1) lst.splice(i,1);
-      h.r.push(e); redesenhar(cur.leaves[e.idx]); marcarSujo();
-    }
-    else if(a==="refazer"){
-      h=hist(); e=h.r.pop(); if(!e) return;
-      (cur.dados.s[e.idx]||(cur.dados.s[e.idx]=[])).push(e.s);
-      h.u.push(e); redesenhar(cur.leaves[e.idx]); marcarSujo();
-    }
-    else if(a==="limpar"){
-      confirmarClique(b,"Confirmar?",function(){
-        garantir(); cur.dados.s={}; cur.leaves.forEach(redesenhar);
-        var hh=hist(); hh.u.length=0; hh.r.length=0;
-        b.removeAttribute("data-armado"); b.textContent="Limpar";
-        marcarSujo();
-      });
-    }
-    else if(a==="png"){
-      var rot=b.textContent; b.disabled=true; b.textContent="Gerando…";
-      compPagina(pg,2000).then(function(cv){ return canvasBlob(cv,"image/png"); }).then(function(bl){
-        baixarArquivo(bl,nomeSeguro(nomeObra()+" cap "+(doc.numero||1)+" pagina "+(ipg+1))+".png");
-      }).catch(function(e){ console.error("exportar página:",e); aviso("Não foi possível exportar a página."); }).then(function(){
-        b.textContent=rot; b.disabled=false;
-      });
-    }
-  });
-  barra.addEventListener("change",function(ev){
-    if(ev.target.getAttribute("data-v")==="layout"){
-      garantir(); carregar(ev.target.value); marcarSujo();
-    }
-  });
-  barra.addEventListener("input",function(ev){
-    var a=ev.target.getAttribute("data-v");
-    if(a==="cor"){ vFerr.c=ev.target.value; vFerr.t="p"; vSincronizarBarras(); }
-    else if(a==="tam"){ vFerr.w=+ev.target.value; vSincronizarBarras(); }
-  });
-
-  carregar(v.ativo);
-}
-
-/* lembra quais seções "Layout visual" estão abertas ao redesenhar a tela */
-tela.addEventListener("toggle",function(ev){
-  var d=ev.target;
-  if(d&&d.hasAttribute&&d.hasAttribute("data-vis-pg")) visAberto[d.getAttribute("data-vis-pg")]=d.open;
-},true);
-
 /* ========== eventos ========== */
 el("novaObra").onclick=abrirFormObra;
 el("abrirDesenhoLivre").onclick=abrirDesenhoLivre;
+el("voltarEntrada").onclick=voltarEntrada;
+el("abrirNotas").onclick=abrirNotas;
+el("novaNota").onclick=criarNota;
 el("cancelarObra").onclick=fecharFormObra;
 el("formObra").addEventListener("submit",function(ev){
   ev.preventDefault();
@@ -4393,6 +5428,14 @@ el("tituloCap").addEventListener("input",function(){
 });
 
 document.querySelector(".rolagem").addEventListener("click",function(ev){
+  var apagarNotaBt=ev.target.closest('[data-nota-acao="apagar"]');
+  if(apagarNotaBt){
+    ev.preventDefault(); ev.stopPropagation();
+    confirmarClique(apagarNotaBt,"CONFIRMAR",function(){ apagarNota(apagarNotaBt.getAttribute("data-nota-id")); });
+    return;
+  }
+  var notaBt=ev.target.closest("[data-nota]");
+  if(notaBt){ abrirNota(notaBt.getAttribute("data-nota")); return; }
   var renameObra=ev.target.closest('[data-acao="rename-obra"]');
   if(renameObra){
     ev.preventDefault();
@@ -4415,6 +5458,7 @@ document.querySelector(".rolagem").addEventListener("click",function(ev){
   var b=ev.target.closest("[data-obra],[data-cap]");
   if(!b) return;
   if(b.hasAttribute("data-obra")){
+    modoNotas=false;
     obraAtual=b.getAttribute("data-obra");
     var meus=caps.filter(function(c){return c.obraId===obraAtual;});
     desenharLateral();
@@ -4429,9 +5473,16 @@ function aoClicarTela(ev){
   var b=ev.target.closest("[data-acao]"); if(!b||!doc) return;
   var acao=b.getAttribute("data-acao");
 
+
+  if(acao==="pagina-anterior"){ moverPaginaPronta(-1); return; }
+  if(acao==="pagina-proxima"){ moverPaginaPronta(1); return; }
+  if(acao==="abrir-editor-capitulo"){
+    abrirEditorCapitulo(pgAtual); return;
+  }
   if(acao==="add-pagina"){
     abrirEscolhaQtd(b,function(n){
-      doc.paginas.push(novaPagina(n)); marcarSujo(); desenhar();
+      doc.paginas.push(novaPagina(n));
+      marcarSujo(); desenhar();
     });
     return;
   }
@@ -4496,6 +5547,22 @@ function aoClicarTela(ev){
 
   var loc=acharPainel(b); if(!loc) return;
   var lst=loc.pagina.paineis;
+  if(acao==="toggle-sobreposto"){
+    if(loc.painel.sobreposto) delete loc.painel.sobreposto;
+    else{ loc.painel.sobreposto=true; loc.painel.borda=0; }
+    var pilha=garantirComposicaoLivre(loc.pagina), pos=pilha[loc.painel.id], maior=0;
+    Object.keys(pilha).forEach(function(chave){ maior=Math.max(maior,+pilha[chave].z||0); });
+    pos.z=maior+1;
+    marcarSujo(); desenhar(); return;
+  }
+  if(acao==="toggle-borda"){
+    if(typeof loc.painel.borda==="number"&&loc.painel.borda<=0) delete loc.painel.borda;
+    else loc.painel.borda=0;
+    marcarSujo(); desenhar(); return;
+  }else if(acao==="forma-painel"){
+    aplicarFormaRapida(loc.painel,b.getAttribute("data-forma"));
+    marcarSujo(); desenhar(); return;
+  }
   if(acao==="subir" && loc.ipn>0){
     lst.splice(loc.ipn-1,0,lst.splice(loc.ipn,1)[0]); marcarSujo(); desenhar();
   }else if(acao==="descer" && loc.ipn<lst.length-1){
@@ -4531,6 +5598,58 @@ function aoClicarTela(ev){
   }
 }
 tela.addEventListener("click",aoClicarTela);
+
+/* arrastar pelo botão “mover” reposiciona só o quadro escolhido, sem deslocar a folha */
+function iniciarMoverPainel(ev){
+  var alca=ev.target.closest("[data-mover-painel]");
+  if(!alca||!doc||(typeof ev.button==="number"&&ev.button!==0)) return;
+  var loc=acharPainel(alca), papel=el("papel");
+  if(!loc||!papel) return;
+  ev.preventDefault(); ev.stopPropagation();
+  var mapa=garantirComposicaoLivre(loc.pagina), pos=mapa[loc.painel.id], r=papel.getBoundingClientRect();
+  var inicioX=ev.clientX, inicioY=ev.clientY, origemX=pos.x, origemY=pos.y, maior=0;
+  Object.keys(mapa).forEach(function(chave){ maior=Math.max(maior,+mapa[chave].z||0); });
+  pos.z=maior+1;
+  var cel=alca.closest(".cel");
+  if(cel) cel.style.zIndex=pos.z;
+  if(alca.setPointerCapture) alca.setPointerCapture(ev.pointerId);
+  function mover(e){
+    pos.x=limitarNumero(origemX+(e.clientX-inicioX)/r.width*100,1,99-pos.w);
+    pos.y=limitarNumero(origemY+(e.clientY-inicioY)/r.height*100,1,99-pos.h);
+    if(cel){ cel.style.left=pos.x+"%"; cel.style.top=pos.y+"%"; }
+  }
+  function fim(){
+    alca.removeEventListener("pointermove",mover);
+    alca.removeEventListener("pointerup",fim);
+    alca.removeEventListener("pointercancel",fim);
+    if(alca.hasPointerCapture&&alca.hasPointerCapture(ev.pointerId)) alca.releasePointerCapture(ev.pointerId);
+    marcarSujo();
+  }
+  alca.addEventListener("pointermove",mover);
+  alca.addEventListener("pointerup",fim);
+  alca.addEventListener("pointercancel",fim);
+}
+tela.addEventListener("pointerdown",iniciarMoverPainel);
+
+function aoClicarNotas(ev){
+  var b=ev.target.closest("[data-nota-acao]"); if(!b) return;
+  var acao=b.getAttribute("data-nota-acao");
+  if(acao==="entrada"){ voltarEntrada(); return; }
+  if(acao==="nova"){ criarNota(); return; }
+  if(acao==="apagar"){
+    confirmarClique(b,"CONFIRMAR",function(){ apagarNota(b.getAttribute("data-nota-id")); });
+  }
+}
+function aoEditarNotas(ev){
+  if(!modoNotas) return;
+  var campo=ev.target.getAttribute("data-nota-campo"); if(!campo) return;
+  var n=notaObj(notaAtual); if(!n) return;
+  n[campo]=ev.target.value;
+  marcarNotaSuja();
+}
+tela.addEventListener("click",aoClicarNotas);
+tela.addEventListener("input",aoEditarNotas);
+
 
 function aoEditar(ev){
   var t=ev.target; if(!doc) return;
@@ -4597,10 +5716,27 @@ function ajustarQuadros(){
   p.style.height=h+"px"; p.style.width=(h*5/7)+"px";
 }
 window.addEventListener("resize",ajustarQuadros);
+function irParaPaginaPronta(indice){
+  if(!doc||!(indice>=0&&indice<doc.paginas.length)||indice===pgAtual) return false;
+  pgAtual=indice; selPainel=null;
+  desenhar(); tela.scrollTop=0; alternarLateral(false);
+  return true;
+}
+function moverPaginaPronta(passo){
+  if(!doc||!doc.paginas.length) return false;
+  return irParaPaginaPronta(Math.max(0,Math.min(doc.paginas.length-1,pgAtual+passo)));
+}
 el("listaPaginas").addEventListener("click",function(ev){
   var b=ev.target.closest("[data-irpg]"); if(!b||!doc) return;
-  pgAtual=parseInt(b.getAttribute("data-irpg"),10)||0; selPainel=null;
-  desenhar(); tela.scrollTop=0; alternarLateral(false);
+  irParaPaginaPronta(parseInt(b.getAttribute("data-irpg"),10)||0);
+});
+document.addEventListener("keydown",function(ev){
+  if(document.body.classList.contains("ed-aberto")||!doc||!ev.altKey||ev.ctrlKey||ev.metaKey) return;
+  var tag=ev.target&&ev.target.tagName;
+  if(tag==="TEXTAREA"||tag==="SELECT"||(tag==="INPUT"&&(ev.target.type==="text"||ev.target.type==="number"))) return;
+  if(ev.key==="PageUp"||ev.key==="PageDown"){
+    ev.preventDefault(); moverPaginaPronta(ev.key==="PageUp"?-1:1);
+  }
 });
 el("novaPag").addEventListener("click",function(ev){
   if(!doc) return;
@@ -4677,6 +5813,32 @@ function paraTexto(){
   return L.join("\n");
 }
 
+el("btContaNuvem").onclick=function(){
+  var n=window.MesaNuvem;
+  if(!n||!n.disponivel()){ aviso("A conexão com a nuvem não foi carregada. Abra a versão publicada do site."); return; }
+  if(location.protocol==="file:"&&!n.usuario()){
+    aviso("Para entrar com Google, abra a versão publicada pelo Firebase Hosting."); return;
+  }
+  if(n.usuario()){
+    if(window.confirm("Sair da conta? Os dados locais deste aparelho não serão apagados.")) n.sair().catch(function(){ aviso("Não foi possível sair agora."); });
+    return;
+  }
+  n.entrar().catch(function(e){
+    var codigo=e&&e.code||"";
+    if(codigo==="auth/unauthorized-domain") aviso("Este endereço ainda não está autorizado. Publique o site no Firebase Hosting.");
+    else if(codigo!=="auth/popup-closed-by-user") aviso("Não foi possível entrar com Google. Tente novamente.");
+  });
+};
+
+el("btBackup").onclick=function(){ el("dlgBackup").showModal(); };
+el("fecharBackup").onclick=function(){ el("dlgBackup").close(); };
+el("btBaixarBackup").onclick=function(){ baixarBackup(); };
+el("btImportarBackup").onclick=function(){ el("arquivoBackup").click(); };
+el("arquivoBackup").onchange=async function(){
+  var arquivo=this.files&&this.files[0]; this.value="";
+  if(arquivo) await importarBackupArquivo(arquivo);
+};
+
 el("btExportar").onclick=function(){
   el("saidaTexto").value=paraTexto();
   el("dlgExport").showModal();
@@ -4696,7 +5858,7 @@ el("btBaixar").onclick=async function(){
 };
 
 window.addEventListener("beforeunload",function(e){
-  if(sujo){ e.preventDefault(); e.returnValue=""; }
+  if(sujo||notaSuja){ e.preventDefault(); e.returnValue=""; }
 });
 
 /* ========== arranque ========== */
